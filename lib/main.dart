@@ -17,7 +17,7 @@ class DoAn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // title: 'Đăng Nhập',
+      title: 'Đăng Nhập',
       debugShowCheckedModeBanner: false,
       home: FieldPage(),
     );
