@@ -19,7 +19,7 @@ class DoAn extends StatelessWidget {
     return MaterialApp(
       // title: 'Đăng Nhập',
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: FieldPage(),
     );
   }
 }

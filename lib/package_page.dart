@@ -30,8 +30,7 @@ class _PackagePageState extends State<PackagePage> {
               child: Column(
                 children: [
                   IconButton(
-                    onPressed: () {
-                    
+                    onPressed: () {             
                     },
                     icon: const Icon(Icons.arrow_back),
                     color: Colors.black54,

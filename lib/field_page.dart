@@ -22,16 +22,14 @@ class _FieldPageState extends State<FieldPage> {
               child: Column(
                 children: [
                   IconButton(
-                    onPressed: () {
-                    
+                    onPressed: () {                  
                     },
                     icon: const Icon(Icons.arrow_back),
                     color: Colors.black54,
                     iconSize: 35,
                   ),
                   IconButton(
-                    onPressed: () {
-                    
+                    onPressed: () {                   
                     },
                     icon: const Icon(Icons.volume_up_outlined),
                     color: Colors.black54,
