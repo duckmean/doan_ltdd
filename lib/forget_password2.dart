@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
-class Forget_password2 extends StatelessWidget{
+class Forget_password2 extends StatefulWidget {
+  const Forget_password2({super.key});
+  @override
+  State<Forget_password2> createState() => _Forget_password2State();
+}
+
+class _Forget_password2State extends State<Forget_password2>{
   @override 
   Widget build(BuildContext context) {
     return Scaffold(

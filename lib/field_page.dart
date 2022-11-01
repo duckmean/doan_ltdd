@@ -90,8 +90,9 @@ class _FieldPageState extends State<FieldPage> {
           ],
         ),
       ),
-      body: Center(
+      body: Center(       
         child: Column(
+          //mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               width: 300,

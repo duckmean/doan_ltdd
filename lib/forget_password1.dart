@@ -2,7 +2,13 @@ import 'package:doan_ltdd/forget_password2.dart';
 import 'package:doan_ltdd/login_screen.dart';
 import 'package:flutter/material.dart';
 
-class Forget_password1 extends StatelessWidget {
+class Forget_password1 extends StatefulWidget {
+  const Forget_password1({super.key});
+  @override
+  State<Forget_password1> createState() => _Forget_password1State();
+}
+
+class _Forget_password1State extends State<Forget_password1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
