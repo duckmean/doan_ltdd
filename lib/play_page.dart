@@ -16,15 +16,10 @@ class _PlayPageState extends State<PlayPage> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 57, 143, 186),
         toolbarHeight: 40,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.arrow_back),
-              color: Colors.black,
-            ),
-          ],
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

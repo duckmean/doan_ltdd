@@ -1,4 +1,8 @@
+import 'package:doan_ltdd/main_page.dart';
+import 'package:doan_ltdd/record_detail.dart';
 import 'package:flutter/material.dart';
+
+import 'login_screen.dart';
 
 class RecordPage extends StatefulWidget {
   const RecordPage({super.key});
@@ -15,15 +19,10 @@ class _RecordPageState extends State<RecordPage> {
       appBar: AppBar(
         toolbarHeight: 50,
         backgroundColor: const Color.fromARGB(255, 57, 143, 186),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.arrow_back),
-              color: Colors.black,
-            ),
-          ],
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
         ),
       ),
       body: Center(
@@ -31,8 +30,8 @@ class _RecordPageState extends State<RecordPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              width: 200,
-              height: 100,
+              width: 300,
+              height: 90,
               decoration: BoxDecoration(
                 border: Border.all(
                   color: Color.fromARGB(255, 237, 241, 241),
@@ -78,7 +77,14 @@ class _RecordPageState extends State<RecordPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RecordDetail(),
+                              ),
+                            );
+                          },
                           child: const Text(
                             'Khoa học',
                             style: TextStyle(
@@ -97,7 +103,14 @@ class _RecordPageState extends State<RecordPage> {
                                           BorderRadius.circular(60)))),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RecordDetail(),
+                              ),
+                            );
+                          },
                           child: const Text(
                             'Lịch sử',
                             style: TextStyle(
@@ -116,7 +129,14 @@ class _RecordPageState extends State<RecordPage> {
                                           BorderRadius.circular(60)))),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RecordDetail(),
+                              ),
+                            );
+                          },
                           child: const Text(
                             'Âm nhạc',
                             style: TextStyle(
@@ -142,7 +162,14 @@ class _RecordPageState extends State<RecordPage> {
                     child: Column(
                       children: [
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RecordDetail(),
+                              ),
+                            );
+                          },
                           child: const Text(
                             'Xã hội',
                             style: TextStyle(
@@ -161,7 +188,14 @@ class _RecordPageState extends State<RecordPage> {
                                           BorderRadius.circular(60)))),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RecordDetail(),
+                              ),
+                            );
+                          },
                           child: const Text(
                             'Thể thao',
                             style: TextStyle(
@@ -180,7 +214,14 @@ class _RecordPageState extends State<RecordPage> {
                                           BorderRadius.circular(60)))),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RecordDetail(),
+                              ),
+                            );
+                          },
                           child: const Text(
                             'Văn hóa',
                             style: TextStyle(
@@ -227,12 +268,24 @@ class _RecordPageState extends State<RecordPage> {
               leading: Icon(Icons.home),
               title: Text("Home"),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MainPage(),
+                  ),
+                );
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text("Settings"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_cart),
+              title: Text("Shoping"),
               onTap: () {
                 Navigator.pop(context);
               },
@@ -245,10 +298,15 @@ class _RecordPageState extends State<RecordPage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text("Shoping"),
+              leading: Icon(Icons.logout_outlined),
+              title: Text("Log out"),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ),
+                );
               },
             ),
           ],

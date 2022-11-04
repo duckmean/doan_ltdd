@@ -1,4 +1,5 @@
 import 'package:doan_ltdd/forget_password1.dart';
+import 'package:doan_ltdd/main_page.dart';
 import 'package:doan_ltdd/register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -64,8 +65,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(40),
                           topRight: Radius.circular(40))),
-                  child: Column(   
-                    //mainAxisAlignment: MainAxisAlignment.center,               
+                  child: Column(
+                    //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
                         padding: const EdgeInsets.all(15),
@@ -111,7 +112,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(
-                          onPressed: () {}, //bo sung 2
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainPage(),
+                              ),
+                            );
+                          }, //bo sung 2
                           child: const Text('Đăng Nhập',
                               style: TextStyle(fontSize: 20)),
                           style: ButtonStyle(

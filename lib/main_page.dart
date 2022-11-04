@@ -1,6 +1,11 @@
 // ignore_for_file: unused_import
 
+import 'package:doan_ltdd/field_page.dart';
+import 'package:doan_ltdd/play_page.dart';
+import 'package:doan_ltdd/record_page.dart';
 import 'package:flutter/material.dart';
+
+import 'login_screen.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -17,23 +22,18 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 57, 143, 186),
         toolbarHeight: 50,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
+        ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               //padding: const EdgeInsets.all(5),
               child: Row(
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.power_settings_new,
-                      color: Colors.black,
-                      size: 35,
-                    ),
-                    padding: const EdgeInsets.all(8),
-                  ),
-                ],
+                children: [],
               ),
             ),
           ],
@@ -46,8 +46,17 @@ class _MainPageState extends State<MainPage> {
             Container(
               padding: const EdgeInsets.all(15),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.power_settings_new,
+                      color: Colors.black,
+                      size: 35,
+                    ),
+                    padding: const EdgeInsets.all(8),
+                  ),
                   TextButton(
                     onPressed: () {},
                     child: Text(
@@ -140,7 +149,14 @@ class _MainPageState extends State<MainPage> {
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FieldPage(),
+                            ),
+                          );
+                        },
                         // ignore: sort_child_properties_last
                         child: const Text(
                           'Bắt dầu',
@@ -188,7 +204,14 @@ class _MainPageState extends State<MainPage> {
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RecordPage(),
+                            ),
+                          );
+                        },
                         // ignore: sort_child_properties_last
                         child: const Text(
                           'Kỷ lục',
@@ -233,12 +256,24 @@ class _MainPageState extends State<MainPage> {
               leading: Icon(Icons.home),
               title: Text("Home"),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MainPage(),
+                  ),
+                );
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text("Settings"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_cart),
+              title: Text("Shoping"),
               onTap: () {
                 Navigator.pop(context);
               },
@@ -251,10 +286,15 @@ class _MainPageState extends State<MainPage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text("Shoping"),
+              leading: Icon(Icons.logout_outlined),
+              title: Text("Log out"),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ),
+                );
               },
             ),
           ],
