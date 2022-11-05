@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:doan_ltdd/field_page.dart';
+import 'package:doan_ltdd/getmore_coins.dart';
 import 'package:doan_ltdd/play_page.dart';
 import 'package:doan_ltdd/record_page.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,7 @@ class _MainPageState extends State<MainPage> {
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                      "QC: 5000",
+                      "QuizzCoin: 5000",
                       style: TextStyle(fontSize: 17, color: Colors.black),
                     ),
                     style: ButtonStyle(
@@ -180,10 +181,17 @@ class _MainPageState extends State<MainPage> {
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => GetMoreCoins(),
+                            ),
+                          );
+                        },
                         // ignore: sort_child_properties_last
                         child: const Text(
-                          'Nhận thêm QC',
+                          'Nhận QuizzCoin',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black,

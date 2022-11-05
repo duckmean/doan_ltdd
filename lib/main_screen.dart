@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import 'package:doan_ltdd/field_page.dart';
 import 'package:doan_ltdd/login_screen.dart';
 import 'package:doan_ltdd/main_page.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +87,7 @@ class _MainScreenState extends State<MainScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MainPage(),
+                                builder: (context) => FieldPage(),
                               ),
                             );
                           },
