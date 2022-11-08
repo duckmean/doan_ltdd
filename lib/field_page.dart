@@ -12,13 +12,13 @@ class _FieldPageState extends State<FieldPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 57, 143, 186),
+      backgroundColor: Color.fromARGB(255, 201, 222, 233),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 57, 143, 186),
+        backgroundColor: Color.fromARGB(255, 20, 153, 230),
         toolbarHeight: 50,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20),
+            bottom: Radius.circular(25),
           ),
         ),
       ),

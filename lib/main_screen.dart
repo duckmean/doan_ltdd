@@ -16,9 +16,14 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 57, 143, 186),
+      backgroundColor: Color.fromARGB(255, 201, 222, 233),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 57, 143, 186),
+        backgroundColor: Color.fromARGB(255, 20, 153, 230),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+        ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -31,15 +36,15 @@ class _MainScreenState extends State<MainScreen> {
                 )),
             Row(
               children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.volume_up_outlined,
-                    color: Colors.black54,
-                    size: 40,
-                  ),
-                  padding: const EdgeInsets.all(10),
-                ),
+                // IconButton(
+                //   onPressed: () {},
+                //   icon: const Icon(
+                //     Icons.volume_up_outlined,
+                //     color: Colors.black54,
+                //     size: 40,
+                //   ),
+                //   padding: const EdgeInsets.all(10),
+                // ),
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(
@@ -68,7 +73,8 @@ class _MainScreenState extends State<MainScreen> {
                     image: AssetImage(
                         "images/tong-hop-nhung-show-truyen-hinh-thuc-te-giup-nang-trinh-tieng-anh-10 (1).jpg"),
                     fit: BoxFit.cover),
-                border: Border.all(width: 3, color: Colors.blue),
+                border: Border.all(
+                    width: 3, color: Color.fromARGB(255, 231, 231, 231)),
                 borderRadius: BorderRadius.circular(150),
               ),
             ),
@@ -82,7 +88,7 @@ class _MainScreenState extends State<MainScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextButton(
+                        OutlinedButton(
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -101,23 +107,20 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                           style: ButtonStyle(
                             backgroundColor: MaterialStatePropertyAll(
-                              Color.fromARGB(255, 203, 53, 43),
+                              Color.fromARGB(244, 198, 53, 43),
                             ),
                             shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(60),
                               ),
                             ),
-                            foregroundColor:
-                                MaterialStateProperty.resolveWith<Color>(
-                                    (Set<MaterialState> states) {
-                              if (states.contains(MaterialState.hovered))
-                                return Colors.green;
-                              return Colors.purpleAccent;
-                            }),
+                            minimumSize: MaterialStatePropertyAll(Size(50, 52)),
+                            overlayColor: MaterialStatePropertyAll(
+                              Color.fromARGB(255, 227, 49, 36),
+                            ),
                           ),
                         ),
-                        TextButton(
+                        OutlinedButton(
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -136,12 +139,16 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                           style: ButtonStyle(
                             backgroundColor: MaterialStatePropertyAll(
-                                Color.fromARGB(255, 34, 113, 178)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
+                              Color.fromARGB(255, 30, 117, 210),
+                            ),
+                            shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
+                                borderRadius: BorderRadius.circular(60),
                               ),
+                            ),
+                            minimumSize: MaterialStatePropertyAll(Size(50, 52)),
+                            overlayColor: MaterialStatePropertyAll(
+                              Color.fromARGB(255, 16, 146, 222),
                             ),
                           ),
                         ),
@@ -149,7 +156,18 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text('Hướng dẫn chơi'),
+                            content: Text('Ae 3TL'),
+                            scrollable: true,
+                          );
+                        },
+                      );
+                    },
                     child: const Text(
                       'Hướng dẫn',
                       style: TextStyle(
@@ -159,7 +177,7 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
-                          Color.fromARGB(255, 159, 121, 106)),
+                          Color.fromARGB(255, 188, 134, 113)),
                       minimumSize: MaterialStatePropertyAll(Size(340, 35)),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(

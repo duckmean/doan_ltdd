@@ -19,13 +19,13 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 57, 143, 186),
+      backgroundColor: Color.fromARGB(255, 201, 222, 233),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 57, 143, 186),
+        backgroundColor: Color.fromARGB(255, 20, 153, 230),
         toolbarHeight: 50,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20),
+            bottom: Radius.circular(25),
           ),
         ),
         title: Row(
@@ -62,12 +62,14 @@ class _MainPageState extends State<MainPage> {
                     onPressed: () {},
                     child: Text(
                       "QuizzCoin: 5000",
-                      style: TextStyle(fontSize: 17, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: 17,
+                          color: Color.fromARGB(255, 255, 253, 253)),
                     ),
                     style: ButtonStyle(
                         minimumSize: MaterialStateProperty.all(Size(100, 20)),
                         backgroundColor: const MaterialStatePropertyAll(
-                            Color.fromARGB(255, 219, 219, 219)),
+                            Color.fromARGB(255, 33, 148, 220)),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50)))),
                   ),
@@ -169,7 +171,7 @@ class _MainPageState extends State<MainPage> {
                         ),
                         style: ButtonStyle(
                             backgroundColor: const MaterialStatePropertyAll(
-                                Color.fromARGB(255, 209, 209, 209)),
+                                Color.fromARGB(255, 223, 85, 85)),
                             minimumSize:
                                 const MaterialStatePropertyAll(Size(200, 50)),
                             shape: MaterialStateProperty.all(
@@ -194,13 +196,13 @@ class _MainPageState extends State<MainPage> {
                           'Nhận QuizzCoin',
                           style: TextStyle(
                             fontSize: 20,
-                            color: Colors.black,
+                            color: Color.fromARGB(255, 0, 0, 0),
                             fontWeight: FontWeight.normal,
                           ),
                         ),
                         style: ButtonStyle(
                             backgroundColor: const MaterialStatePropertyAll(
-                                Color.fromARGB(255, 209, 209, 209)),
+                                Color.fromARGB(255, 40, 189, 212)),
                             minimumSize:
                                 const MaterialStatePropertyAll(Size(200, 50)),
                             shape: MaterialStateProperty.all(
@@ -231,7 +233,7 @@ class _MainPageState extends State<MainPage> {
                         ),
                         style: ButtonStyle(
                             backgroundColor: const MaterialStatePropertyAll(
-                                Color.fromARGB(255, 209, 209, 209)),
+                                Color.fromARGB(255, 34, 142, 73)),
                             minimumSize:
                                 const MaterialStatePropertyAll(Size(200, 50)),
                             shape: MaterialStateProperty.all(
