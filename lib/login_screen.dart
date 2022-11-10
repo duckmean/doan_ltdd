@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:doan_ltdd/forget_password1.dart';
 import 'package:doan_ltdd/main_page.dart';
 import 'package:doan_ltdd/register.dart';
@@ -5,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
+import 'package:http/http.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,6 +16,25 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  // TextEditingController usernameController = TextEditingController();
+  // TextEditingController passwordController = TextEditingController();
+  // void login(String username, password) async {
+  //   try {
+  //     Response response = await post(Uri.parse('https://reqres.in/api/login'),
+  //         body: {'username': username,'password': password});
+
+  //     if (response.statusCode == 200) {
+  //       var data = jsonDecode(response.body.toString());
+  //       print(data['token']);
+  //       print('Login successfully');
+  //     } else {
+  //       print('failed');
+  //     }
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
