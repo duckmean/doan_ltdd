@@ -1,5 +1,8 @@
 // ignore: unused_import
+import 'package:doan_ltdd/main_page.dart';
 import 'package:flutter/material.dart';
+
+import 'login_screen.dart';
 
 class PlayPage extends StatefulWidget {
   const PlayPage({super.key});
@@ -12,46 +15,11 @@ class _PlayPageState extends State<PlayPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 201, 222, 233),
+      backgroundColor: Color(0xFF232431),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 20, 153, 230),
+        backgroundColor: Color(0xFF232431),
         toolbarHeight: 40,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(25),
-          ),
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: (Color.fromARGB(31, 121, 114, 114)),
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.contrast_outlined,
-            ),
-            label: "50/50",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.groups,
-            ),
-            label: "Hỏi ý kiến khán giả",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.autorenew,
-            ),
-            label: "Đổi câu hỏi",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.contact_phone,
-            ),
-            label: "Gọi điện thoại",
-          ),
-        ],
+        elevation: 0,
       ),
       body: Center(
         child: Column(
@@ -62,31 +30,26 @@ class _PlayPageState extends State<PlayPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "QC: 5000",
-                      style: TextStyle(fontSize: 17, color: Colors.black),
-                    ),
-                    style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(Size(100, 20)),
-                        backgroundColor: const MaterialStatePropertyAll(
-                            Color.fromARGB(255, 219, 219, 219)),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50)))),
-                  ),
+                  //Đồng hồ đếm ngược
+                  //
                   TextButton(
                     onPressed: () {},
                     child: Text(
                       "Score: 2000",
-                      style: TextStyle(fontSize: 17, color: Colors.black),
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.black,
+                      ),
                     ),
                     style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(Size(100, 20)),
-                        backgroundColor: const MaterialStatePropertyAll(
-                            Color.fromARGB(255, 219, 219, 219)),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50)))),
+                      minimumSize: MaterialStateProperty.all(Size(100, 20)),
+                      backgroundColor: const MaterialStatePropertyAll(
+                          Color.fromARGB(255, 219, 219, 219)),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -100,13 +63,14 @@ class _PlayPageState extends State<PlayPage> {
                       image: AssetImage(
                           "images/tong-hop-nhung-show-truyen-hinh-thuc-te-giup-nang-trinh-tieng-anh-10 (1).jpg"),
                       fit: BoxFit.cover),
-                  border: Border.all(width: 3, color: Colors.blue),
+                  border: Border.all(
+                      width: 1, color: Color.fromARGB(255, 255, 255, 255)),
                   borderRadius: BorderRadius.circular(30)),
             ),
             Container(
               alignment: Alignment.center,
               width: 200,
-              height: 100,
+              height: 150,
               child: Text(
                 "Cau hoi",
                 style: TextStyle(
@@ -120,128 +84,197 @@ class _PlayPageState extends State<PlayPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "A.",
-                          style: TextStyle(fontSize: 18, color: Colors.white),
+                    padding: EdgeInsets.only(
+                      bottom: 10,
+                    ),
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Đáp án A',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 17,
+                          color: Color(0xFF000000),
                         ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Đáp án A",
-                            style: TextStyle(
-                              fontSize: 15,
-                            ),
-                          ),
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
-                                  Color.fromARGB(255, 238, 238, 238)),
-                              minimumSize:
-                                  MaterialStatePropertyAll(Size(300, 20)),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(60)))),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(Color(0xFFFFFFFF)),
+                        minimumSize: MaterialStatePropertyAll(Size(320, 40)),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(60)),
                         ),
-                      ],
+                      ),
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "B.",
-                          style: TextStyle(fontSize: 18, color: Colors.white),
+                    padding: EdgeInsets.only(
+                      bottom: 10,
+                    ),
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Đáp án B',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 17,
+                          color: Color(0xFF000000),
                         ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Đáp án B",
-                            style: TextStyle(
-                              fontSize: 15,
-                            ),
-                          ),
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
-                                  Color.fromARGB(255, 238, 238, 238)),
-                              minimumSize:
-                                  MaterialStatePropertyAll(Size(300, 20)),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(60)))),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(Color(0xFFFFFFFF)),
+                        minimumSize: MaterialStatePropertyAll(Size(320, 40)),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(60)),
                         ),
-                      ],
+                      ),
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "C.",
-                          style: TextStyle(fontSize: 18, color: Colors.white),
+                    padding: EdgeInsets.only(
+                      bottom: 10,
+                    ),
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Đáp án C',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 17,
+                          color: Color(0xFF000000),
                         ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Đáp án C",
-                            style: TextStyle(
-                              fontSize: 15,
-                            ),
-                          ),
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
-                                  Color.fromARGB(255, 238, 238, 238)),
-                              minimumSize:
-                                  MaterialStatePropertyAll(Size(300, 20)),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(60)))),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(Color(0xFFFFFFFF)),
+                        minimumSize: MaterialStatePropertyAll(Size(320, 40)),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(60)),
                         ),
-                      ],
+                      ),
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    padding: EdgeInsets.only(
+                      bottom: 10,
+                    ),
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Đáp án D',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 17,
+                          color: Color(0xFF000000),
+                        ),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(Color(0xFFFFFFFF)),
+                        minimumSize: MaterialStatePropertyAll(Size(320, 40)),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(60)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                children: [
+                  Container(
+                    child: Column(
                       children: [
-                        Text(
-                          "D.",
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        ),
-                        TextButton(
+                        IconButton(
                           onPressed: () {},
-                          child: Text(
-                            "Đáp án D",
-                            style: TextStyle(
-                              fontSize: 15,
-                            ),
-                          ),
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
-                                  Color.fromARGB(255, 238, 238, 238)),
-                              minimumSize:
-                                  MaterialStatePropertyAll(Size(300, 20)),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(60)))),
+                          icon: Icon(Icons.transcribe),
+                          color: Color(0xFFFFFFFF),
                         ),
+                        Text(
+                          "50:50",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w300,
+                            color: Color(0xFFFFFFFF),
+                          ),
+                        )
                       ],
                     ),
                   ),
                 ],
               ),
-            )
+            ),
+          ],
+        ),
+      ),
+      endDrawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text("Phúc Best"),
+              accountEmail: Text("phucbestth2002@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Color.fromARGB(255, 28, 86, 232),
+                child: Text(
+                  "P",
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Home"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MainPage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text("Settings"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_cart),
+              title: Text("Shoping"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.contacts),
+              title: Text("Contact Us"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout_outlined),
+              title: Text("Log out"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
