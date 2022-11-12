@@ -1,9 +1,10 @@
 // ignore_for_file: unused_import
 
-import 'package:doan_ltdd/field_page.dart';
-import 'package:doan_ltdd/login_screen.dart';
-import 'package:doan_ltdd/main_page.dart';
+import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import 'package:flutter/material.dart';
+import 'package:doan_ltdd/Appcolor/appcolor.dart';
+import '../login/login_screen.dart';
+import 'field_page.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,9 +17,9 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF232431),
+      backgroundColor: AppColor.background,
       appBar: AppBar(
-        backgroundColor: Color(0xFF232431),
+        backgroundColor: AppColor.background,
         elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -54,7 +55,9 @@ class _MainScreenState extends State<MainScreen> {
                         "images/tong-hop-nhung-show-truyen-hinh-thuc-te-giup-nang-trinh-tieng-anh-10 (1).jpg"),
                     fit: BoxFit.cover),
                 border: Border.all(
-                    width: 3, color: Color.fromARGB(255, 231, 231, 231)),
+                  width: 3,
+                  color: AppColor.fieldColor,
+                ),
                 borderRadius: BorderRadius.circular(150),
               ),
             ),
@@ -84,7 +87,7 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStatePropertyAll(Color(0xFFB12A2A)),
+                            MaterialStatePropertyAll(AppColor.redbnt1),
                         overlayColor:
                             MaterialStatePropertyAll(Color(0xFFD46D32)),
                         minimumSize: MaterialStatePropertyAll(Size(300, 50)),
@@ -116,9 +119,9 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStatePropertyAll(Color(0xFF287BAA)),
+                            MaterialStatePropertyAll(AppColor.bluebtn1),
                         overlayColor:
-                            MaterialStatePropertyAll(Color(0xFFE04E4E)),
+                            MaterialStatePropertyAll(Color(0xFFD73232)),
                         minimumSize: MaterialStatePropertyAll(Size(300, 50)),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(

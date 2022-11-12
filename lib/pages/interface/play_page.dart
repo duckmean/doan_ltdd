@@ -1,8 +1,11 @@
 // ignore: unused_import
-import 'package:doan_ltdd/main_page.dart';
+
+import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import 'package:flutter/material.dart';
 
-import 'login_screen.dart';
+import '../login/login_screen.dart';
+
+import 'main_page.dart';
 
 class PlayPage extends StatefulWidget {
   const PlayPage({super.key});
@@ -26,7 +29,11 @@ class _PlayPageState extends State<PlayPage> {
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.only(
+                top: 8,
+                left: 20,
+                bottom: 15,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -64,13 +71,15 @@ class _PlayPageState extends State<PlayPage> {
                           "images/tong-hop-nhung-show-truyen-hinh-thuc-te-giup-nang-trinh-tieng-anh-10 (1).jpg"),
                       fit: BoxFit.cover),
                   border: Border.all(
-                      width: 1, color: Color.fromARGB(255, 255, 255, 255)),
-                  borderRadius: BorderRadius.circular(30)),
+                    width: 1,
+                    color: AppColor.bguser,
+                  ),
+                  borderRadius: BorderRadius.circular(27)),
             ),
             Container(
               alignment: Alignment.center,
-              width: 200,
-              height: 150,
+              width: 250,
+              height: 130,
               child: Text(
                 "Cau hoi",
                 style: TextStyle(
@@ -187,25 +196,125 @@ class _PlayPageState extends State<PlayPage> {
               ),
             ),
             Container(
+              padding: const EdgeInsets.only(
+                top: 7,
+              ),
               child: Row(
                 children: [
-                  Container(
-                    child: Column(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.transcribe),
-                          color: Color(0xFFFFFFFF),
-                        ),
-                        Text(
-                          "50:50",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w300,
-                            color: Color(0xFFFFFFFF),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 15,
+                      top: 15,
+                    ),
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.contrast_outlined),
+                            color: AppColor.textColor,
                           ),
-                        )
-                      ],
+                        ],
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(AppColor.fieldColor),
+                        minimumSize: MaterialStatePropertyAll(Size(10, 30)),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 15,
+                      top: 15,
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.groups_outlined),
+                            color: AppColor.textColor,
+                          ),
+                        ],
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(AppColor.fieldColor),
+                        //minimumSize: MaterialStatePropertyAll(Size(20, 10)),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 15,
+                      top: 15,
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.autorenew_rounded),
+                            color: AppColor.textColor,
+                          ),
+                        ],
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(AppColor.fieldColor),
+                        //minimumSize: MaterialStatePropertyAll(Size(20, 10)),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 15,
+                      top: 15,
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.phone_in_talk_outlined),
+                            color: AppColor.textColor,
+                          ),
+                        ],
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(AppColor.fieldColor),
+                        //minimumSize: MaterialStatePropertyAll(Size(20, 10)),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],

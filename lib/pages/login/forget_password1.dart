@@ -1,6 +1,7 @@
-import 'package:doan_ltdd/forget_password2.dart';
-import 'package:doan_ltdd/login_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'forget_password2.dart';
+import 'login_screen.dart';
 
 class Forget_password1 extends StatefulWidget {
   const Forget_password1({super.key});

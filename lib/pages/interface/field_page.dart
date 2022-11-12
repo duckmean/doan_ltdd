@@ -1,5 +1,6 @@
-import 'package:doan_ltdd/play_page.dart';
 import 'package:flutter/material.dart';
+import '../../Appcolor/appcolor.dart';
+import 'play_page.dart';
 
 class FieldPage extends StatefulWidget {
   const FieldPage({super.key});
@@ -12,9 +13,9 @@ class _FieldPageState extends State<FieldPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF232431),
+      backgroundColor: AppColor.background,
       appBar: AppBar(
-        backgroundColor: Color(0xFF232431),
+        backgroundColor: AppColor.background,
         toolbarHeight: 40,
         elevation: 0,
       ),
@@ -64,7 +65,7 @@ class _FieldPageState extends State<FieldPage> {
                             ),
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFF4EBEE1)),
+                                  MaterialStatePropertyAll(AppColor.lightblue1),
                               minimumSize:
                                   MaterialStatePropertyAll(Size(100, 100)),
                               shape: MaterialStateProperty.all(
@@ -95,7 +96,7 @@ class _FieldPageState extends State<FieldPage> {
                             ),
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFFC93D3D)),
+                                  MaterialStatePropertyAll(AppColor.redbtn2),
                               minimumSize:
                                   MaterialStatePropertyAll(Size(100, 100)),
                               shape: MaterialStateProperty.all(
@@ -126,7 +127,7 @@ class _FieldPageState extends State<FieldPage> {
                             ),
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFF41BB4E)),
+                                  MaterialStatePropertyAll(AppColor.dartgreeen),
                               minimumSize:
                                   MaterialStatePropertyAll(Size(100, 100)),
                               shape: MaterialStateProperty.all(
@@ -156,8 +157,8 @@ class _FieldPageState extends State<FieldPage> {
                                   color: Colors.white),
                             ),
                             style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFF444652)),
+                              backgroundColor: MaterialStatePropertyAll(
+                                  AppColor.lightblackbtn),
                               minimumSize:
                                   MaterialStatePropertyAll(Size(100, 100)),
                               shape: MaterialStateProperty.all(
@@ -194,8 +195,8 @@ class _FieldPageState extends State<FieldPage> {
                                   color: Colors.white),
                             ),
                             style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFF3FBBBB)),
+                              backgroundColor: MaterialStatePropertyAll(
+                                  AppColor.bluelightgreen),
                               minimumSize:
                                   MaterialStatePropertyAll(Size(100, 100)),
                               shape: MaterialStateProperty.all(
@@ -226,7 +227,7 @@ class _FieldPageState extends State<FieldPage> {
                             ),
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFFF0DF47)),
+                                  MaterialStatePropertyAll(AppColor.yellow1),
                               minimumSize:
                                   MaterialStatePropertyAll(Size(100, 100)),
                               shape: MaterialStateProperty.all(
@@ -257,7 +258,7 @@ class _FieldPageState extends State<FieldPage> {
                             ),
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFF721BB6)),
+                                  MaterialStatePropertyAll(AppColor.purple),
                               minimumSize:
                                   MaterialStatePropertyAll(Size(100, 100)),
                               shape: MaterialStateProperty.all(
@@ -288,7 +289,7 @@ class _FieldPageState extends State<FieldPage> {
                             ),
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFFC1A14E)),
+                                  MaterialStatePropertyAll(AppColor.dartyellow),
                               minimumSize:
                                   MaterialStatePropertyAll(Size(100, 100)),
                               shape: MaterialStateProperty.all(

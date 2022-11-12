@@ -1,13 +1,13 @@
 import 'dart:convert';
-
-import 'package:doan_ltdd/forget_password1.dart';
-import 'package:doan_ltdd/main_page.dart';
-import 'package:doan_ltdd/register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart';
+
+import '../interface/main_page.dart';
+import 'forget_password1.dart';
+import 'register.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
