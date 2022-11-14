@@ -190,10 +190,10 @@ class _MainPageState extends State<MainPage> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
+              arrowColor: AppColor.background,
               accountName: Text("Phúc Best"),
               accountEmail: Text("phucbestth2002@gmail.com"),
               currentAccountPicture: CircleAvatar(
-                backgroundColor: AppColor.bguser,
                 child: Text(
                   "P",
                   style: TextStyle(fontSize: 40.0),
