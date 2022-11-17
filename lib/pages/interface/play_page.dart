@@ -24,17 +24,23 @@ class _PlayPageState extends State<PlayPage> {
         toolbarHeight: 40,
         elevation: 0,
       ),
-      body: Center(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.only(
-                top: 8,
-                left: 20,
-                bottom: 15,
-              ),
-              child: Row(
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/background.png"),
+              fit: BoxFit.cover),
+        ),
+        child: Center(
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children:[
+              Container(
+                padding: const EdgeInsets.only(
+                  top: 8,
+                  left: 20,
+                  bottom: 15,
+                ),
+                child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   //Đồng hồ đếm ngược
@@ -196,7 +202,7 @@ class _PlayPageState extends State<PlayPage> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(
+               padding: const EdgeInsets.only(
                 top: 7,
               ),
               child: Row(
@@ -288,105 +294,107 @@ class _PlayPageState extends State<PlayPage> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 15,
-                      top: 15,
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.phone_in_talk_outlined),
-                            color: AppColor.textColor,
-                          ),
-                        ],
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: 15,
+                        top: 15,
                       ),
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStatePropertyAll(AppColor.fieldColor),
-                        //minimumSize: MaterialStatePropertyAll(Size(20, 10)),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(40),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.phone_in_talk_outlined),
+                              color: AppColor.textColor,
+                            ),
+                          ],
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(AppColor.fieldColor),
+                          //minimumSize: MaterialStatePropertyAll(Size(20, 10)),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+                  ],
+                ),
+              ),                                      
+            ],
+          ),
         ),
+        
       ),
       endDrawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text("Phúc Best"),
-              accountEmail: Text("phucbestth2002@gmail.com"),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Color.fromARGB(255, 28, 86, 232),
-                child: Text(
-                  "P",
-                  style: TextStyle(fontSize: 40.0),
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                accountName: Text("Phúc Best"),
+                accountEmail: Text("phucbestth2002@gmail.com"),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Color.fromARGB(255, 28, 86, 232),
+                  child: Text(
+                    "P",
+                    style: TextStyle(fontSize: 40.0),
+                  ),
                 ),
               ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text("Home"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MainPage(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Settings"),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text("Shoping"),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.contacts),
-              title: Text("Contact Us"),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.logout_outlined),
-              title: Text("Log out"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LoginScreen(),
-                  ),
-                );
-              },
-            ),
-          ],
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text("Home"),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MainPage(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text("Settings"),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.shopping_cart),
+                title: Text("Shoping"),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.contacts),
+                title: Text("Contact Us"),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.logout_outlined),
+                title: Text("Log out"),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+     );
   }
-}
+}             

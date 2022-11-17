@@ -19,24 +19,30 @@ class _FieldPageState extends State<FieldPage> {
         toolbarHeight: 40,
         elevation: 0,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.only(
-                top: 40,
-                bottom: 20,
-              ),
-              child: Text(
-                'Hãy chọn một lĩnh vực',
-                style: TextStyle(
-                  color: Color(0xFFFFFFFF),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            Container(
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/background.png"),
+              fit: BoxFit.cover),
+        ),
+        child: Center(
+          child: Column(
+            children:[
+              Container(
+               padding: EdgeInsets.only(
+                 top: 40,
+                 bottom: 20,
+               ),
+               child: Text(
+                 'Hãy chọn một lĩnh vực',
+                 style: TextStyle(
+                   color: Color(0xFFFFFFFF),
+                   fontSize: 28,
+                   fontWeight: FontWeight.w400,
+                 ),
+               ),
+             ),
+             Container(
               padding: EdgeInsets.all(15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -295,20 +301,22 @@ class _FieldPageState extends State<FieldPage> {
                               shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
-}
+}                                                                                 
+            
