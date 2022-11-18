@@ -26,162 +26,170 @@ class _MainPageState extends State<MainPage> {
         toolbarHeight: 40,
         elevation: 0,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            // ignore: avoid_unnecessary_containers
-            Container(
-              padding: const EdgeInsets.only(
-                left: 15,
-                top: 2,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "QuizzCoin: 5000",
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: AppColor.textColor,
-                      ),
-                    ),
-                    style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(Size(100, 20)),
-                      backgroundColor:
-                          MaterialStatePropertyAll(AppColor.fieldColor),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50)),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: 250,
-              height: 250,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
-                          "images/tong-hop-nhung-show-truyen-hinh-thuc-te-giup-nang-trinh-tieng-anh-10 (1).jpg"),
-                      fit: BoxFit.cover),
-                  border: Border.all(
-                    width: 3,
-                    color: AppColor.bguser,
-                  ),
-                  borderRadius: BorderRadius.circular(150)),
-            ),
-            Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(15),
-                child: Column(
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/background.png"),
+              fit: BoxFit.cover),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              // ignore: avoid_unnecessary_containers
+              Container(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  top: 2,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // ignore: avoid_unnecessary_containers
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => FieldPage(),
-                            ),
-                          );
-                        },
-                        // ignore: sort_child_properties_last
-                        child: const Text(
-                          'Bắt đầu',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
-                          ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "QuizzCoin: 5000",
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: AppColor.textColor,
                         ),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(AppColor.redbtn2),
-                          minimumSize:
-                              const MaterialStatePropertyAll(Size(270, 50)),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(60)),
-                          ),
+                      ),
+                      style: ButtonStyle(
+                        minimumSize: MaterialStateProperty.all(Size(100, 20)),
+                        backgroundColor:
+                            MaterialStatePropertyAll(AppColor.fieldColor),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)),
                         ),
                       ),
                     ),
-                    // ignore: avoid_unnecessary_containers
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => RecordPage(),
-                            ),
-                          );
-                        },
-                        // ignore: sort_child_properties_last
-                        child: const Text(
-                          'Kỷ lục',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(AppColor.bluebtn2),
-                          minimumSize:
-                              const MaterialStatePropertyAll(Size(270, 50)),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(60)),
-                          ),
-                        ),
-                      ),
-                    ),
-                    // ignore: avoid_unnecessary_containers
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GetMoreCoins(),
-                            ),
-                          );
-                        },
-                        // ignore: sort_child_properties_last
-                        child: const Text(
-                          'Nhận QuizzCoin',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(AppColor.lightblackbtn),
-                          minimumSize:
-                              const MaterialStatePropertyAll(Size(270, 50)),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(60)),
-                          ),
-                        ),
-                      ),
-                    )
                   ],
-                ))
-          ],
+                ),
+              ),
+              Container(
+                width: 250,
+                height: 250,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(
+                            "images/tong-hop-nhung-show-truyen-hinh-thuc-te-giup-nang-trinh-tieng-anh-10 (1).jpg"),
+                        fit: BoxFit.cover),
+                    border: Border.all(
+                      width: 3,
+                      color: AppColor.bguser,
+                    ),
+                    borderRadius: BorderRadius.circular(150)),
+              ),
+              Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(15),
+                  child: Column(
+                    children: [
+                      // ignore: avoid_unnecessary_containers
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FieldPage(),
+                              ),
+                            );
+                          },
+                          // ignore: sort_child_properties_last
+                          child: const Text(
+                            'Bắt đầu',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(AppColor.redbtn2),
+                            minimumSize:
+                                const MaterialStatePropertyAll(Size(270, 50)),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(60)),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // ignore: avoid_unnecessary_containers
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RecordPage(),
+                              ),
+                            );
+                          },
+                          // ignore: sort_child_properties_last
+                          child: const Text(
+                            'Kỷ lục',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(AppColor.bluebtn2),
+                            minimumSize:
+                                const MaterialStatePropertyAll(Size(270, 50)),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(60)),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // ignore: avoid_unnecessary_containers
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => GetMoreCoins(),
+                              ),
+                            );
+                          },
+                          // ignore: sort_child_properties_last
+                          child: const Text(
+                            'Nhận QuizzCoin',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(AppColor.lightblackbtn),
+                            minimumSize:
+                                const MaterialStatePropertyAll(Size(270, 50)),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(60)),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
       endDrawer: Drawer(

@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           topLeft: Radius.circular(40),
                           topRight: Radius.circular(40))),
                   child: Column(
-                    //mainAxisAlignment: MainAxisAlignment.center,
+                   // mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
                         padding: const EdgeInsets.all(15),
