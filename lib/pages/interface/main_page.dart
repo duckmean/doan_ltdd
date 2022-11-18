@@ -25,12 +25,14 @@ class _MainPageState extends State<MainPage> {
         backgroundColor: AppColor.background,
         toolbarHeight: 40,
         elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
       ),
       body: Container(
         decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("images/background.png"),
-              fit: BoxFit.cover),
+          image: DecorationImage(
+              image: AssetImage("images/background.png"), fit: BoxFit.cover),
         ),
         child: Center(
           child: Column(
@@ -82,112 +84,112 @@ class _MainPageState extends State<MainPage> {
                     borderRadius: BorderRadius.circular(150)),
               ),
               Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(15),
-                  child: Column(
-                    children: [
-                      // ignore: avoid_unnecessary_containers
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => FieldPage(),
-                              ),
-                            );
-                          },
-                          // ignore: sort_child_properties_last
-                          child: const Text(
-                            'Bắt đầu',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w300,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  children: [
+                    // ignore: avoid_unnecessary_containers
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FieldPage(),
                             ),
+                          );
+                        },
+                        // ignore: sort_child_properties_last
+                        child: const Text(
+                          'Bắt đầu',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300,
                           ),
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStatePropertyAll(AppColor.redbtn2),
-                            minimumSize:
-                                const MaterialStatePropertyAll(Size(270, 50)),
-                            shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(60)),
-                            ),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(AppColor.redbtn2),
+                          minimumSize:
+                              const MaterialStatePropertyAll(Size(270, 50)),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(60)),
                           ),
                         ),
                       ),
-                      // ignore: avoid_unnecessary_containers
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => RecordPage(),
-                              ),
-                            );
-                          },
-                          // ignore: sort_child_properties_last
-                          child: const Text(
-                            'Kỷ lục',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w300,
+                    ),
+                    // ignore: avoid_unnecessary_containers
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RecordPage(),
                             ),
+                          );
+                        },
+                        // ignore: sort_child_properties_last
+                        child: const Text(
+                          'Kỷ lục',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300,
                           ),
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStatePropertyAll(AppColor.bluebtn2),
-                            minimumSize:
-                                const MaterialStatePropertyAll(Size(270, 50)),
-                            shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(60)),
-                            ),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(AppColor.bluebtn2),
+                          minimumSize:
+                              const MaterialStatePropertyAll(Size(270, 50)),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(60)),
                           ),
                         ),
                       ),
-                      // ignore: avoid_unnecessary_containers
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GetMoreCoins(),
-                              ),
-                            );
-                          },
-                          // ignore: sort_child_properties_last
-                          child: const Text(
-                            'Nhận QuizzCoin',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w300,
+                    ),
+                    // ignore: avoid_unnecessary_containers
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => GetMoreCoins(),
                             ),
-                          ),
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStatePropertyAll(AppColor.lightblackbtn),
-                            minimumSize:
-                                const MaterialStatePropertyAll(Size(270, 50)),
-                            shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(60)),
-                            ),
+                          );
+                        },
+                        // ignore: sort_child_properties_last
+                        child: const Text(
+                          'Nhận QuizzCoin',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300,
                           ),
                         ),
-                      )
-                    ],
-                  ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(AppColor.lightblackbtn),
+                          minimumSize:
+                              const MaterialStatePropertyAll(Size(270, 50)),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(60)),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
+              ),
             ],
           ),
         ),
@@ -236,7 +238,7 @@ class _MainPageState extends State<MainPage> {
             ),
             ListTile(
               leading: Icon(Icons.contacts),
-              title: Text("Contact Us"),
+              title: Text("Cập nhật thông tin"),
               onTap: () {
                 Navigator.pop(context);
               },
