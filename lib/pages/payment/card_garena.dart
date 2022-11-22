@@ -59,7 +59,24 @@ class _CardGarenaState extends State<CardGarena> {
             Container(
               padding: const EdgeInsets.all(40),
               child: ElevatedButton(
-                onPressed: () {}, //bo sung 2
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text('Thông báo'),
+                      content: Text('Nạp thẻ thành công'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+                          },
+                          child: Text('OK'),
+                        ),
+                      ],
+                    ),
+                  );
+                }, //bo sung 2
                 child: const Text('Xác nhận', style: TextStyle(fontSize: 20)),
                 style: ButtonStyle(
                   backgroundColor: MaterialStatePropertyAll(AppColor.bluebtn2),

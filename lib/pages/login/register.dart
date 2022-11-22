@@ -131,7 +131,26 @@ class _RegisterState extends State<Register> {
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(
-                          onPressed: () {}, //bo sung 2
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text('Đăng ký thành công'),
+                                  content: Text('Quay lại trang đăng nhập'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }, //bo sung 2
                           child: const Text('Đăng Ký',
                               style: TextStyle(fontSize: 20)),
                           style: ButtonStyle(

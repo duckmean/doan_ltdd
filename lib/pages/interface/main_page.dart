@@ -42,7 +42,7 @@ class _MainPageState extends State<MainPage> {
               Container(
                 padding: const EdgeInsets.only(
                   left: 15,
-                  top: 2,
+                  top: 0,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
