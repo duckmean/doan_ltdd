@@ -1,34 +1,30 @@
-// ignore_for_file: unused_import
-
-import 'package:doan_ltdd/pages/interface/updateinfo_page.dart';
+import 'package:doan_ltdd/Appcolor/appcolor.dart';
+import 'package:doan_ltdd/pages/login/change_password.dart';
+import 'package:doan_ltdd/pages/login/forget_password2.dart';
+import 'package:doan_ltdd/pages/login/update_info.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 
-import '../../Appcolor/appcolor.dart';
 import '../login/login_screen.dart';
-import '../payment/getmore_coins.dart';
-import 'field_page.dart';
-import 'package:doan_ltdd/pages/login/login_screen.dart';
-import 'record_page.dart';
+import 'main_page.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class UpdateInfomationScreen extends StatefulWidget {
+  const UpdateInfomationScreen({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<UpdateInfomationScreen> createState() => _UpdateInfomationScreenState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.background,
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: AppColor.background,
         toolbarHeight: 40,
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25),
-        ),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -39,37 +35,6 @@ class _MainPageState extends State<MainPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // ignore: avoid_unnecessary_containers
-              Container(
-                padding: const EdgeInsets.only(
-                  left: 15,
-                  top: 0,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "QuizzCoin: 5000",
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: AppColor.textColor,
-                        ),
-                      ),
-                      style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(Size(100, 20)),
-                        backgroundColor:
-                            MaterialStatePropertyAll(AppColor.fieldColor),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               Container(
                 width: 250,
                 height: 250,
@@ -85,112 +50,75 @@ class _MainPageState extends State<MainPage> {
                     borderRadius: BorderRadius.circular(150)),
               ),
               Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(15),
                 child: Column(
                   children: [
-                    // ignore: avoid_unnecessary_containers
-                    Container(
-                      padding: const EdgeInsets.all(10),
+                    Padding(
+                      padding: EdgeInsets.all(10),
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FieldPage(),
+                              builder: (context) => Change_password(),
                             ),
                           );
                         },
-                        // ignore: sort_child_properties_last
-                        child: const Text(
-                          'Bắt đầu',
+                        child: Text(
+                          'Đổi mật khẩu',
                           style: TextStyle(
                             fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
+                            color: AppColor.textColor,
                           ),
                         ),
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll(AppColor.redbtn2),
-                          minimumSize:
-                              const MaterialStatePropertyAll(Size(270, 50)),
+                              MaterialStatePropertyAll(AppColor.fieldColor),
+                          minimumSize: MaterialStatePropertyAll(Size(250, 40)),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(60)),
-                          ),
-                        ),
-                      ),
-                    ),
-                    // ignore: avoid_unnecessary_containers
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => RecordPage(),
+                              borderRadius: BorderRadius.circular(30),
                             ),
-                          );
-                        },
-                        // ignore: sort_child_properties_last
-                        child: const Text(
-                          'Kỷ lục',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
                           ),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor:
+                          overlayColor:
                               MaterialStatePropertyAll(AppColor.bluebtn2),
-                          minimumSize:
-                              const MaterialStatePropertyAll(Size(270, 50)),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(60)),
-                          ),
                         ),
                       ),
                     ),
-                    // ignore: avoid_unnecessary_containers
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: TextButton(
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => GetMoreCoins(),
+                              builder: (context) => UpdateInfomation(),
                             ),
                           );
                         },
-                        // ignore: sort_child_properties_last
-                        child: const Text(
-                          'Nhận QuizzCoin',
+                        child: Text(
+                          'Cập nhật thông tin',
                           style: TextStyle(
                             fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
+                            color: AppColor.textColor,
                           ),
                         ),
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll(AppColor.lightblackbtn),
-                          minimumSize:
-                              const MaterialStatePropertyAll(Size(270, 50)),
+                              MaterialStatePropertyAll(AppColor.fieldColor),
+                          minimumSize: MaterialStatePropertyAll(Size(250, 40)),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(60)),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
                           ),
+                          overlayColor:
+                              MaterialStatePropertyAll(AppColor.bluebtn2),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),

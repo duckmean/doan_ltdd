@@ -1,13 +1,14 @@
-import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import 'package:flutter/material.dart';
 
-class Change_password extends StatefulWidget {
-  const Change_password({super.key});
+import 'login_screen.dart';
+
+class UpdateInfomation extends StatefulWidget {
+  const UpdateInfomation({super.key});
   @override
-  State<Change_password> createState() => _Change_passwordState();
+  State<UpdateInfomation> createState() => _UpdateInfomationState();
 }
 
-class _Change_passwordState extends State<Change_password> {
+class _UpdateInfomationState extends State<UpdateInfomation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +38,7 @@ class _Change_passwordState extends State<Change_password> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Đổi mật khẩu",
+                        "Cập nhật thông tin",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 40.0,
@@ -66,10 +67,32 @@ class _Change_passwordState extends State<Change_password> {
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: const TextField(
+                          decoration: InputDecoration(
+                            hintText: '',
+                            labelText: 'Nhập Tài khoản',
+                            border: OutlineInputBorder(),
+                            prefixIcon: Icon(Icons.person),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(15),
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Email',
+                            labelText: 'Nhập Email',
+                            border: OutlineInputBorder(),
+                            prefixIcon: Icon(Icons.email),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(15),
+                        child: const TextField(
                           obscureText: true,
                           decoration: InputDecoration(
-                            hintText: 'Nhập Mật Khẩu Cũ',
-                            labelText: 'Nhập Mật Khẩu Cũ',
+                            hintText: 'Mật khẩu',
+                            labelText: 'Nhập Mật khẩu',
                             border: OutlineInputBorder(),
                             prefixIcon: Icon(Icons.password),
                           ),
@@ -80,20 +103,8 @@ class _Change_passwordState extends State<Change_password> {
                         child: const TextField(
                           obscureText: true,
                           decoration: InputDecoration(
-                            hintText: 'Nhập Mật Khẩu Mới',
-                            labelText: 'Nhập Mật Khẩu Mới',
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(Icons.password),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(15),
-                        child: const TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            hintText: 'Nhập Lại Mật Khẩu Mới',
-                            labelText: 'Nhập Lại Mật Khẩu Mới',
+                            hintText: 'Mật khẩu xác nhận',
+                            labelText: 'Nhập Mật khẩu xác nhận',
                             border: OutlineInputBorder(),
                             prefixIcon: Icon(Icons.password),
                           ),
@@ -107,19 +118,43 @@ class _Change_passwordState extends State<Change_password> {
                               'Quay lại',
                               style: TextStyle(fontSize: 17),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginScreen(),
+                                  ));
+                            },
                           )
                         ],
                       ),
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(
-                          onPressed: () {}, //bo sung 2
-                          child: const Text('Xác nhận',
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text('Đăng ký thành công'),
+                                  content: Text('Quay lại trang đăng nhập'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }, //bo sung 2
+                          child: const Text('Đăng Ký',
                               style: TextStyle(fontSize: 20)),
                           style: ButtonStyle(
-                            overlayColor:
-                                MaterialStateProperty.all(AppColor.redbtn2),
+                            overlayColor: MaterialStateProperty.all(Colors.red),
                             padding: MaterialStateProperty.all(
                                 const EdgeInsets.all(15)),
                             fixedSize:
