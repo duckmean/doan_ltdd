@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import 'package:doan_ltdd/pages/interface/setting_page.dart';
 import 'package:doan_ltdd/pages/interface/updateinfo_page.dart';
 import 'package:flutter/material.dart';
 
@@ -201,13 +202,16 @@ class _MainPageState extends State<MainPage> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
-              arrowColor: AppColor.background,
               accountName: Text("Phúc Best"),
               accountEmail: Text("phucbestth2002@gmail.com"),
               currentAccountPicture: CircleAvatar(
+                backgroundColor: AppColor.fieldColor,
                 child: Text(
                   "P",
-                  style: TextStyle(fontSize: 40.0),
+                  style: TextStyle(
+                    fontSize: 40.0,
+                    color: AppColor.textColor,
+                  ),
                 ),
               ),
             ),
@@ -227,14 +231,12 @@ class _MainPageState extends State<MainPage> {
               leading: Icon(Icons.settings),
               title: Text("Settings"),
               onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text("Shoping"),
-              onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingScreen(),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -253,10 +255,30 @@ class _MainPageState extends State<MainPage> {
               leading: Icon(Icons.logout_outlined),
               title: Text("Log out"),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LoginScreen(),
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text('Thông báo'),
+                    content: Text('Bạn có muốn đăng xuất không'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text('Không'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
+                            ),
+                          );
+                        },
+                        child: Text('Có'),
+                      ),
+                    ],
                   ),
                 );
               },

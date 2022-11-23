@@ -1,8 +1,10 @@
+import 'package:doan_ltdd/pages/interface/updateinfo_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../Appcolor/appcolor.dart';
 import '../login/login_screen.dart';
 import 'main_page.dart';
+import 'setting_page.dart';
 
 class RecordDetail extends StatefulWidget {
   const RecordDetail({super.key});
@@ -354,10 +356,13 @@ class _RecordDetailState extends State<RecordDetail> {
               accountName: Text("Phúc Best"),
               accountEmail: Text("phucbestth2002@gmail.com"),
               currentAccountPicture: CircleAvatar(
-                backgroundColor: Color.fromARGB(255, 28, 86, 232),
+                backgroundColor: AppColor.fieldColor,
                 child: Text(
                   "P",
-                  style: TextStyle(fontSize: 40.0),
+                  style: TextStyle(
+                    fontSize: 40.0,
+                    color: AppColor.textColor,
+                  ),
                 ),
               ),
             ),
@@ -377,31 +382,54 @@ class _RecordDetailState extends State<RecordDetail> {
               leading: Icon(Icons.settings),
               title: Text("Settings"),
               onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text("Shoping"),
-              onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingScreen(),
+                  ),
+                );
               },
             ),
             ListTile(
               leading: Icon(Icons.contacts),
-              title: Text("Contact Us"),
+              title: Text("Cập nhật thông tin"),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UpdateInfomationScreen(),
+                  ),
+                );
               },
             ),
             ListTile(
               leading: Icon(Icons.logout_outlined),
               title: Text("Log out"),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LoginScreen(),
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text('Thông báo'),
+                    content: Text('Bạn có muốn đăng xuất không'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text('Không'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
+                            ),
+                          );
+                        },
+                        child: Text('Có'),
+                      ),
+                    ],
                   ),
                 );
               },

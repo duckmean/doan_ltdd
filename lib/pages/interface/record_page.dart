@@ -20,14 +20,13 @@ class _RecordPageState extends State<RecordPage> {
       backgroundColor: AppColor.background,
       appBar: AppBar(
         backgroundColor: AppColor.background,
-        toolbarHeight: 50,
+        toolbarHeight: 40,
         elevation: 0,
       ),
       body: Container(
         decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("images/background.png"),
-              fit: BoxFit.cover),
+          image: DecorationImage(
+              image: AssetImage("images/background.png"), fit: BoxFit.cover),
         ),
         child: Center(
           child: Column(
@@ -102,8 +101,8 @@ class _RecordPageState extends State<RecordPage> {
                                     color: Colors.white),
                               ),
                               style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStatePropertyAll(AppColor.lightblue1),
+                                backgroundColor: MaterialStatePropertyAll(
+                                    AppColor.lightblue1),
                                 minimumSize:
                                     MaterialStatePropertyAll(Size(100, 100)),
                                 shape: MaterialStateProperty.all(
@@ -164,8 +163,8 @@ class _RecordPageState extends State<RecordPage> {
                                     color: Colors.white),
                               ),
                               style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStatePropertyAll(AppColor.dartgreeen),
+                                backgroundColor: MaterialStatePropertyAll(
+                                    AppColor.dartgreeen),
                                 minimumSize:
                                     MaterialStatePropertyAll(Size(100, 100)),
                                 shape: MaterialStateProperty.all(
@@ -326,8 +325,8 @@ class _RecordPageState extends State<RecordPage> {
                                     color: Colors.white),
                               ),
                               style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStatePropertyAll(AppColor.dartyellow),
+                                backgroundColor: MaterialStatePropertyAll(
+                                    AppColor.dartyellow),
                                 minimumSize:
                                     MaterialStatePropertyAll(Size(100, 100)),
                                 shape: MaterialStateProperty.all(
@@ -384,13 +383,6 @@ class _RecordPageState extends State<RecordPage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text("Shoping"),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
               leading: Icon(Icons.contacts),
               title: Text("Contact Us"),
               onTap: () {
@@ -401,10 +393,30 @@ class _RecordPageState extends State<RecordPage> {
               leading: Icon(Icons.logout_outlined),
               title: Text("Log out"),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LoginScreen(),
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text('Thông báo'),
+                    content: Text('Bạn có muốn đăng xuất không'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text('Không'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
+                            ),
+                          );
+                        },
+                        child: Text('Có'),
+                      ),
+                    ],
                   ),
                 );
               },

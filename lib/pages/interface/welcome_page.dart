@@ -6,14 +6,14 @@ import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import '../login/login_screen.dart';
 import 'field_page.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +42,8 @@ class _MainScreenState extends State<MainScreen> {
       // ),
       body: Container(
         decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("images/background.png"),
-              fit: BoxFit.cover),
+          image: DecorationImage(
+              image: AssetImage("images/background.png"), fit: BoxFit.cover),
         ),
         child: Center(
           child: Column(
@@ -141,7 +140,7 @@ class _MainScreenState extends State<MainScreen> {
             ],
           ),
         ),
-      ),      
+      ),
     );
   }
 }

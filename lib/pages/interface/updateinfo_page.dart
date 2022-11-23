@@ -133,6 +133,7 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
               accountName: Text("Phúc Best"),
               accountEmail: Text("phucbestth2002@gmail.com"),
               currentAccountPicture: CircleAvatar(
+                backgroundColor: AppColor.fieldColor,
                 child: Text(
                   "P",
                   style: TextStyle(fontSize: 40.0),
@@ -159,13 +160,6 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text("Shoping"),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
               leading: Icon(Icons.contacts),
               title: Text("Cập nhật thông tin"),
               onTap: () {
@@ -181,10 +175,30 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
               leading: Icon(Icons.logout_outlined),
               title: Text("Log out"),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LoginScreen(),
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text('Thông báo'),
+                    content: Text('Bạn có muốn đăng xuất không'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text('Không'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
+                            ),
+                          );
+                        },
+                        child: Text('Có'),
+                      ),
+                    ],
                   ),
                 );
               },
