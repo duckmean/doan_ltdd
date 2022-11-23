@@ -1,3 +1,4 @@
+import 'package:doan_ltdd/pages/interface/main_page.dart';
 import 'package:flutter/material.dart';
 
 import 'login_screen.dart';
@@ -38,7 +39,7 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Cập nhật thông tin",
+                        "Đổi Họ Và Tên",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 40.0,
@@ -63,53 +64,18 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                           topRight: Radius.circular(40))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: [ 
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: const TextField(
                           decoration: InputDecoration(
-                            hintText: '',
-                            labelText: 'Nhập Tài khoản',
+                            hintText: 'Họ Và Tên',
+                            labelText: 'Nhập Họ Và Tên',
                             border: OutlineInputBorder(),
-                            prefixIcon: Icon(Icons.person),
+                            prefixIcon: Icon(Icons.edit),
                           ),
                         ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(15),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Email',
-                            labelText: 'Nhập Email',
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(Icons.email),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(15),
-                        child: const TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            hintText: 'Mật khẩu',
-                            labelText: 'Nhập Mật khẩu',
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(Icons.password),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(15),
-                        child: const TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            hintText: 'Mật khẩu xác nhận',
-                            labelText: 'Nhập Mật khẩu xác nhận',
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(Icons.password),
-                          ),
-                        ),
-                      ),
+                      ), 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
@@ -122,7 +88,7 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => LoginScreen(),
+                                    builder: (context) => UpdateInfomation(),
                                   ));
                             },
                           )
@@ -136,8 +102,8 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
-                                  title: Text('Đăng ký thành công'),
-                                  content: Text('Quay lại trang đăng nhập'),
+                                  title: Text('Đổi thành công'),
+                                  content: Text(' '),
                                   actions: [
                                     TextButton(
                                       onPressed: () {
@@ -151,7 +117,7 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                               },
                             );
                           }, //bo sung 2
-                          child: const Text('Đăng Ký',
+                          child: const Text('Xác Nhận',
                               style: TextStyle(fontSize: 20)),
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.all(Colors.red),

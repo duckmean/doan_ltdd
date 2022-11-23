@@ -68,6 +68,17 @@ class _RegisterState extends State<Register> {
                         padding: const EdgeInsets.all(15),
                         child: const TextField(
                           decoration: InputDecoration(
+                            hintText: 'Họ Và Tên',
+                            labelText: 'Nhập Họ Và Tên',
+                            border: OutlineInputBorder(),
+                            prefixIcon: Icon(Icons.edit),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(15),
+                        child: const TextField(
+                          decoration: InputDecoration(
                             hintText: 'Tài khoản',
                             labelText: 'Nhập Tài khoản',
                             border: OutlineInputBorder(),

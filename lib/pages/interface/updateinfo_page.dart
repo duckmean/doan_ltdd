@@ -96,7 +96,7 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                           );
                         },
                         child: Text(
-                          'Cập nhật thông tin',
+                          'Đổi Họ Tên',
                           style: TextStyle(
                             fontSize: 20,
                             color: AppColor.textColor,
