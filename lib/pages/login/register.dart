@@ -63,18 +63,7 @@ class _RegisterState extends State<Register> {
                           topRight: Radius.circular(40))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(15),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Họ Và Tên',
-                            labelText: 'Nhập Họ Và Tên',
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(Icons.edit),
-                          ),
-                        ),
-                      ),
+                    children: [                     
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: const TextField(
@@ -118,6 +107,17 @@ class _RegisterState extends State<Register> {
                             labelText: 'Nhập Mật khẩu xác nhận',
                             border: OutlineInputBorder(),
                             prefixIcon: Icon(Icons.password),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(15),
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Họ Và Tên',
+                            labelText: 'Nhập Họ Và Tên',
+                            border: OutlineInputBorder(),
+                            prefixIcon: Icon(Icons.edit),
                           ),
                         ),
                       ),
