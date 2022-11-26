@@ -1,4 +1,5 @@
 import 'package:doan_ltdd/pages/interface/main_page.dart';
+import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'login_screen.dart';
@@ -64,7 +65,7 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                           topRight: Radius.circular(40))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [ 
+                    children: [
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: const TextField(
@@ -75,7 +76,7 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                             prefixIcon: Icon(Icons.edit),
                           ),
                         ),
-                      ), 
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
@@ -84,13 +85,10 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                               'Quay lại',
                               style: TextStyle(fontSize: 17),
                             ),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => UpdateInfomation(),
-                                  ));
-                            },
+                            onPressed: () => nextScreen(
+                              context,
+                              MainPage(),
+                            ),
                           )
                         ],
                       ),
@@ -102,14 +100,14 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
-                                  title: Text('Đổi thành công'),
-                                  content: Text(' '),
+                                  title: Text('Đổi họ tên'),
+                                  content: Text('Cập nhật thành công'),
                                   actions: [
                                     TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                        Navigator.pop(context);
-                                      },
+                                      onPressed: () => nextScreen(
+                                        context,
+                                        MainPage(),
+                                      ),
                                       child: Text('OK'),
                                     ),
                                   ],
@@ -127,7 +125,7 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                                 MaterialStateProperty.all(const Size(150, 60)),
                             shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(20),
                               ),
                             ),
                           ),

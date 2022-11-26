@@ -67,12 +67,12 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                           'Đổi mật khẩu',
                           style: TextStyle(
                             fontSize: 20,
-                            color: AppColor.textColor,
+                            color: AppColor.fieldColor,
                           ),
                         ),
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll(AppColor.fieldColor),
+                              MaterialStatePropertyAll(AppColor.bluebtn2),
                           minimumSize: MaterialStatePropertyAll(Size(250, 40)),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
@@ -80,7 +80,7 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                             ),
                           ),
                           overlayColor:
-                              MaterialStatePropertyAll(AppColor.bluebtn2),
+                              MaterialStatePropertyAll(AppColor.lightblue1),
                         ),
                       ),
                     ),
@@ -99,12 +99,12 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                           'Đổi Họ Tên',
                           style: TextStyle(
                             fontSize: 20,
-                            color: AppColor.textColor,
+                            color: AppColor.fieldColor,
                           ),
                         ),
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll(AppColor.fieldColor),
+                              MaterialStatePropertyAll(AppColor.lightblackbtn),
                           minimumSize: MaterialStatePropertyAll(Size(250, 40)),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(

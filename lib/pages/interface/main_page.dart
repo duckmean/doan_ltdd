@@ -1,8 +1,8 @@
 // ignore_for_file: unused_import
 
-import 'package:doan_ltdd/pages/interface/setting_page.dart';
 import 'package:doan_ltdd/pages/interface/updateinfo_page.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../Appcolor/appcolor.dart';
@@ -175,16 +175,51 @@ class _MainPageState extends State<MainPage> {
                       padding: const EdgeInsets.all(10),
                       child: TextButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => GetMoreCoins(),
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              backgroundColor: AppColor.background,
+                              title: Text(
+                                'Ai là Triệu Phú',
+                                style: TextStyle(
+                                  color: AppColor.fieldColor,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              //titlePadding: EdgeInsets.only(left: 20, top: 10),
+                              content: Container(
+                                //color: AppColor.background,
+                                width: 850,
+                                height: 800,
+                                child: Center(
+                                  child: SingleChildScrollView(
+                                    child: Container(
+                                      child: Text(
+                                        'Hướng dẫn',
+                                        style: TextStyle(
+                                          color: AppColor.fieldColor,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: Text('OK'),
+                                ),
+                              ],
                             ),
                           );
                         },
                         // ignore: sort_child_properties_last
                         child: const Text(
-                          'Nhận QuizzCoin',
+                          'Hướng dẫn',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -215,7 +250,6 @@ class _MainPageState extends State<MainPage> {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
-            
             UserAccountsDrawerHeader(
               accountName: Text("${sp.name}"),
               accountEmail: Text("${sp.email}"),
@@ -248,13 +282,13 @@ class _MainPageState extends State<MainPage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Settings"),
+              leading: Icon(Icons.shopping_cart),
+              title: Text("Nạp QuizzCoin"),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SettingScreen(),
+                    builder: (context) => GetMoreCoins(),
                   ),
                 );
               },

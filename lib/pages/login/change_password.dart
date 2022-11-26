@@ -1,4 +1,6 @@
 import 'package:doan_ltdd/Appcolor/appcolor.dart';
+import 'package:doan_ltdd/pages/interface/main_page.dart';
+import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
 
 class Change_password extends StatefulWidget {
@@ -107,14 +109,20 @@ class _Change_passwordState extends State<Change_password> {
                               'Quay lại',
                               style: TextStyle(fontSize: 17),
                             ),
-                            onPressed: () {},
+                            onPressed: () => nextScreen(
+                              context,
+                              MainPage(),
+                            ),
                           )
                         ],
                       ),
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(
-                          onPressed: () {}, //bo sung 2
+                          onPressed: () => nextScreen(
+                            context,
+                            MainPage(),
+                          ), //bo sung 2
                           child: const Text('Xác nhận',
                               style: TextStyle(fontSize: 20)),
                           style: ButtonStyle(

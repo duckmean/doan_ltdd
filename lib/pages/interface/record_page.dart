@@ -1,7 +1,12 @@
+import 'package:doan_ltdd/pages/interface/updateinfo_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../Appcolor/appcolor.dart';
+import '../../provider/sign_in_provider.dart';
+import '../../utils/next_screen.dart';
 import '../login/login_screen.dart';
+import '../payment/getmore_coins.dart';
 import 'main_page.dart';
 import 'play_page.dart';
 import 'record_detail.dart';
@@ -14,8 +19,20 @@ class RecordPage extends StatefulWidget {
 }
 
 class _RecordPageState extends State<RecordPage> {
+  Future getData() async {
+    final sp = context.read<SignInProvider>();
+    sp.getDataFromSharedPreferences();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final sp = context.watch<SignInProvider>();
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
@@ -353,14 +370,22 @@ class _RecordPageState extends State<RecordPage> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text("Phúc Best"),
-              accountEmail: Text("phucbestth2002@gmail.com"),
+              accountName: Text("${sp.name}"),
+              accountEmail: Text("${sp.email}"),
+              // currentAccountPicture: CircleAvatar(
+              //   backgroundColor: AppColor.fieldColor,
+              //   child: Text(
+              //     "P",
+              //     style: TextStyle(
+              //       fontSize: 40.0,
+              //       color: AppColor.textColor,
+              //     ),
+              //   ),
+              // ),
               currentAccountPicture: CircleAvatar(
-                backgroundColor: Color.fromARGB(255, 28, 86, 232),
-                child: Text(
-                  "P",
-                  style: TextStyle(fontSize: 40.0),
-                ),
+                backgroundColor: Colors.white,
+                backgroundImage: NetworkImage("${sp.imageUrl}"),
+                radius: 50,
               ),
             ),
             ListTile(
@@ -376,17 +401,27 @@ class _RecordPageState extends State<RecordPage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Settings"),
+              leading: Icon(Icons.shopping_cart),
+              title: Text("Nạp QuizzCoin"),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => GetMoreCoins(),
+                  ),
+                );
               },
             ),
             ListTile(
               leading: Icon(Icons.contacts),
-              title: Text("Contact Us"),
+              title: Text("Cập nhật thông tin"),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UpdateInfomationScreen(),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -407,12 +442,14 @@ class _RecordPageState extends State<RecordPage> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginScreen(),
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => LoginScreen(),
+                          //   ),
+                          // );
+                          sp.userSignOut();
+                          nextScreen(context, const LoginScreen());
                         },
                         child: Text('Có'),
                       ),
