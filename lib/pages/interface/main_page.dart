@@ -307,7 +307,7 @@ class _MainPageState extends State<MainPage> {
             ),
             ListTile(
               leading: Icon(Icons.logout_outlined),
-              title: Text("Log out"),
+              title: Text("Sign out"),
               onTap: () {
                 showDialog(
                   context: context,
@@ -330,7 +330,9 @@ class _MainPageState extends State<MainPage> {
                           //   ),
                           // );
                           sp.userSignOut();
-                          nextScreen(context, const LoginScreen());
+
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, 'Login', (route) => false);
                         },
                         child: Text('Có'),
                       ),

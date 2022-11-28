@@ -24,7 +24,7 @@ class _PlayPageState extends State<PlayPage> {
       //   toolbarHeight: 40,
       //   elevation: 0,
       // ),
-      body: SingleChildScrollView(
+      body: Center(
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -32,11 +32,14 @@ class _PlayPageState extends State<PlayPage> {
           ),
           child: Center(
             child: Container(
-              padding: EdgeInsets.only(top: 90),
+              padding: EdgeInsets.only(top: 50),
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
+                    margin: EdgeInsets.only(
+                      bottom: 10,
+                    ),
                     padding: const EdgeInsets.only(
                       top: 8,
                       left: 20,
@@ -45,8 +48,6 @@ class _PlayPageState extends State<PlayPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        //Đồng hồ đếm ngược
-                        //
                         TextButton(
                           onPressed: () {},
                           child: Text(
@@ -57,7 +58,8 @@ class _PlayPageState extends State<PlayPage> {
                             ),
                           ),
                           style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all(Size(100, 20)),
+                            minimumSize:
+                                MaterialStateProperty.all(Size(100, 20)),
                             backgroundColor: const MaterialStatePropertyAll(
                                 Color.fromARGB(255, 219, 219, 219)),
                             shape: MaterialStateProperty.all(
@@ -66,15 +68,27 @@ class _PlayPageState extends State<PlayPage> {
                             ),
                           ),
                         ),
+                        //
                       ],
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.only(top: 20),
+                    margin: EdgeInsets.only(
+                      bottom: 15,
+                    ),
                     width: 320,
                     height: 170,
                     decoration: BoxDecoration(
                         color: Color.fromARGB(255, 235, 216, 159),
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //     color: AppColor.fieldColor,
+                        //     offset: Offset(2.0, 2.0),
+                        //     blurRadius: 2.0,
+                        //     spreadRadius: 1.0,
+                        //   ),
+                        // ],
                         image: DecorationImage(
                             image: AssetImage(
                                 "images/tong-hop-nhung-show-truyen-hinh-thuc-te-giup-nang-trinh-tieng-anh-10 (1).jpg"),
@@ -86,15 +100,62 @@ class _PlayPageState extends State<PlayPage> {
                         borderRadius: BorderRadius.circular(27)),
                   ),
                   Container(
+                    // padding: EdgeInsets.only(
+                    //   top: 10,
+                    //   bottom: 10,
+                    // ),
+                    margin: EdgeInsets.only(
+                      top: 15,
+                      bottom: 30,
+                    ),
                     alignment: Alignment.center,
-                    width: 250,
+                    width: 300,
                     height: 130,
-                    child: Text(
-                      "Cau hoi",
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Color.fromARGB(255, 242, 237, 237),
-                          fontWeight: FontWeight.bold),
+                    decoration: BoxDecoration(
+                        color: AppColor.background,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          new BoxShadow(
+                            color: AppColor.fieldColor,
+                            offset: Offset(1.0, 1.0),
+                            blurRadius: 4.0,
+                            spreadRadius: 1.0,
+                          )
+                        ]),
+
+                    //color: AppColor.background,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          margin: EdgeInsets.only(
+                            left: 10,
+                            top: 5,
+                          ),
+                          child: Text(
+                            "Câu hỏi ...",
+                            style: TextStyle(
+                                fontSize: 17,
+                                color: AppColor.fieldColor,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                            bottom: 40,
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Nội dung câu hỏi",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: AppColor.fieldColor,
+                                fontWeight: FontWeight.w300),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Container(
@@ -107,42 +168,43 @@ class _PlayPageState extends State<PlayPage> {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => AlertDialog(
-                                  content: Text(
-                                      'Bạn có chắc muốn chọn đáp án này không?'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: Text('OK'),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text('Cancel'),
-                                    ),
-                                  ],
-                                ),
-                              );
+                              //chuyển đáp án mới show
+                              // showDialog(
+                              //   context: context,
+                              //   builder: (context) => AlertDialog(
+                              //     content: Text(
+                              //         'Bạn có chắc muốn chọn đáp án này không?'),
+                              //     actions: [
+                              //       TextButton(
+                              //         onPressed: () {},
+                              //         child: Text('OK'),
+                              //       ),
+                              //       TextButton(
+                              //         onPressed: () {
+                              //           Navigator.pop(context);
+                              //         },
+                              //         child: Text('Cancel'),
+                              //       ),
+                              //     ],
+                              //   ),
+                              // );
                             },
                             child: Text(
                               'Đáp án A',
                               style: TextStyle(
                                 fontWeight: FontWeight.w300,
                                 fontSize: 17,
-                                color: Color(0xFF000000),
+                                color: AppColor.fieldColor,
                               ),
                             ),
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFFFFFFFF)),
+                                  MaterialStatePropertyAll(AppColor.background),
                               minimumSize:
                                   MaterialStatePropertyAll(Size(320, 40)),
                               shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(60)),
+                                    borderRadius: BorderRadius.circular(30)),
                               ),
                             ),
                           ),
@@ -153,42 +215,42 @@ class _PlayPageState extends State<PlayPage> {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => AlertDialog(
-                                  content: Text(
-                                      'Bạn có chắc muốn chọn đáp án này không?'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: Text('OK'),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text('Cancel'),
-                                    ),
-                                  ],
-                                ),
-                              );
+                              // showDialog(
+                              //   context: context,
+                              //   builder: (context) => AlertDialog(
+                              //     content: Text(
+                              //         'Bạn có chắc muốn chọn đáp án này không?'),
+                              //     actions: [
+                              //       TextButton(
+                              //         onPressed: () {},
+                              //         child: Text('OK'),
+                              //       ),
+                              //       TextButton(
+                              //         onPressed: () {
+                              //           Navigator.pop(context);
+                              //         },
+                              //         child: Text('Cancel'),
+                              //       ),
+                              //     ],
+                              //   ),
+                              // );
                             },
                             child: Text(
                               'Đáp án B',
                               style: TextStyle(
                                 fontWeight: FontWeight.w300,
                                 fontSize: 17,
-                                color: Color(0xFF000000),
+                                color: AppColor.fieldColor,
                               ),
                             ),
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFFFFFFFF)),
+                                  MaterialStatePropertyAll(AppColor.background),
                               minimumSize:
                                   MaterialStatePropertyAll(Size(320, 40)),
                               shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(60)),
+                                    borderRadius: BorderRadius.circular(30)),
                               ),
                             ),
                           ),
@@ -199,42 +261,42 @@ class _PlayPageState extends State<PlayPage> {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => AlertDialog(
-                                  content: Text(
-                                      'Bạn có chắc muốn chọn đáp án này không?'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: Text('OK'),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text('Cancel'),
-                                    ),
-                                  ],
-                                ),
-                              );
+                              // showDialog(
+                              //   context: context,
+                              //   builder: (context) => AlertDialog(
+                              //     content: Text(
+                              //         'Bạn có chắc muốn chọn đáp án này không?'),
+                              //     actions: [
+                              //       TextButton(
+                              //         onPressed: () {},
+                              //         child: Text('OK'),
+                              //       ),
+                              //       TextButton(
+                              //         onPressed: () {
+                              //           Navigator.pop(context);
+                              //         },
+                              //         child: Text('Cancel'),
+                              //       ),
+                              //     ],
+                              //   ),
+                              // );
                             },
                             child: Text(
                               'Đáp án C',
                               style: TextStyle(
                                 fontWeight: FontWeight.w300,
                                 fontSize: 17,
-                                color: Color(0xFF000000),
+                                color: AppColor.fieldColor,
                               ),
                             ),
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFFFFFFFF)),
+                                  MaterialStatePropertyAll(AppColor.background),
                               minimumSize:
                                   MaterialStatePropertyAll(Size(320, 40)),
                               shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(60)),
+                                    borderRadius: BorderRadius.circular(30)),
                               ),
                             ),
                           ),
@@ -245,42 +307,42 @@ class _PlayPageState extends State<PlayPage> {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => AlertDialog(
-                                  content: Text(
-                                      'Bạn có chắc muốn chọn đáp án này không?'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: Text('OK'),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text('Cancel'),
-                                    ),
-                                  ],
-                                ),
-                              );
+                              // showDialog(
+                              //   context: context,
+                              //   builder: (context) => AlertDialog(
+                              //     content: Text(
+                              //         'Bạn có chắc muốn chọn đáp án này không?'),
+                              //     actions: [
+                              //       TextButton(
+                              //         onPressed: () {},
+                              //         child: Text('OK'),
+                              //       ),
+                              //       TextButton(
+                              //         onPressed: () {
+                              //           Navigator.pop(context);
+                              //         },
+                              //         child: Text('Cancel'),
+                              //       ),
+                              //     ],
+                              //   ),
+                              // );
                             },
                             child: Text(
                               'Đáp án D',
                               style: TextStyle(
                                 fontWeight: FontWeight.w300,
                                 fontSize: 17,
-                                color: Color(0xFF000000),
+                                color: AppColor.fieldColor,
                               ),
                             ),
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStatePropertyAll(Color(0xFFFFFFFF)),
+                                  MaterialStatePropertyAll(AppColor.background),
                               minimumSize:
                                   MaterialStatePropertyAll(Size(320, 40)),
                               shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(60)),
+                                    borderRadius: BorderRadius.circular(30)),
                               ),
                             ),
                           ),
@@ -299,7 +361,7 @@ class _PlayPageState extends State<PlayPage> {
                             left: 15,
                             top: 15,
                           ),
-                          child: OutlinedButton(
+                          child: ElevatedButton(
                             onPressed: () {},
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -314,7 +376,8 @@ class _PlayPageState extends State<PlayPage> {
                             style: ButtonStyle(
                               backgroundColor:
                                   MaterialStatePropertyAll(AppColor.fieldColor),
-                              minimumSize: MaterialStatePropertyAll(Size(10, 30)),
+                              minimumSize:
+                                  MaterialStatePropertyAll(Size(10, 30)),
                               shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(40),

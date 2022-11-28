@@ -19,7 +19,7 @@ class _FieldPageState extends State<FieldPage> {
       //   toolbarHeight: 40,
       //   elevation: 0,
       // ),
-      body: SingleChildScrollView(
+      body: Center(
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -74,8 +74,8 @@ class _FieldPageState extends State<FieldPage> {
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStatePropertyAll(
                                         AppColor.lightblue1),
-                                    minimumSize:
-                                        MaterialStatePropertyAll(Size(100, 100)),
+                                    minimumSize: MaterialStatePropertyAll(
+                                        Size(100, 100)),
                                     shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
@@ -105,8 +105,8 @@ class _FieldPageState extends State<FieldPage> {
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStatePropertyAll(
                                         AppColor.redbtn2),
-                                    minimumSize:
-                                        MaterialStatePropertyAll(Size(100, 100)),
+                                    minimumSize: MaterialStatePropertyAll(
+                                        Size(100, 100)),
                                     shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
@@ -136,8 +136,8 @@ class _FieldPageState extends State<FieldPage> {
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStatePropertyAll(
                                         AppColor.dartgreeen),
-                                    minimumSize:
-                                        MaterialStatePropertyAll(Size(100, 100)),
+                                    minimumSize: MaterialStatePropertyAll(
+                                        Size(100, 100)),
                                     shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
@@ -167,8 +167,8 @@ class _FieldPageState extends State<FieldPage> {
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStatePropertyAll(
                                         AppColor.lightblackbtn),
-                                    minimumSize:
-                                        MaterialStatePropertyAll(Size(100, 100)),
+                                    minimumSize: MaterialStatePropertyAll(
+                                        Size(100, 100)),
                                     shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
@@ -205,8 +205,8 @@ class _FieldPageState extends State<FieldPage> {
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStatePropertyAll(
                                         AppColor.bluelightgreen),
-                                    minimumSize:
-                                        MaterialStatePropertyAll(Size(100, 100)),
+                                    minimumSize: MaterialStatePropertyAll(
+                                        Size(100, 100)),
                                     shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
@@ -236,8 +236,8 @@ class _FieldPageState extends State<FieldPage> {
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStatePropertyAll(
                                         AppColor.yellow1),
-                                    minimumSize:
-                                        MaterialStatePropertyAll(Size(100, 100)),
+                                    minimumSize: MaterialStatePropertyAll(
+                                        Size(100, 100)),
                                     shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
@@ -265,10 +265,10 @@ class _FieldPageState extends State<FieldPage> {
                                         color: Colors.white),
                                   ),
                                   style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStatePropertyAll(AppColor.purple),
-                                    minimumSize:
-                                        MaterialStatePropertyAll(Size(100, 100)),
+                                    backgroundColor: MaterialStatePropertyAll(
+                                        AppColor.purple),
+                                    minimumSize: MaterialStatePropertyAll(
+                                        Size(100, 100)),
                                     shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
@@ -298,8 +298,8 @@ class _FieldPageState extends State<FieldPage> {
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStatePropertyAll(
                                         AppColor.dartyellow),
-                                    minimumSize:
-                                        MaterialStatePropertyAll(Size(100, 100)),
+                                    minimumSize: MaterialStatePropertyAll(
+                                        Size(100, 100)),
                                     shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),

@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:doan_ltdd/pages/login/auth_service.dart';
+import 'package:doan_ltdd/pages/login/global_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -19,7 +21,7 @@ import 'package:provider/provider.dart';
 import 'package:doan_ltdd/provider/internet_provider.dart';
 import 'package:doan_ltdd/utils/snack_bar.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
-
+import 'package:http/http.dart' as http;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -33,7 +35,23 @@ class _LoginScreenState extends State<LoginScreen> {
       RoundedLoadingButtonController();
   final RoundedLoadingButtonController facebookController =
       RoundedLoadingButtonController();
-  
+
+  String _email = '';
+  String _password = '';
+  isLogged() async {
+    if (_email.isNotEmpty && _password.isNotEmpty) {
+      http.Response response = await AuthService.login(_email, _password);
+      Map responseMap = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        nextScreen(context, MainPage());
+      } else {
+        errorSnackbar(context, responseMap.values.first);
+      }
+      ;
+    } else {
+      errorSnackbar(context, 'Nhập đầy đủ thông tin');
+    }
+  }
   // TextEditingController usernameController = TextEditingController();
   // TextEditingController passwordController = TextEditingController();
   // void login(String username, password) async {
@@ -110,7 +128,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Container(
                         padding: const EdgeInsets.all(15),
-                        child: const TextField(
+                        child: TextField(
+                          onChanged: (value) {
+                            _email = value;
+                          },
                           decoration: InputDecoration(
                             hintText: 'Nhập tài khoản',
                             labelText: 'Tài khoản',
@@ -121,7 +142,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       Container(
                         padding: const EdgeInsets.all(15),
-                        child: const TextField(
+                        child: TextField(
+                          onChanged: (value) {
+                            _password = value;
+                          },
                           obscureText: true,
                           decoration: InputDecoration(
                             hintText: 'Nhập mật khẩu',
@@ -153,12 +177,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MainPage(),
-                              ),
-                            );
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => MainPage(),
+                            //   ),
+                            // );
+                            isLogged();
                           }, //bo sung 2
                           child: const Text('Đăng Nhập',
                               style: TextStyle(fontSize: 20)),
@@ -268,7 +293,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                       ),
-                      
                     ],
                   ),
                 ),
@@ -279,6 +303,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
   Future handleGoogleSignIn() async {
     final sp = context.read<SignInProvider>();
     final ip = context.read<InternetProvider>();
@@ -324,5 +349,4 @@ class _LoginScreenState extends State<LoginScreen> {
       nextScreenReplace(context, const MainPage());
     });
   }
-
 }

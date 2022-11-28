@@ -1,6 +1,13 @@
+import 'dart:convert';
+
+import 'package:doan_ltdd/pages/interface/main_page.dart';
+import 'package:doan_ltdd/pages/login/auth_service.dart';
+import 'package:doan_ltdd/pages/login/global_service.dart';
+import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'login_screen.dart';
+import 'package:http/http.dart' as http;
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -9,6 +16,31 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  String _email = '';
+  String _pasword = '';
+  String _name = '';
+
+  createAccount() async {
+    bool emailValid = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(_email);
+    if (emailValid) {
+      http.Response response =
+          await AuthService.register(_name, _email, _pasword);
+      Map responseMap = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        nextScreen(
+          context,
+          MainPage(),
+        );
+      } else {
+        errorSnackbar(context, responseMap.values.first[0]);
+      }
+    } else {
+      errorSnackbar(context, 'Email không hợp lệ');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,10 +95,13 @@ class _RegisterState extends State<Register> {
                           topRight: Radius.circular(40))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [                     
+                    children: [
                       Container(
                         padding: const EdgeInsets.all(15),
-                        child: const TextField(
+                        child: TextField(
+                          onChanged: (value) {
+                            _name = value;
+                          },
                           decoration: InputDecoration(
                             hintText: 'Tài khoản',
                             labelText: 'Nhập Tài khoản',
@@ -77,7 +112,10 @@ class _RegisterState extends State<Register> {
                       ),
                       Container(
                         padding: const EdgeInsets.all(15),
-                        child: const TextField(
+                        child: TextField(
+                          onChanged: (value) {
+                            _email = value;
+                          },
                           decoration: InputDecoration(
                             hintText: 'Email',
                             labelText: 'Nhập Email',
@@ -88,7 +126,10 @@ class _RegisterState extends State<Register> {
                       ),
                       Container(
                         padding: const EdgeInsets.all(15),
-                        child: const TextField(
+                        child: TextField(
+                          onChanged: (value) {
+                            _pasword = value;
+                          },
                           obscureText: true,
                           decoration: InputDecoration(
                             hintText: 'Mật khẩu',
@@ -143,24 +184,25 @@ class _RegisterState extends State<Register> {
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text('Đăng ký thành công'),
-                                  content: Text('Quay lại trang đăng nhập'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
+                            // showDialog(
+                            //   context: context,
+                            //   builder: (context) {
+                            //     return AlertDialog(
+                            //       title: Text('Đăng ký thành công'),
+                            //       content: Text('Quay lại trang đăng nhập'),
+                            //       actions: [
+                            //         TextButton(
+                            //           onPressed: () {
+                            //             Navigator.pop(context);
+                            //             Navigator.pop(context);
+                            //           },
+                            //           child: Text('OK'),
+                            //         ),
+                            //       ],
+                            //     );
+                            //   },
+                            // );
+                            createAccount();
                           }, //bo sung 2
                           child: const Text('Đăng Ký',
                               style: TextStyle(fontSize: 20)),
