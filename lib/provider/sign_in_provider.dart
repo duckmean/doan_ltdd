@@ -5,7 +5,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
-import 'package:doan_ltdd/provider/auth_service.dart';
 
 class SignInProvider extends ChangeNotifier {
   // instance of firebaseauth, facebook and google
@@ -39,8 +38,6 @@ class SignInProvider extends ChangeNotifier {
 
   String? _email;
   String? get email => _email;
-
-  String? _password;
 
   String? _imageUrl;
   String? get imageUrl => _imageUrl;
@@ -156,12 +153,6 @@ class SignInProvider extends ChangeNotifier {
     _uid = s.getString('uid');
     _provider = s.getString('provider');
     notifyListeners();
-  }
-
-  void saveDataLoginFromSharedPreferences() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString('login',
-        AuthService.login(_email.toString(), _password.toString()).toString());
   }
 
   // checkUser exists or not in cloudfirestore

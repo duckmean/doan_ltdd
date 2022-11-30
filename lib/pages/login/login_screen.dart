@@ -36,6 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey _scaffoldKey = GlobalKey<ScaffoldState>();
   final RoundedLoadingButtonController googleController =
       RoundedLoadingButtonController();
+  var pref = SharedPreferences.getInstance();
   // final RoundedLoadingButtonController facebookController =
   //     RoundedLoadingButtonController();
 
@@ -180,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           TextButton(
                             child: const Text(
                               'Quên mật khẩu',
-                              style: TextStyle(fontSize: 17),
+                              style: TextStyle(fontSize: 15),
                             ),
                             onPressed: () {
                               nextScreen(

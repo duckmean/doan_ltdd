@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import '../login/login_screen.dart';
 
 import 'main_page.dart';
+import 'dart:async';
+import 'package:doan_ltdd/provider/time_textstyle.dart';
 
 class PlayPage extends StatefulWidget {
   const PlayPage({super.key});
@@ -15,6 +17,36 @@ class PlayPage extends StatefulWidget {
 }
 
 class _PlayPageState extends State<PlayPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    startTimer();
+  }
+
+  @override
+  void dispose() {
+    timer!.cancel();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  int seconds = 30;
+  Timer? timer;
+  var currentQuestionIndex = 0;
+
+  startTimer() {
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        if (seconds > 0) {
+          seconds--;
+        } else {
+          timer.cancel();
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,6 +98,29 @@ class _PlayPageState extends State<PlayPage> {
                               RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50)),
                             ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                            right: 18,
+                          ),
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              normalText(
+                                  color: AppColor.fieldColor,
+                                  size: 22,
+                                  text: "$seconds"),
+                              SizedBox(
+                                width: 50,
+                                height: 50,
+                                child: CircularProgressIndicator(
+                                  value: seconds / 30,
+                                  valueColor: AlwaysStoppedAnimation(
+                                      AppColor.fieldColor),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         //
