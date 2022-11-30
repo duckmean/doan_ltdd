@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:doan_ltdd/pages/interface/main_page.dart';
-import 'package:doan_ltdd/pages/login/auth_service.dart';
-import 'package:doan_ltdd/pages/login/global_service.dart';
+
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../provider/auth_service.dart';
+import '../../provider/global_service.dart';
 import 'login_screen.dart';
 import 'package:http/http.dart' as http;
 
@@ -31,7 +32,7 @@ class _RegisterState extends State<Register> {
       if (response.statusCode == 200) {
         nextScreen(
           context,
-          MainPage(),
+          LoginScreen(),
         );
       } else {
         errorSnackbar(context, responseMap.values.first[0]);
@@ -103,8 +104,8 @@ class _RegisterState extends State<Register> {
                             _name = value;
                           },
                           decoration: InputDecoration(
-                            hintText: 'Tài khoản',
-                            labelText: 'Nhập Tài khoản',
+                            hintText: 'Tên ingame',
+                            labelText: 'Nhập tên ingame',
                             border: OutlineInputBorder(),
                             prefixIcon: Icon(Icons.person),
                           ),
@@ -151,17 +152,17 @@ class _RegisterState extends State<Register> {
                           ),
                         ),
                       ),
-                      Container(
-                        padding: const EdgeInsets.all(15),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Họ Và Tên',
-                            labelText: 'Nhập Họ Và Tên',
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(Icons.edit),
-                          ),
-                        ),
-                      ),
+                      // Container(
+                      //   padding: const EdgeInsets.all(15),
+                      //   child: const TextField(
+                      //     decoration: InputDecoration(
+                      //       hintText: 'Họ Và Tên',
+                      //       labelText: 'Nhập Họ Và Tên',
+                      //       border: OutlineInputBorder(),
+                      //       prefixIcon: Icon(Icons.edit),
+                      //     ),
+                      //   ),
+                      // ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
@@ -171,11 +172,10 @@ class _RegisterState extends State<Register> {
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginScreen(),
-                                  ));
+                              nextScreen(
+                                context,
+                                LoginScreen(),
+                              );
                             },
                           )
                         ],
@@ -184,24 +184,20 @@ class _RegisterState extends State<Register> {
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(
                           onPressed: () {
-                            // showDialog(
-                            //   context: context,
-                            //   builder: (context) {
-                            //     return AlertDialog(
-                            //       title: Text('Đăng ký thành công'),
-                            //       content: Text('Quay lại trang đăng nhập'),
-                            //       actions: [
-                            //         TextButton(
-                            //           onPressed: () {
-                            //             Navigator.pop(context);
-                            //             Navigator.pop(context);
-                            //           },
-                            //           child: Text('OK'),
-                            //         ),
-                            //       ],
-                            //     );
-                            //   },
-                            // );
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text('Đăng ký thành công'),
+                                  content: Text('Quay lại trang đăng nhập'),
+                                  //     Navigator.pop(context);
+                                  //   },
+                                  //   child: Text('OK'),
+                                  // ),
+                                  // ],
+                                );
+                              },
+                            );
                             createAccount();
                           }, //bo sung 2
                           child: const Text('Đăng Ký',

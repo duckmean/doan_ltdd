@@ -1,6 +1,5 @@
 import 'dart:convert';
-import 'package:doan_ltdd/pages/login/auth_service.dart';
-import 'package:doan_ltdd/pages/login/global_service.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -8,6 +7,8 @@ import 'package:flutter/widgets.dart';
 
 import 'package:http/http.dart';
 
+import '../../provider/auth_service.dart';
+import '../../provider/global_service.dart';
 import '../interface/main_page.dart';
 import 'forget_password1.dart';
 import 'register.dart';

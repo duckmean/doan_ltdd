@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:doan_ltdd/provider/global_service.dart';
 import 'package:http/http.dart' as http;
-import 'package:doan_ltdd/pages/login/global_service.dart';
 
 class AuthService {
   static Future<http.Response> register(
