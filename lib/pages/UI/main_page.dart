@@ -1,6 +1,6 @@
 // ignore_for_file: unused_import
 
-import 'package:doan_ltdd/pages/interface/updateinfo_page.dart';
+import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -323,16 +323,14 @@ class _MainPageState extends State<MainPage> {
                       ),
                       TextButton(
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => LoginScreen(),
-                          //   ),
-                          // );
-                          sp.userSignOut();
-
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, 'Login', (route) => false);
+                          //sp.userSignOut();
+                          // Navigator.pushNamedAndRemoveUntil(
+                          //     context, 'Login', (route) => false);
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
+                              ),
+                              (route) => false);
                         },
                         child: Text('Có'),
                       ),

@@ -104,7 +104,7 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                         ),
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll(AppColor.lightblackbtn),
+                              MaterialStatePropertyAll(AppColor.lightblue1),
                           minimumSize: MaterialStatePropertyAll(Size(250, 40)),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(

@@ -1,4 +1,4 @@
-import 'package:doan_ltdd/pages/interface/updateinfo_page.dart';
+import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

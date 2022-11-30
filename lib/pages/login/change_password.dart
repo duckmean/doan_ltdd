@@ -1,5 +1,5 @@
 import 'package:doan_ltdd/Appcolor/appcolor.dart';
-import 'package:doan_ltdd/pages/interface/main_page.dart';
+import 'package:doan_ltdd/pages/UI/main_page.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
 

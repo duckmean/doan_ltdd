@@ -4,12 +4,15 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:http/http.dart' as http;
+import 'package:doan_ltdd/provider/auth_service.dart';
 
-class SignInProvider extends ChangeNotifier{
+class SignInProvider extends ChangeNotifier {
   // instance of firebaseauth, facebook and google
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final FacebookAuth facebookAuth = FacebookAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
+  //final http.Response userSignIn = http.Response();
 
   bool _isSignedIn = false;
   bool get isSignedIn => _isSignedIn;
@@ -37,6 +40,8 @@ class SignInProvider extends ChangeNotifier{
   String? _email;
   String? get email => _email;
 
+  String? _password;
+
   String? _imageUrl;
   String? get imageUrl => _imageUrl;
 
@@ -53,7 +58,7 @@ class SignInProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-    // sign in with google
+  // sign in with google
   Future signInWithGoogle() async {
     final GoogleSignInAccount? googleSignInAccount =
         await googleSignIn.signIn();
@@ -153,6 +158,12 @@ class SignInProvider extends ChangeNotifier{
     notifyListeners();
   }
 
+  void saveDataLoginFromSharedPreferences() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString('login',
+        AuthService.login(_email.toString(), _password.toString()).toString());
+  }
+
   // checkUser exists or not in cloudfirestore
   Future<bool> checkUserExists() async {
     DocumentSnapshot snap =
@@ -165,12 +176,13 @@ class SignInProvider extends ChangeNotifier{
       return false;
     }
   }
-  
+
   // signout
   Future userSignOut() async {
     await firebaseAuth.signOut;
     await googleSignIn.signOut();
-    await facebookAuth.logOut();
+    // await facebookAuth.logOut();
+    //await
 
     _isSignedIn = false;
     notifyListeners();
@@ -182,5 +194,4 @@ class SignInProvider extends ChangeNotifier{
     final SharedPreferences s = await SharedPreferences.getInstance();
     s.clear();
   }
-
 }
