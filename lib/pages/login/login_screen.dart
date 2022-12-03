@@ -40,13 +40,12 @@ class _LoginScreenState extends State<LoginScreen> {
   // final RoundedLoadingButtonController facebookController =
   //     RoundedLoadingButtonController();
 
-  var _emailController = TextEditingController();
-  var _passwordController = TextEditingController();
-  isLogged() async {
-    if (_emailController.text.isNotEmpty &&
-        _passwordController.text.isNotEmpty) {
-      http.Response response = await AuthService.login(
-          _emailController.text, _passwordController.text);
+  String _email = '';
+  String _password = '';
+
+  isLoggin() async {
+    if (_email.isNotEmpty && _password.isNotEmpty) {
+      http.Response response = await AuthService.login(_email, _password);
 
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
@@ -55,21 +54,27 @@ class _LoginScreenState extends State<LoginScreen> {
       } else {
         errorSnackbar(context, responseMap.values.first);
       }
-      ;
     } else {
       errorSnackbar(context, 'Nhập đầy đủ thông tin tài khoản mật khẩu');
     }
   }
 
-  Future saveDataLoginFromSharedPreferences() async {
+  Future getDataLoginFromSharedPreferences() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString(
-        'login',
-        AuthService.login(_emailController.text, _passwordController.text)
-            .toString());
+    pref.getString('login');
+    return pref;
   }
 
-  void removeDataLoginFromSharedPreferences() {}
+  Future saveDataLoginFromSharedPreferences() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString('login', AuthService.login(_email, _password).toString());
+    return pref;
+  }
+
+  Future removeDataLoginFromSharedPreferences() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.remove('login');
+  }
   // TextEditingController usernameController = TextEditingController();
   // TextEditingController passwordController = TextEditingController();
   // void login(String username, password) async {
@@ -147,10 +152,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: TextField(
-                          controller: _emailController,
                           onChanged: (value) {
-                            _emailController.text = value;
+                            _email = value;
                           },
+                          keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             hintText: 'Nhập email',
                             labelText: 'Email',
@@ -162,9 +167,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: TextField(
-                          controller: _passwordController,
                           onChanged: (value) {
-                            _passwordController.text = value;
+                            _password = value;
                           },
                           obscureText: true,
                           decoration: InputDecoration(
@@ -202,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             //     builder: (context) => MainPage(),
                             //   ),
                             // );
-                            isLogged();
+                            isLoggin();
                           }, //bo sung 2
                           child: const Text('Đăng Nhập',
                               style: TextStyle(fontSize: 20)),

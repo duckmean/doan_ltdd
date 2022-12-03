@@ -11,6 +11,7 @@ class SignInProvider extends ChangeNotifier {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final FacebookAuth facebookAuth = FacebookAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
+  final signIn = SharedPreferences.getInstance();
   //final http.Response userSignIn = http.Response();
 
   bool _isSignedIn = false;
@@ -38,6 +39,9 @@ class SignInProvider extends ChangeNotifier {
 
   String? _email;
   String? get email => _email;
+
+  String? _password;
+  String? get password => _password;
 
   String? _imageUrl;
   String? get imageUrl => _imageUrl;
@@ -139,6 +143,7 @@ class SignInProvider extends ChangeNotifier {
     final SharedPreferences s = await SharedPreferences.getInstance();
     await s.setString('name', _name!);
     await s.setString('email', _email!);
+    await s.setString('password', _password!);
     await s.setString('uid', _uid!);
     await s.setString('image_url', _imageUrl!);
     await s.setString('provider', _provider!);
@@ -149,6 +154,7 @@ class SignInProvider extends ChangeNotifier {
     final SharedPreferences s = await SharedPreferences.getInstance();
     _name = s.getString('name');
     _email = s.getString('email');
+    _password = s.getString('password');
     _imageUrl = s.getString('image_url');
     _uid = s.getString('uid');
     _provider = s.getString('provider');
@@ -174,7 +180,6 @@ class SignInProvider extends ChangeNotifier {
     await googleSignIn.signOut();
     // await facebookAuth.logOut();
     //await
-
     _isSignedIn = false;
     notifyListeners();
     // clear all storage information

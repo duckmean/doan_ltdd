@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
+import 'package:doan_ltdd/provider/auth_provider.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +23,8 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   Future getData() async {
-    final sp = context.read<SignInProvider>();
-    sp.getDataFromSharedPreferences();
+    final sp = context.read<AuthProvider>();
+    sp.getDataLoginFromSharedPreferences();
   }
 
   @override

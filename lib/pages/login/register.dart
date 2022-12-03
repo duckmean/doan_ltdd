@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import 'package:doan_ltdd/pages/UI/main_page.dart';
 
 import 'package:doan_ltdd/utils/next_screen.dart';
@@ -20,7 +21,7 @@ class _RegisterState extends State<Register> {
   String _email = '';
   String _pasword = '';
   String _name = '';
-
+  TextEditingController _checkPassController = TextEditingController();
   createAccount() async {
     bool emailValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -118,7 +119,7 @@ class _RegisterState extends State<Register> {
                             _email = value;
                           },
                           decoration: InputDecoration(
-                            hintText: 'Email',
+                            hintText: 'abc@gmail.com',
                             labelText: 'Nhập Email',
                             border: OutlineInputBorder(),
                             prefixIcon: Icon(Icons.email),
@@ -142,7 +143,20 @@ class _RegisterState extends State<Register> {
                       ),
                       Container(
                         padding: const EdgeInsets.all(15),
-                        child: const TextField(
+                        child: TextField(
+                          onTap: () {
+                            if (checkPassWord() == false) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  backgroundColor: AppColor.redbtn2,
+                                  content: Text(
+                                      "Xác thực lại mật khẩu không chính xác"),
+                                  duration: Duration(seconds: 1),
+                                ),
+                              );
+                            }
+                          },
+                          controller: _checkPassController,
                           obscureText: true,
                           decoration: InputDecoration(
                             hintText: 'Mật khẩu xác nhận',
@@ -225,5 +239,12 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
+  }
+
+  bool checkPassWord() {
+    if (_pasword == _checkPassController.text) {
+      return true;
+    }
+    return false;
   }
 }
