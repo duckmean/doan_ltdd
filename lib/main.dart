@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:doan_ltdd/pages/UI/main_page.dart';
 import 'package:doan_ltdd/pages/login/login_screen.dart';
+import 'package:doan_ltdd/provider/auth_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'pages/UI/welcome_page.dart';
@@ -26,6 +27,9 @@ class AilatrieuPhu extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: ((context) => InternetProvider()),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AuthProvider(),
         ),
       ],
       child: const MaterialApp(

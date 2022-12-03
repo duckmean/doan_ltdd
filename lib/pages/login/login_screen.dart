@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:doan_ltdd/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -36,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey _scaffoldKey = GlobalKey<ScaffoldState>();
   final RoundedLoadingButtonController googleController =
       RoundedLoadingButtonController();
-  var pref = SharedPreferences.getInstance();
+  AuthProvider auth = AuthProvider();
   // final RoundedLoadingButtonController facebookController =
   //     RoundedLoadingButtonController();
 
@@ -59,6 +60,23 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  // void login(String username, password) async {
+  //   try {
+  //     Response response = await post(Uri.parse('https://reqres.in/api/login'),
+  //         body: {'username': username, 'password': password});
+
+  //     if (response.statusCode == 200) {
+  //       var data = jsonDecode(response.body.toString());
+  //       print(data['token']);
+  //       print('Login successfully');
+  //     } else {
+  //       print('failed');
+  //     }
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
+
   Future getDataLoginFromSharedPreferences() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.getString('login');
@@ -75,29 +93,16 @@ class _LoginScreenState extends State<LoginScreen> {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.remove('login');
   }
+
   // TextEditingController usernameController = TextEditingController();
   // TextEditingController passwordController = TextEditingController();
-  // void login(String username, password) async {
-  //   try {
-  //     Response response = await post(Uri.parse('https://reqres.in/api/login'),
-  //         body: {'username': username,'password': password});
 
-  //     if (response.statusCode == 200) {
-  //       var data = jsonDecode(response.body.toString());
-  //       print(data['token']);
-  //       print('Login successfully');
-  //     } else {
-  //       print('failed');
-  //     }
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  // }
-
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        key: _formKey,
         child: Container(
           constraints: BoxConstraints(
             maxHeight: MediaQuery.of(context).size.height,
@@ -206,6 +211,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             //     builder: (context) => MainPage(),
                             //   ),
                             // );
+                            Map creds = {'emai': _email, 'password': _password};
+                            Provider.of<AuthProvider>(context, listen: false)
+                                .login(creds: creds);
                             isLoggin();
                           }, //bo sung 2
                           child: const Text('Đăng Nhập',
@@ -215,7 +223,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             padding: MaterialStateProperty.all(
                                 const EdgeInsets.all(15)),
                             fixedSize:
-                                MaterialStateProperty.all(const Size(150, 60)),
+                                MaterialStateProperty.all(const Size(350, 60)),
                             shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -225,17 +233,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           const Text('Nếu bạn chưa có tài khoản?',
-                              style: TextStyle(fontSize: 16)),
+                              style: TextStyle(fontSize: 15)),
                           TextButton(
                             child: const Text(
-                              'Đăng ký',
-                              style: TextStyle(fontSize: 17),
+                              'Đăng ký ngay!',
+                              style: TextStyle(fontSize: 16),
                             ),
                             onPressed: () {
                               Navigator.push(

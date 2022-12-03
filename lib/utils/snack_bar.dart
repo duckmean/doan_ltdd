@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 void openSnackbar(context, snackMessage, color) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
       backgroundColor: color,
       action: SnackBarAction(
         label: "OK",
@@ -11,5 +12,7 @@ void openSnackbar(context, snackMessage, color) {
       content: Text(
         snackMessage,
         style: const TextStyle(fontSize: 14),
-      )));
+      ),
+    ),
+  );
 }

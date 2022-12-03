@@ -36,6 +36,8 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     final sp = context.watch<SignInProvider>();
+    final sg = context.watch<AuthProvider>();
+
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
@@ -47,9 +49,11 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("images/background.png"), fit: BoxFit.cover),
+            image: AssetImage("images/background.png"),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Center(
           child: Column(
@@ -65,7 +69,14 @@ class _MainPageState extends State<MainPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => GetMoreCoins(),
+                          ),
+                        );
+                      },
                       child: Text(
                         "QuizzCoin: 5000",
                         style: TextStyle(
@@ -247,100 +258,126 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       endDrawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text("${sp.name}"),
-              accountEmail: Text("${sp.email}"),
-              // currentAccountPicture: CircleAvatar(
-              //   backgroundColor: AppColor.fieldColor,
-              //   child: Text(
-              //     "P",
-              //     style: TextStyle(
-              //       fontSize: 40.0,
-              //       color: AppColor.textColor,
-              //     ),
-              //   ),
-              // ),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                backgroundImage: NetworkImage("${sp.imageUrl}"),
-                radius: 50,
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text("Home"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MainPage(),
+        child: Consumer<AuthProvider>(
+          builder: (context, auth, child) {
+            if (!auth.authenticated) {
+              return ListView(
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.login),
+                    title: Text("Login"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text("Nạp QuizzCoin"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => GetMoreCoins(),
+                ],
+              );
+            } else {
+              return ListView(
+                // Important: Remove any padding from the ListView.
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  UserAccountsDrawerHeader(
+                    accountName: Text("${sp.name}"),
+                    accountEmail: Text("${sp.email}"),
+                    // currentAccountPicture: CircleAvatar(
+                    //   backgroundColor: AppColor.fieldColor,
+                    //   child: Text(
+                    //     "P",
+                    //     style: TextStyle(
+                    //       fontSize: 40.0,
+                    //       color: AppColor.textColor,
+                    //     ),
+                    //   ),
+                    // ),
+                    currentAccountPicture: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      backgroundImage: NetworkImage("${sp.imageUrl}"),
+                      radius: 50,
+                    ),
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.contacts),
-              title: Text("Cập nhật thông tin"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => UpdateInfomationScreen(),
+                  ListTile(
+                    leading: Icon(Icons.home),
+                    title: Text("Home"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MainPage(),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.logout_outlined),
-              title: Text("Sign out"),
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: Text('Thông báo'),
-                    content: Text('Bạn có muốn đăng xuất không'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text('Không'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          //sp.userSignOut();
-                          // Navigator.pushNamedAndRemoveUntil(
-                          //     context, 'Login', (route) => false);
-                          Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                builder: (context) => LoginScreen(),
-                              ),
-                              (route) => false);
-                        },
-                        child: Text('Có'),
-                      ),
-                    ],
+                  ListTile(
+                    leading: Icon(Icons.shopping_cart),
+                    title: Text("Nạp QuizzCoin"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GetMoreCoins(),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
-          ],
+                  ListTile(
+                    leading: Icon(Icons.contacts),
+                    title: Text("Cập nhật thông tin"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UpdateInfomationScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.logout_outlined),
+                    title: Text("Sign out"),
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text('Thông báo'),
+                          content: Text('Bạn có muốn đăng xuất không'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text('Không'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                if (sp.checkUserExists() == true) {
+                                  sp.userSignOut();
+                                } else {
+                                  // Navigator.pushNamedAndRemoveUntil(
+                                  //     context, 'Login', (route) => false);
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                      MaterialPageRoute(
+                                        builder: (context) => LoginScreen(),
+                                      ),
+                                      (route) => false);
+                                }
+                              },
+                              child: Text('Có'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              );
+            }
+          },
         ),
       ),
     );

@@ -1,9 +1,12 @@
 import 'dart:convert';
 
+import 'package:doan_ltdd/provider/auth_provider.dart';
 import 'package:doan_ltdd/provider/global_service.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService {
+  static AuthProvider auth = AuthProvider();
+
   static Future<http.Response> register(
       String name, String email, String password) async {
     Map data = {"name": name, "email": email, "password": password};
