@@ -1,10 +1,11 @@
 // ignore: unused_import
 
 import 'package:doan_ltdd/Appcolor/appcolor.dart';
+import 'package:doan_ltdd/pages/UI/field_page.dart';
 import 'package:flutter/material.dart';
-
+import 'package:doan_ltdd/provider/quiz.dart';
 import '../login/login_screen.dart';
-
+import 'package:flutter/cupertino.dart';
 import 'main_page.dart';
 import 'dart:async';
 import 'package:doan_ltdd/provider/time_textstyle.dart';
@@ -17,23 +18,46 @@ class PlayPage extends StatefulWidget {
 }
 
 class _PlayPageState extends State<PlayPage> {
+  int seconds = 30;
+  Timer? timer;
+  var currentQuestionIndex = 0;
+  late Future quizz;
+  int points = 0;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    quizz = getQuiz();
     startTimer();
   }
 
   @override
   void dispose() {
     timer!.cancel();
-    // TODO: implement dispose
     super.dispose();
   }
 
-  int seconds = 30;
-  Timer? timer;
-  var currentQuestionIndex = 0;
+  var isLoaded = false;
+
+  var optionsList = [];
+
+  var optionsColor = [
+    AppColor.background,
+    AppColor.background,
+    AppColor.background,
+    AppColor.background,
+    AppColor.background,
+  ];
+
+  resetColors() {
+    optionsColor = [
+      AppColor.background,
+      AppColor.background,
+      AppColor.background,
+      AppColor.background,
+      AppColor.background,
+    ];
+  }
 
   startTimer() {
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -47,8 +71,18 @@ class _PlayPageState extends State<PlayPage> {
     });
   }
 
+  gotoNextQuestion() {
+    isLoaded = false;
+    currentQuestionIndex++;
+    resetColors();
+    timer!.cancel();
+    seconds = 30;
+    startTimer();
+  }
+
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       // backgroundColor: Color(0xFF232431),
       // appBar: AppBar(
@@ -56,483 +90,406 @@ class _PlayPageState extends State<PlayPage> {
       //   toolbarHeight: 40,
       //   elevation: 0,
       // ),
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("images/background.png"), fit: BoxFit.cover),
-          ),
-          child: Center(
-            child: Container(
-              padding: EdgeInsets.only(top: 50),
-              child: Column(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 10,
-                    ),
-                    padding: const EdgeInsets.only(
-                      top: 8,
-                      left: 20,
-                      bottom: 15,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: SafeArea(
+        child: Center(
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/background.png"),
+                  fit: BoxFit.cover),
+            ),
+            child: FutureBuilder(
+              future: quizz,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  var data = snapshot.data["results"];
+                  if (isLoaded == false) {
+                    optionsList =
+                        data[currentQuestionIndex]["incorrect_answers"];
+                    optionsList
+                        .add(data[currentQuestionIndex]["correct_answer"]);
+                    optionsList.shuffle();
+                    isLoaded = true;
+                  }
+                  return SingleChildScrollView(
+                    child: Column(
                       children: [
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Score: 2000",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.black,
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.only(left: 15),
+                              width: 110,
+                              height: 45,
+                              decoration: BoxDecoration(
+                                color: AppColor.background,
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                    width: 1, color: AppColor.fieldColor),
+                              ),
+                              child: Text(
+                                "Score: ${points}",
+                                style: TextStyle(
+                                  color: AppColor.fieldColor,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
-                          ),
-                          style: ButtonStyle(
-                            minimumSize:
-                                MaterialStateProperty.all(Size(100, 20)),
-                            backgroundColor: const MaterialStatePropertyAll(
-                                Color.fromARGB(255, 219, 219, 219)),
-                            shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50)),
-                            ),
-                          ),
+                            Container(
+                              margin: EdgeInsets.only(right: 15),
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  normalText(
+                                      color: Colors.white,
+                                      size: 24,
+                                      text: "$seconds"),
+                                  SizedBox(
+                                    width: 60,
+                                    height: 60,
+                                    child: CircularProgressIndicator(
+                                      value: seconds / 30,
+                                      valueColor: const AlwaysStoppedAnimation(
+                                          Colors.white),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 30,
                         ),
                         Container(
-                          margin: EdgeInsets.only(
-                            right: 18,
+                          width: size.width - 20,
+                          height: size.height - 570,
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: AppColor.background,
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              width: 1.5,
+                              color: AppColor.fieldColor,
+                            ),
                           ),
-                          child: Stack(
-                            alignment: Alignment.center,
+                          child: Column(
                             children: [
-                              normalText(
-                                  color: AppColor.fieldColor,
-                                  size: 22,
-                                  text: "$seconds"),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Câu hỏi số ${currentQuestionIndex + 1}',
+                                  style: TextStyle(
+                                    color: AppColor.fieldColor,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ),
                               SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: CircularProgressIndicator(
-                                  value: seconds / 30,
-                                  valueColor: AlwaysStoppedAnimation(
-                                      AppColor.fieldColor),
+                                height: 10,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Text(
+                                  "${data[currentQuestionIndex]["question"]}",
+                                  style: TextStyle(
+                                    color: AppColor.fieldColor,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w300,
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        //
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              width: size.width - 20,
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: optionsList.length,
+                                itemBuilder: (context, index) {
+                                  var answer = data[currentQuestionIndex]
+                                      ["correct_answer"];
+                                  return GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        if (answer.toString() ==
+                                            optionsList[index].toString()) {
+                                          optionsColor[index] = AppColor.green;
+                                          points = points + 10;
+                                        } else {
+                                          optionsColor[index] =
+                                              AppColor.redbtn2;
+                                        }
+                                        if (currentQuestionIndex <
+                                            data.length - 1) {
+                                          Future.delayed(
+                                              const Duration(seconds: 1), () {
+                                            gotoNextQuestion();
+                                          });
+                                        } else {
+                                          timer!.cancel();
+                                          showDialog(
+                                            context: context,
+                                            builder: (context) => AlertDialog(
+                                              backgroundColor:
+                                                  AppColor.background,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                              title: Text("Thông báo"),
+                                              content: Text(
+                                                "Bạn có muốn chơi lại không?",
+                                                style: TextStyle(
+                                                  color: AppColor.fieldColor,
+                                                ),
+                                              ),
+                                              actions: [
+                                                TextButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .push(
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              MainPage(),
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Text("Không")),
+                                                TextButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .push(
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              FieldPage(),
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Text("OK")),
+                                              ],
+                                            ),
+                                          );
+                                        }
+                                      });
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          margin: const EdgeInsets.only(
+                                              bottom: 18.5),
+                                          alignment: Alignment.center,
+                                          width: size.width - 20,
+                                          padding: const EdgeInsets.all(16),
+                                          decoration: BoxDecoration(
+                                            color: optionsColor[index],
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            border: Border.all(
+                                              width: 1,
+                                              color: AppColor.fieldColor,
+                                            ),
+                                          ),
+                                          child: Text(
+                                            '${optionsList[index].toString()}',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: AppColor.fieldColor,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                left: 10,
+                                right: 10,
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 70,
+                                    height: 70,
+                                    decoration: BoxDecoration(
+                                      color: AppColor.background,
+                                      borderRadius: BorderRadius.circular(50),
+                                      // border: Border.all(
+                                      //   width: 1,
+                                      //   color: AppColor.fieldColor,
+                                      // ),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.transcribe),
+                                          color: AppColor.fieldColor,
+                                          iconSize: 26,
+                                          alignment: Alignment.center,
+                                        ),
+                                        // Text(
+                                        //   "",
+                                        //   style: TextStyle(
+                                        //     color: AppColor.fieldColor,
+                                        //     fontSize: 15,
+                                        //     fontWeight: FontWeight.w400,
+                                        //   ),
+                                        // ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Container(
+                                    width: 70,
+                                    height: 70,
+                                    decoration: BoxDecoration(
+                                      color: AppColor.background,
+                                      borderRadius: BorderRadius.circular(50),
+                                      // border: Border.all(
+                                      //   width: 1,
+                                      //   color: AppColor.textColor,
+                                      // ),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.transcribe),
+                                          color: AppColor.fieldColor,
+                                          iconSize: 26,
+                                        ),
+                                        // Text(
+                                        //   "",
+                                        //   style: TextStyle(
+                                        //     color: AppColor.fieldColor,
+                                        //     fontSize: 15,
+                                        //     fontWeight: FontWeight.w400,
+                                        //   ),
+                                        // ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Container(
+                                    width: 70,
+                                    height: 70,
+                                    decoration: BoxDecoration(
+                                      color: AppColor.background,
+                                      borderRadius: BorderRadius.circular(50),
+                                      // border: Border.all(
+                                      //   width: 1,
+                                      //   color: AppColor.textColor,
+                                      // ),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.transcribe),
+                                          color: AppColor.fieldColor,
+                                          iconSize: 26,
+                                        ),
+                                        // Text(
+                                        //   "",
+                                        //   style: TextStyle(
+                                        //     color: AppColor.fieldColor,
+                                        //     fontSize: 15,
+                                        //     fontWeight: FontWeight.w400,
+                                        //   ),
+                                        // ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Container(
+                                    width: 70,
+                                    height: 70,
+                                    decoration: BoxDecoration(
+                                      color: AppColor.background,
+                                      borderRadius: BorderRadius.circular(50),
+                                      // border: Border.all(
+                                      //   width: 1,
+                                      //   color: AppColor.textColor,
+                                      // ),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.transcribe),
+                                          color: AppColor.fieldColor,
+                                          iconSize: 26,
+                                        ),
+                                        // Text(
+                                        //   "",
+                                        //   style: TextStyle(
+                                        //     color: AppColor.fieldColor,
+                                        //     fontSize: 15,
+                                        //     fontWeight: FontWeight.w400,
+                                        //   ),
+                                        // ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(top: 20),
-                    margin: EdgeInsets.only(
-                      bottom: 15,
-                    ),
-                    width: 320,
-                    height: 170,
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 235, 216, 159),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //     color: AppColor.fieldColor,
-                        //     offset: Offset(2.0, 2.0),
-                        //     blurRadius: 2.0,
-                        //     spreadRadius: 1.0,
-                        //   ),
-                        // ],
-                        image: DecorationImage(
-                            image: AssetImage(
-                                "images/tong-hop-nhung-show-truyen-hinh-thuc-te-giup-nang-trinh-tieng-anh-10 (1).jpg"),
-                            fit: BoxFit.cover),
-                        border: Border.all(
-                          width: 1,
-                          color: AppColor.bguser,
+                  );
+                } else {
+                  return Container(
+                    child: Column(
+                      children: [
+                        Center(
+                          child: CircularProgressIndicator(
+                            valueColor:
+                                AlwaysStoppedAnimation(AppColor.fieldColor),
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(27)),
-                  ),
-                  Container(
-                    // padding: EdgeInsets.only(
-                    //   top: 10,
-                    //   bottom: 10,
-                    // ),
-                    margin: EdgeInsets.only(
-                      top: 15,
-                      bottom: 30,
-                    ),
-                    alignment: Alignment.center,
-                    width: 300,
-                    height: 130,
-                    decoration: BoxDecoration(
-                        color: AppColor.background,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          new BoxShadow(
+                        Text(
+                          "Xin vui lòng đợi",
+                          style: TextStyle(
                             color: AppColor.fieldColor,
-                            offset: Offset(1.0, 1.0),
-                            blurRadius: 4.0,
-                            spreadRadius: 1.0,
-                          )
-                        ]),
-
-                    //color: AppColor.background,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          alignment: Alignment.topLeft,
-                          margin: EdgeInsets.only(
-                            left: 10,
-                            top: 5,
-                          ),
-                          child: Text(
-                            "Câu hỏi ...",
-                            style: TextStyle(
-                                fontSize: 17,
-                                color: AppColor.fieldColor,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                            bottom: 40,
-                          ),
-                          alignment: Alignment.center,
-                          child: Text(
-                            "Nội dung câu hỏi",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: AppColor.fieldColor,
-                                fontWeight: FontWeight.w300),
+                            fontSize: 25,
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(
-                            bottom: 10,
-                          ),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              //chuyển đáp án mới show
-                              // showDialog(
-                              //   context: context,
-                              //   builder: (context) => AlertDialog(
-                              //     content: Text(
-                              //         'Bạn có chắc muốn chọn đáp án này không?'),
-                              //     actions: [
-                              //       TextButton(
-                              //         onPressed: () {},
-                              //         child: Text('OK'),
-                              //       ),
-                              //       TextButton(
-                              //         onPressed: () {
-                              //           Navigator.pop(context);
-                              //         },
-                              //         child: Text('Cancel'),
-                              //       ),
-                              //     ],
-                              //   ),
-                              // );
-                            },
-                            child: Text(
-                              'Đáp án A',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                fontSize: 17,
-                                color: AppColor.fieldColor,
-                              ),
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(AppColor.background),
-                              minimumSize:
-                                  MaterialStatePropertyAll(Size(320, 40)),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            bottom: 10,
-                          ),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // showDialog(
-                              //   context: context,
-                              //   builder: (context) => AlertDialog(
-                              //     content: Text(
-                              //         'Bạn có chắc muốn chọn đáp án này không?'),
-                              //     actions: [
-                              //       TextButton(
-                              //         onPressed: () {},
-                              //         child: Text('OK'),
-                              //       ),
-                              //       TextButton(
-                              //         onPressed: () {
-                              //           Navigator.pop(context);
-                              //         },
-                              //         child: Text('Cancel'),
-                              //       ),
-                              //     ],
-                              //   ),
-                              // );
-                            },
-                            child: Text(
-                              'Đáp án B',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                fontSize: 17,
-                                color: AppColor.fieldColor,
-                              ),
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(AppColor.background),
-                              minimumSize:
-                                  MaterialStatePropertyAll(Size(320, 40)),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            bottom: 10,
-                          ),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // showDialog(
-                              //   context: context,
-                              //   builder: (context) => AlertDialog(
-                              //     content: Text(
-                              //         'Bạn có chắc muốn chọn đáp án này không?'),
-                              //     actions: [
-                              //       TextButton(
-                              //         onPressed: () {},
-                              //         child: Text('OK'),
-                              //       ),
-                              //       TextButton(
-                              //         onPressed: () {
-                              //           Navigator.pop(context);
-                              //         },
-                              //         child: Text('Cancel'),
-                              //       ),
-                              //     ],
-                              //   ),
-                              // );
-                            },
-                            child: Text(
-                              'Đáp án C',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                fontSize: 17,
-                                color: AppColor.fieldColor,
-                              ),
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(AppColor.background),
-                              minimumSize:
-                                  MaterialStatePropertyAll(Size(320, 40)),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            bottom: 10,
-                          ),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // showDialog(
-                              //   context: context,
-                              //   builder: (context) => AlertDialog(
-                              //     content: Text(
-                              //         'Bạn có chắc muốn chọn đáp án này không?'),
-                              //     actions: [
-                              //       TextButton(
-                              //         onPressed: () {},
-                              //         child: Text('OK'),
-                              //       ),
-                              //       TextButton(
-                              //         onPressed: () {
-                              //           Navigator.pop(context);
-                              //         },
-                              //         child: Text('Cancel'),
-                              //       ),
-                              //     ],
-                              //   ),
-                              // );
-                            },
-                            child: Text(
-                              'Đáp án D',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                fontSize: 17,
-                                color: AppColor.fieldColor,
-                              ),
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(AppColor.background),
-                              minimumSize:
-                                  MaterialStatePropertyAll(Size(320, 40)),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30)),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(
-                      top: 7,
-                    ),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 15,
-                            top: 15,
-                          ),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.contrast_outlined),
-                                  color: AppColor.textColor,
-                                ),
-                              ],
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(AppColor.fieldColor),
-                              minimumSize:
-                                  MaterialStatePropertyAll(Size(10, 30)),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 15,
-                            top: 15,
-                          ),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.groups_outlined),
-                                  color: AppColor.textColor,
-                                ),
-                              ],
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(AppColor.fieldColor),
-                              //minimumSize: MaterialStatePropertyAll(Size(20, 10)),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 15,
-                            top: 15,
-                          ),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.autorenew_rounded),
-                                  color: AppColor.textColor,
-                                ),
-                              ],
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(AppColor.fieldColor),
-                              //minimumSize: MaterialStatePropertyAll(Size(20, 10)),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 15,
-                            top: 15,
-                          ),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.phone_in_talk_outlined),
-                                  color: AppColor.textColor,
-                                ),
-                              ],
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(AppColor.fieldColor),
-                              //minimumSize: MaterialStatePropertyAll(Size(20, 10)),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                  );
+                }
+              },
             ),
           ),
         ),

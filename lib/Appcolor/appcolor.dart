@@ -1,4 +1,5 @@
 import 'package:flutter/animation.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppColor {
   static final background = Color(0xFF232431);
@@ -17,4 +18,5 @@ class AppColor {
   static final textColor = Color(0xff222C2F);
   static final bguser = Color(0x19FFF5F5);
   static final bluebtn3 = Color(0x00191951);
+  static final green = Color(0xFF21BD33);
 }
