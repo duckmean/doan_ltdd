@@ -1,11 +1,13 @@
 // ignore_for_file: unused_import
 
 import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
+import 'package:doan_ltdd/pages/payment/vip_user.dart';
 import 'package:doan_ltdd/provider/auth_provider.dart';
+import 'package:doan_ltdd/utils/drawer.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
+import 'package:doan_ltdd/utils/drawer.dart';
 import '../../Appcolor/appcolor.dart';
 import '../login/login_screen.dart';
 import '../payment/getmore_coins.dart';
@@ -68,29 +70,39 @@ class _MainPageState extends State<MainPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => GetMoreCoins(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        "QuizzCoin: 5000",
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: AppColor.textColor,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: AppColor.background,
+                        border: Border.all(
+                          width: 0.1,
+                          color: AppColor.fieldColor,
                         ),
+                        borderRadius: BorderRadius.circular(30),
                       ),
-                      style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(Size(100, 20)),
-                        backgroundColor:
-                            MaterialStatePropertyAll(AppColor.fieldColor),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50)),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => GetMoreCoins(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "QuizzCoin: 5000",
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: AppColor.fieldColor,
+                          ),
+                        ),
+                        style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all(Size(120, 40)),
+                          // backgroundColor:
+                          //     MaterialStatePropertyAll(AppColor.background),
+                          // shape: MaterialStateProperty.all(
+                          //   RoundedRectangleBorder(
+                          //       borderRadius: BorderRadius.circular(30)),
+                          // ),
                         ),
                       ),
                     ),
@@ -102,8 +114,7 @@ class _MainPageState extends State<MainPage> {
                 height: 250,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(
-                            "images/tong-hop-nhung-show-truyen-hinh-thuc-te-giup-nang-trinh-tieng-anh-10 (1).jpg"),
+                        image: AssetImage("images/logo.jpg"),
                         fit: BoxFit.cover),
                     border: Border.all(
                       width: 3,
@@ -321,6 +332,18 @@ class _MainPageState extends State<MainPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => GetMoreCoins(),
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.diamond),
+                    title: Text("Mua VIP"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => VipUserScreen(),
                         ),
                       );
                     },

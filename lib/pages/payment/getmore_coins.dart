@@ -79,8 +79,7 @@ class _GetMoreCoinsState extends State<GetMoreCoins> {
                       height: 250,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage(
-                                  "images/tong-hop-nhung-show-truyen-hinh-thuc-te-giup-nang-trinh-tieng-anh-10 (1).jpg"),
+                              image: AssetImage("images/logo.jpg"),
                               fit: BoxFit.cover),
                           border: Border.all(
                             width: 3,

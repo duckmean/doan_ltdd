@@ -55,9 +55,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 decoration: BoxDecoration(
                   color: Color.fromARGB(255, 235, 216, 159),
                   image: DecorationImage(
-                      image: AssetImage(
-                          "images/tong-hop-nhung-show-truyen-hinh-thuc-te-giup-nang-trinh-tieng-anh-10 (1).jpg"),
-                      fit: BoxFit.cover),
+                      image: AssetImage("images/logo.jpg"), fit: BoxFit.cover),
                   border: Border.all(
                     width: 3,
                     color: AppColor.fieldColor,
