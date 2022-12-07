@@ -99,50 +99,53 @@ class _RegisterState extends State<Register> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(10),
                         child: TextField(
                           onChanged: (value) {
                             _name = value;
                           },
                           decoration: InputDecoration(
-                            hintText: 'Tên ingame',
-                            labelText: 'Nhập tên ingame',
-                            border: OutlineInputBorder(),
+                            hintText: 'Nhập tên ingame',
+                            labelText: 'Tên ingame',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
                             prefixIcon: Icon(Icons.person),
                           ),
                         ),
                       ),
                       Container(
-                        padding: const EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(10),
                         child: TextField(
                           onChanged: (value) {
                             _email = value;
                           },
                           decoration: InputDecoration(
                             hintText: 'abc@gmail.com',
-                            labelText: 'Nhập Email',
-                            border: OutlineInputBorder(),
+                            labelText: 'Email',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
                             prefixIcon: Icon(Icons.email),
                           ),
                         ),
                       ),
                       Container(
-                        padding: const EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(10),
                         child: TextField(
                           onChanged: (value) {
                             _pasword = value;
                           },
                           obscureText: true,
                           decoration: InputDecoration(
-                            hintText: 'Mật khẩu',
-                            labelText: 'Nhập Mật khẩu',
-                            border: OutlineInputBorder(),
+                            hintText: 'Nhập mật khẩu',
+                            labelText: 'Mật khẩu',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
                             prefixIcon: Icon(Icons.password),
                           ),
                         ),
                       ),
                       Container(
-                        padding: const EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(10),
                         child: TextField(
                           onTap: () {
                             if (checkPassWord() == false) {
@@ -151,7 +154,7 @@ class _RegisterState extends State<Register> {
                                   backgroundColor: AppColor.redbtn2,
                                   content: Text(
                                       "Xác thực lại mật khẩu không chính xác"),
-                                  duration: Duration(seconds: 1),
+                                  duration: Duration(seconds: 2),
                                 ),
                               );
                             }
@@ -159,9 +162,10 @@ class _RegisterState extends State<Register> {
                           controller: _checkPassController,
                           obscureText: true,
                           decoration: InputDecoration(
-                            hintText: 'Mật khẩu xác nhận',
-                            labelText: 'Nhập Mật khẩu xác nhận',
-                            border: OutlineInputBorder(),
+                            hintText: 'Nhập mật khẩu xác nhận',
+                            labelText: 'Mật khẩu xác nhận',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
                             prefixIcon: Icon(Icons.password),
                           ),
                         ),
@@ -177,41 +181,41 @@ class _RegisterState extends State<Register> {
                       //     ),
                       //   ),
                       // ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          TextButton(
-                            child: const Text(
-                              'Quay lại',
-                              style: TextStyle(fontSize: 17),
-                            ),
-                            onPressed: () {
-                              nextScreen(
-                                context,
-                                LoginScreen(),
-                              );
-                            },
-                          )
-                        ],
-                      ),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.end,
+                      //   children: <Widget>[
+                      //     TextButton(
+                      //       child: const Text(
+                      //         'Quay lại',
+                      //         style: TextStyle(fontSize: 17),
+                      //       ),
+                      //       onPressed: () {
+                      //         nextScreen(
+                      //           context,
+                      //           LoginScreen(),
+                      //         );
+                      //       },
+                      //     )
+                      //   ],
+                      // ),
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text('Đăng ký thành công'),
-                                  content: Text('Quay lại trang đăng nhập'),
-                                  //     Navigator.pop(context);
-                                  //   },
-                                  //   child: Text('OK'),
-                                  // ),
-                                  // ],
-                                );
-                              },
-                            );
+                            // showDialog(
+                            //   context: context,
+                            //   builder: (context) {
+                            //     return AlertDialog(
+                            //       title: Text('Đăng ký thành công'),
+                            //       content: Text('Quay lại trang đăng nhập'),
+                            //       //     Navigator.pop(context);
+                            //       //   },
+                            //       //   child: Text('OK'),
+                            //       // ),
+                            //       // ],
+                            //     );
+                            //   },
+                            // );
                             createAccount();
                           }, //bo sung 2
                           child: const Text('Đăng Ký',
@@ -221,13 +225,27 @@ class _RegisterState extends State<Register> {
                             padding: MaterialStateProperty.all(
                                 const EdgeInsets.all(15)),
                             fixedSize:
-                                MaterialStateProperty.all(const Size(150, 60)),
+                                MaterialStateProperty.all(const Size(350, 60)),
                             shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(15),
                               ),
                             ),
                           ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(right: 5),
+                        alignment: Alignment.bottomRight,
+                        child: FloatingActionButton(
+                          onPressed: () {
+                            nextScreen(context, LoginScreen());
+                          },
+                          backgroundColor: AppColor.bluebtn2,
+                          child: Icon(Icons.reply_outlined),
                         ),
                       ),
                     ],

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -51,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
         saveDataLoginFromSharedPreferences();
-        nextScreen(context, MainPage());
+        nextScreen(context, MainPageScreen());
       } else {
         errorSnackbar(context, responseMap.values.first);
       }
@@ -149,13 +150,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: BoxDecoration(
                       color: Color.fromARGB(255, 255, 255, 255),
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(40),
-                          topRight: Radius.circular(40))),
+                          topLeft: Radius.circular(50),
+                          topRight: Radius.circular(50))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(10),
                         child: TextField(
                           onChanged: (value) {
                             _email = value;
@@ -164,7 +165,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           decoration: InputDecoration(
                             hintText: 'Nhập email',
                             labelText: 'Email',
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
                             prefixIcon: Icon(Icons.person),
                           ),
                         ),
@@ -179,28 +181,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           decoration: InputDecoration(
                             hintText: 'Nhập mật khẩu',
                             labelText: 'Mật khẩu',
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
                             prefixIcon: Icon(Icons.password),
                           ),
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          TextButton(
-                            child: const Text(
-                              'Quên mật khẩu',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                            onPressed: () {
-                              nextScreen(
-                                context,
-                                Forget_password1(),
-                              );
-                            },
-                          )
-                        ],
-                      ),
+
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(
@@ -223,10 +210,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             padding: MaterialStateProperty.all(
                                 const EdgeInsets.all(15)),
                             fixedSize:
-                                MaterialStateProperty.all(const Size(350, 60)),
+                                MaterialStateProperty.all(const Size(250, 60)),
                             shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(15),
                               ),
                             ),
                           ),
@@ -238,12 +225,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          const Text('Nếu bạn chưa có tài khoản?',
+                          const Text('Bạn chưa có tài khoản?',
                               style: TextStyle(fontSize: 15)),
                           TextButton(
                             child: const Text(
                               'Đăng ký ngay!',
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 17),
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -256,6 +243,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           )
                         ],
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: TextButton(
+                          child: const Text(
+                            'Quên mật khẩu',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          onPressed: () {
+                            nextScreen(
+                              context,
+                              Forget_password1(),
+                            );
+                          },
+                        ),
+                      ),
                       // Row(
                       //   mainAxisAlignment: MainAxisAlignment.center,
                       //   children: <Widget>[
@@ -266,7 +268,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       //   ],
                       // ),
                       const SizedBox(
-                        height: 50,
+                        height: 30,
                       ),
                       RoundedLoadingButton(
                         onPressed: () {
@@ -277,6 +279,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: MediaQuery.of(context).size.width * 0.80,
                         elevation: 0,
                         borderRadius: 25,
+                        animateOnTap: mounted,
                         color: Colors.red,
                         child: Wrap(
                           children: const [
@@ -392,7 +395,7 @@ class _LoginScreenState extends State<LoginScreen> {
   // handle after signin
   handleAfterSignIn() {
     Future.delayed(const Duration(milliseconds: 1000)).then((value) {
-      nextScreenReplace(context, const MainPage());
+      nextScreenReplace(context, const HomePage());
     });
   }
 }

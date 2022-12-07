@@ -1,3 +1,4 @@
+import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -60,7 +61,7 @@ endDrawer() {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MainPage(),
+                      builder: (context) => HomePage(),
                     ),
                   );
                 },

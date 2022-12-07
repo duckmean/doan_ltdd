@@ -1,7 +1,11 @@
+import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/UI/main_page.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../Appcolor/appcolor.dart';
+import '../UI/updateinfo_page.dart';
+import '../payment/shop.dart';
 import 'login_screen.dart';
 
 class UpdateInfomation extends StatefulWidget {
@@ -68,11 +72,12 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                     children: [
                       Container(
                         padding: const EdgeInsets.all(15),
-                        child: const TextField(
+                        child: TextField(
                           decoration: InputDecoration(
                             hintText: 'Họ Và Tên',
                             labelText: 'Nhập Họ Và Tên',
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
                             prefixIcon: Icon(Icons.edit),
                           ),
                         ),
@@ -87,7 +92,7 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                             ),
                             onPressed: () => nextScreen(
                               context,
-                              MainPage(),
+                              HomePage(),
                             ),
                           )
                         ],
@@ -106,7 +111,7 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                                     TextButton(
                                       onPressed: () => nextScreen(
                                         context,
-                                        MainPage(),
+                                        HomePage(),
                                       ),
                                       child: Text('OK'),
                                     ),

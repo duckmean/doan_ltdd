@@ -1,4 +1,5 @@
 import 'package:doan_ltdd/Appcolor/appcolor.dart';
+import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/UI/main_page.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
@@ -111,7 +112,7 @@ class _Change_passwordState extends State<Change_password> {
                             ),
                             onPressed: () => nextScreen(
                               context,
-                              MainPage(),
+                              HomePage(),
                             ),
                           )
                         ],
@@ -121,7 +122,7 @@ class _Change_passwordState extends State<Change_password> {
                         child: ElevatedButton(
                           onPressed: () => nextScreen(
                             context,
-                            MainPage(),
+                            HomePage(),
                           ), //bo sung 2
                           child: const Text('Xác nhận',
                               style: TextStyle(fontSize: 20)),

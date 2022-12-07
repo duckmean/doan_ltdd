@@ -1,36 +1,24 @@
-import 'package:doan_ltdd/Appcolor/appcolor.dart';
-import 'package:doan_ltdd/pages/UI/home_page.dart';
-import 'package:doan_ltdd/pages/login/change_password.dart';
-import 'package:doan_ltdd/pages/login/forget_password2.dart';
-import 'package:doan_ltdd/pages/login/update_info.dart';
-import 'package:doan_ltdd/utils/drawer.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:doan_ltdd/pages/payment/getmore_coins.dart';
+import 'package:doan_ltdd/pages/payment/vip_user.dart';
+import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
+import '../../Appcolor/appcolor.dart';
 import '../../provider/auth_provider.dart';
 import '../../provider/sign_in_provider.dart';
+import '../UI/home_page.dart';
+import '../UI/updateinfo_page.dart';
 import '../login/login_screen.dart';
-import '../payment/getmore_coins.dart';
-import '../payment/shop.dart';
-import '../payment/vip_user.dart';
-import 'main_page.dart';
 
-class UpdateInfomationScreen extends StatefulWidget {
-  const UpdateInfomationScreen({super.key});
+class ShopSreen extends StatefulWidget {
+  const ShopSreen({super.key});
 
   @override
-  State<UpdateInfomationScreen> createState() => _UpdateInfomationScreenState();
+  State<ShopSreen> createState() => _ShopSreenState();
 }
 
-class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
-  List<Widget> lsScreen = [
-    HomePage(),
-    ShopSreen(),
-    UpdateInfomationScreen(),
-  ];
+class _ShopSreenState extends State<ShopSreen> {
   int selectedIndex = 0;
   void onTapSelected(int index) {
     setState(() {
@@ -38,31 +26,50 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
     });
   }
 
+  List<Widget> lsScreen = [
+    HomePage(),
+    ShopSreen(),
+    UpdateInfomationScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final sp = context.watch<SignInProvider>();
     final sg = context.watch<AuthProvider>();
     return Scaffold(
+      backgroundColor: AppColor.background,
       appBar: AppBar(
-        elevation: 0,
         backgroundColor: AppColor.background,
         toolbarHeight: 40,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("images/background.png"), fit: BoxFit.cover),
+            image: AssetImage("images/background.png"),
+            fit: BoxFit.cover,
+          ),
         ),
-        child: Center(
+        child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              SizedBox(
+                height: 50,
+              ),
               Container(
+                margin: EdgeInsets.only(
+                  top: 34,
+                ),
                 width: 250,
                 height: 250,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage("images/logo.jpg"),
+                        image: AssetImage('images/logo.jpg'),
                         fit: BoxFit.cover),
                     border: Border.all(
                       width: 3,
@@ -70,75 +77,66 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                     ),
                     borderRadius: BorderRadius.circular(150)),
               ),
+              SizedBox(
+                height: 50,
+              ),
               Container(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Change_password(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'Đổi mật khẩu',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: AppColor.fieldColor,
-                          ),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(AppColor.bluebtn2),
-                          minimumSize: MaterialStatePropertyAll(Size(250, 40)),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          overlayColor:
-                              MaterialStatePropertyAll(AppColor.lightblue1),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => UpdateInfomation(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'Đổi Họ Tên',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: AppColor.fieldColor,
-                          ),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(AppColor.redbtn2),
-                          minimumSize: MaterialStatePropertyAll(Size(250, 40)),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          overlayColor:
-                              MaterialStatePropertyAll(AppColor.bluebtn2),
-                        ),
-                      ),
-                    ),
-                  ],
+                margin: EdgeInsets.only(
+                  top: 20,
                 ),
+                child: Column(children: [
+                  Container(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        nextScreen(context, VipUserScreen());
+                      },
+                      child: Text(
+                        'Mua VIP',
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(AppColor.redbtn2),
+                        minimumSize: MaterialStatePropertyAll(Size(350, 50)),
+                        shape: MaterialStatePropertyAll(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        nextScreen(context, GetMoreCoins());
+                      },
+                      child: Text(
+                        'Nạp QuizzCoin',
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(AppColor.bluebtn2),
+                        minimumSize: MaterialStatePropertyAll(Size(350, 50)),
+                        shape: MaterialStatePropertyAll(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
               )
             ],
           ),
@@ -224,18 +222,18 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                       );
                     },
                   ),
-                  // ListTile(
-                  //   leading: Icon(Icons.contacts),
-                  //   title: Text("Cập nhật thông tin"),
-                  //   onTap: () {
-                  //     Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //         builder: (context) => UpdateInfomationScreen(),
-                  //       ),
-                  //     );
-                  //   },
-                  // ),
+                  ListTile(
+                    leading: Icon(Icons.contacts),
+                    title: Text("Cập nhật thông tin"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UpdateInfomationScreen(),
+                        ),
+                      );
+                    },
+                  ),
                   ListTile(
                     leading: Icon(Icons.logout_outlined),
                     title: Text("Sign out"),

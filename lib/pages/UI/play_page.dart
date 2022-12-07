@@ -2,6 +2,7 @@
 
 import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import 'package:doan_ltdd/pages/UI/field_page.dart';
+import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:doan_ltdd/provider/quiz.dart';
 import '../login/login_screen.dart';
@@ -227,6 +228,9 @@ class _PlayPageState extends State<PlayPage> {
                                   return GestureDetector(
                                     onTap: () {
                                       setState(() {
+                                        optionsColor[index] =
+                                            AppColor.lightblackbtn;
+                                        Future.delayed(Duration(seconds: 1));
                                         if (answer.toString() ==
                                             optionsList[index].toString()) {
                                           optionsColor[index] = AppColor.green;
@@ -266,7 +270,7 @@ class _PlayPageState extends State<PlayPage> {
                                                           .push(
                                                         MaterialPageRoute(
                                                           builder: (context) =>
-                                                              MainPage(),
+                                                              HomePage(),
                                                         ),
                                                       );
                                                     },

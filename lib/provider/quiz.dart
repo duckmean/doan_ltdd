@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-var link = "https://opentdb.com/api.php?amount=20";
+var link = "https://opentdb.com/api.php?amount=40";
 
 getQuiz() async {
   var res = await http.get(Uri.parse(link));
@@ -10,5 +10,16 @@ getQuiz() async {
     var data = jsonDecode(res.body.toString());
     print("data is loaded");
     return data;
+  }
+}
+
+class Question {
+  final String id;
+  final String question;
+  final String option;
+  Question({required this.id, required this.question, required this.option});
+  @override
+  String toString() {
+    return 'Question(id:$id, question:$question, option:$option)';
   }
 }

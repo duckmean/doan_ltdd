@@ -1,3 +1,4 @@
+import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -195,7 +196,7 @@ class _VipUserScreenState extends State<VipUserScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MainPage(),
+                          builder: (context) => HomePage(),
                         ),
                       );
                     },
