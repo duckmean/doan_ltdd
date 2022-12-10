@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Appcolor/appcolor.dart';
+import '../../utils/next_screen.dart';
 import 'forget_password2.dart';
 import 'login_screen.dart';
 
@@ -72,11 +74,13 @@ class _Forget_password1State extends State<Forget_password1> {
                                 flex: 4,
                                 child: Container(
                                   padding: const EdgeInsets.all(15),
-                                  child: const TextField(
+                                  child: TextField(
                                     decoration: InputDecoration(
                                       hintText: 'Nhập Email',
                                       labelText: 'Email',
-                                      border: OutlineInputBorder(),
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
                                       prefixIcon: Icon(Icons.email),
                                     ),
                                   ),
@@ -113,32 +117,44 @@ class _Forget_password1State extends State<Forget_password1> {
 
                       Container(
                         padding: const EdgeInsets.all(15),
-                        child: const TextField(
+                        child: TextField(
                           decoration: InputDecoration(
                             hintText: 'Nhập mã xác nhận Email',
                             labelText: 'Nhập mã xác nhận Email',
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
                             prefixIcon: Icon(Icons.check),
                           ),
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          TextButton(
-                            child: const Text(
-                              'Quay lại',
-                              style: TextStyle(fontSize: 17),
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginScreen(),
-                                  ));
-                            },
-                          ),
-                        ],
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.end,
+                      //   children: <Widget>[
+                      //     TextButton(
+                      //       child: const Text(
+                      //         'Quay lại',
+                      //         style: TextStyle(fontSize: 17),
+                      //       ),
+                      //       onPressed: () {
+                      //         Navigator.push(
+                      //             context,
+                      //             MaterialPageRoute(
+                      //               builder: (context) => LoginScreen(),
+                      //             ));
+                      //       },
+                      //     ),
+                      //   ],
+                      // ),
+                      Container(
+                        margin: EdgeInsets.only(right: 5),
+                        alignment: Alignment.bottomRight,
+                        child: FloatingActionButton(
+                          onPressed: () {
+                            nextScreen(context, LoginScreen());
+                          },
+                          backgroundColor: AppColor.bluebtn2,
+                          child: Icon(Icons.reply_outlined),
+                        ),
                       ),
                       Container(
                         padding: const EdgeInsets.all(15),
