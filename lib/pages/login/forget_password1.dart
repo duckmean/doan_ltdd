@@ -72,13 +72,11 @@ class _Forget_password1State extends State<Forget_password1> {
                                 flex: 4,
                                 child: Container(
                                   padding: const EdgeInsets.all(15),
-                                  child: TextField(
+                                  child: const TextField(
                                     decoration: InputDecoration(
                                       hintText: 'Nhập Email',
                                       labelText: 'Email',
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
+                                      border: OutlineInputBorder(),
                                       prefixIcon: Icon(Icons.email),
                                     ),
                                   ),
@@ -115,12 +113,11 @@ class _Forget_password1State extends State<Forget_password1> {
 
                       Container(
                         padding: const EdgeInsets.all(15),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             hintText: 'Nhập mã xác nhận Email',
                             labelText: 'Nhập mã xác nhận Email',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15)),
+                            border: OutlineInputBorder(),
                             prefixIcon: Icon(Icons.check),
                           ),
                         ),
