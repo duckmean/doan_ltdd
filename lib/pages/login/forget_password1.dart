@@ -53,123 +53,126 @@ class _Forget_password1State extends State<Forget_password1> {
                   ),
                 ),
               ),
-              // Expanded(
-              //   flex: 6,
-              //   child: Container(
-              //     width: double.infinity,
-              //     decoration: BoxDecoration(
-              //         color: Colors.white,
-              //         borderRadius: BorderRadius.only(
-              //             topLeft: Radius.circular(40),
-              //             topRight: Radius.circular(40))),
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         Container(
-              //           child: Row(
-              //             children: <Widget>[
-              //               Expanded(
-              //                   flex: 4,
-              //                   child: Container(
-              //                     padding: const EdgeInsets.all(15),
-              //                     child: const TextField(
-              //                       decoration: InputDecoration(
-              //                         hintText: 'Nhập Email',
-              //                         labelText: 'Email',
-              //                         border: OutlineInputBorder(),
-              //                         prefixIcon: Icon(Icons.email),
-              //                       ),
-              //                     ),
-              //                   )),
-              //               Expanded(
-              //                 flex: 1,
-              //                 child: TextButton(
-              //                   child: const Text('Gửi'),
-              //                   onPressed: () {},
-              //                   style: ButtonStyle(
-              //                     backgroundColor:
-              //                         MaterialStateProperty.all<Color>(
-              //                             Colors.blue),
-              //                     foregroundColor:
-              //                         MaterialStateProperty.all<Color>(
-              //                             Colors.white),
-              //                   ),
-              //                 ),
-              //               ),
-              //             ],
-              //           ),
-              //         ),
-              //         // Container(
-              //         //   padding: const EdgeInsets.all(15),
-              //         //   child: const TextField(
-              //         //     decoration: InputDecoration(
-              //         //       hintText: 'Nhập Email',
-              //         //       labelText: 'Email',
-              //         //       border: OutlineInputBorder(),
-              //         //       prefixIcon: Icon(Icons.email),
-              //         //     ),
-              //         //   ),
-              //         // ),
+              Expanded(
+                flex: 6,
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40),
+                          topRight: Radius.circular(40))),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(
+                                flex: 4,
+                                child: Container(
+                                  padding: const EdgeInsets.all(15),
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Nhập Email',
+                                      labelText: 'Email',
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      prefixIcon: Icon(Icons.email),
+                                    ),
+                                  ),
+                                )),
+                            Expanded(
+                              flex: 1,
+                              child: TextButton(
+                                child: const Text('Gửi'),
+                                onPressed: () {},
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.blue),
+                                  foregroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.white),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // Container(
+                      //   padding: const EdgeInsets.all(15),
+                      //   child: const TextField(
+                      //     decoration: InputDecoration(
+                      //       hintText: 'Nhập Email',
+                      //       labelText: 'Email',
+                      //       border: OutlineInputBorder(),
+                      //       prefixIcon: Icon(Icons.email),
+                      //     ),
+                      //   ),
+                      // ),
 
-              //         Container(
-              //           padding: const EdgeInsets.all(15),
-              //           child: const TextField(
-              //             decoration: InputDecoration(
-              //               hintText: 'Nhập mã xác nhận Email',
-              //               labelText: 'Nhập mã xác nhận Email',
-              //               border: OutlineInputBorder(),
-              //               prefixIcon: Icon(Icons.check),
-              //             ),
-              //           ),
-              //         ),
-              //         Row(
-              //           mainAxisAlignment: MainAxisAlignment.end,
-              //           children: <Widget>[
-              //             TextButton(
-              //               child: const Text(
-              //                 'Quay lại',
-              //                 style: TextStyle(fontSize: 17),
-              //               ),
-              //               onPressed: () {
-              //                 Navigator.push(
-              //                     context,
-              //                     MaterialPageRoute(
-              //                       builder: (context) => LoginScreen(),
-              //                     ));
-              //               },
-              //             ),
-              //           ],
-              //         ),
-              //         Container(
-              //           padding: const EdgeInsets.all(15),
-              //           child: ElevatedButton(
-              //             onPressed: () {
-              //               Navigator.push(
-              //                   context,
-              //                   MaterialPageRoute(
-              //                     builder: (context) => Forget_password2(),
-              //                   ));
-              //             }, //bo sung 2
-              //             child: const Text('Xác nhận',
-              //                 style: TextStyle(fontSize: 20)),
-              //             style: ButtonStyle(
-              //               overlayColor: MaterialStateProperty.all(Colors.red),
-              //               padding: MaterialStateProperty.all(
-              //                   const EdgeInsets.all(15)),
-              //               fixedSize:
-              //                   MaterialStateProperty.all(const Size(150, 60)),
-              //               shape: MaterialStateProperty.all(
-              //                 RoundedRectangleBorder(
-              //                   borderRadius: BorderRadius.circular(10),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // )
+                      Container(
+                        padding: const EdgeInsets.all(15),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Nhập mã xác nhận Email',
+                            labelText: 'Nhập mã xác nhận Email',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                            prefixIcon: Icon(Icons.check),
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          TextButton(
+                            child: const Text(
+                              'Quay lại',
+                              style: TextStyle(fontSize: 17),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginScreen(),
+                                  ));
+                            },
+                          ),
+                        ],
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(15),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Forget_password2(),
+                                ));
+                          }, //bo sung 2
+                          child: const Text('Xác nhận',
+                              style: TextStyle(fontSize: 20)),
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.all(Colors.red),
+                            padding: MaterialStateProperty.all(
+                                const EdgeInsets.all(15)),
+                            fixedSize:
+                                MaterialStateProperty.all(const Size(150, 60)),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
