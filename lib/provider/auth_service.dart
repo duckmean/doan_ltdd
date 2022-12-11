@@ -27,4 +27,14 @@ class AuthService {
     print(response.body);
     return response;
   }
+
+  static Future<http.Response> getInfo(String email, String name) async {
+    Map data = {"email": email, "name": name};
+    var body = json.encode(data);
+    var url = Uri.parse(baseURL + 'auth/info');
+    http.Response response =
+        await http.post(url, headers: hearders, body: body);
+    print(response.body);
+    return response;
+  }
 }

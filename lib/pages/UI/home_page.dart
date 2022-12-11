@@ -3,11 +3,11 @@
 import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
 import 'package:doan_ltdd/pages/payment/vip_user.dart';
 import 'package:doan_ltdd/provider/auth_provider.dart';
-import 'package:doan_ltdd/utils/drawer.dart';
+
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:doan_ltdd/utils/drawer.dart';
+
 import '../../Appcolor/appcolor.dart';
 import '../login/login_screen.dart';
 import '../payment/getmore_coins.dart';
@@ -24,16 +24,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int selectedIndex = 0;
-  void onTapSelected(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
-
   Future getData() async {
     final sp = context.read<AuthProvider>();
-    sp.getDataLoginFromSharedPreferences();
+    sp.getDataFromSharedPreferences();
   }
 
   @override
@@ -45,7 +38,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final sp = context.watch<SignInProvider>();
-    final sg = context.watch<AuthProvider>();
+    final lg = context.watch<AuthProvider>();
+    //final sg = context.watch<AuthProvider>();
 
     return Scaffold(
       backgroundColor: AppColor.background,
@@ -312,24 +306,23 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.zero,
                 children: <Widget>[
                   UserAccountsDrawerHeader(
-                    accountName: Text("${sp.name}"),
-                    accountEmail: Text("${sp.email}"),
-                    // currentAccountPicture: CircleAvatar(
-                    //   backgroundColor: AppColor.fieldColor,
-                    //   child: Text(
-                    //     "P",
-                    //     style: TextStyle(
-                    //       fontSize: 40.0,
-                    //       color: AppColor.textColor,
-                    //     ),
-                    //   ),
-                    // ),
-                    currentAccountPicture: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      backgroundImage: NetworkImage("${sp.imageUrl}"),
-                      radius: 50,
-                    ),
-                  ),
+                      accountName: Text("${lg.name}"),
+                      accountEmail: Text("${lg.email}"),
+                      // currentAccountPicture: CircleAvatar(
+                      //   backgroundColor: AppColor.fieldColor,
+                      //   child: Text(
+                      //     "P",
+                      //     style: TextStyle(
+                      //       fontSize: 40.0,
+                      //       color: AppColor.textColor,
+                      //     ),
+                      //   ),
+                      // ),
+                      currentAccountPicture: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        backgroundImage: NetworkImage("${sp.imageUrl}"),
+                        radius: 50,
+                      )),
                   ListTile(
                     leading: Icon(Icons.home),
                     title: Text("Home"),

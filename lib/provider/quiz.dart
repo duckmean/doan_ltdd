@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 //api Mạng
-var link = "https://opentdb.com/api.php?amount=40";
+// var link = "https://opentdb.com/api.php?amount=40";
 //api Laravel
-// var link = "http://10.0.2.2:8000/api/questions";
+var link = "http://10.0.2.2:8000/api/questions";
 
 getQuiz() async {
   var res = await http.get(Uri.parse(link));

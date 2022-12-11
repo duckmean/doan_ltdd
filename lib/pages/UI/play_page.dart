@@ -475,6 +475,7 @@ class _PlayPageState extends State<PlayPage> {
                 } else {
                   return Container(
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Center(
                           child: CircularProgressIndicator(

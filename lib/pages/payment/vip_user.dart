@@ -2,13 +2,12 @@ import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import '../UI/main_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../Appcolor/appcolor.dart';
 import '../../provider/auth_provider.dart';
 import '../../provider/sign_in_provider.dart';
-
+import '../UI/main_page.dart';
 import '../UI/updateinfo_page.dart';
 import '../login/login_screen.dart';
 import 'getmore_coins.dart';

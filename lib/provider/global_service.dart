@@ -2,9 +2,9 @@ import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-//link dien thoai ao
+//URL Điện Thoại Ảo (Giả Lập)
 const String baseURL = "http://10.0.2.2:8000/api/";
-//link dien thoai thiet
+//URL Điện Thoại Thiệt
 // const String baseURL = "http://192.168.1.100/api/";
 const Map<String, String> hearders = {"Content-Type": "application/json"};
 
