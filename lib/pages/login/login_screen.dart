@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
-
 import 'package:http/http.dart';
+import 'package:doan_ltdd/pages/UI/welcome_page.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../provider/auth_service.dart';
@@ -15,14 +16,11 @@ import '../../provider/global_service.dart';
 import '../UI/main_page.dart';
 import 'forget_password1.dart';
 import 'register.dart';
-import 'package:doan_ltdd/pages/UI/welcome_page.dart';
-
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:doan_ltdd/provider/sign_in_provider.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
+
 import 'package:provider/provider.dart';
-import 'package:doan_ltdd/provider/sign_in_provider.dart';
 import 'package:doan_ltdd/provider/internet_provider.dart';
 import 'package:doan_ltdd/utils/snack_bar.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
@@ -192,12 +190,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(
                           onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => MainPage(),
-                            //   ),
-                            // );
                             Map creds = {'emai': _email, 'password': _password};
                             Provider.of<AuthProvider>(context, listen: false)
                                 .login(creds: creds);

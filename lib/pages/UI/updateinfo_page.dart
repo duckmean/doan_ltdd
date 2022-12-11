@@ -1,13 +1,17 @@
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:doan_ltdd/utils/drawer.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:doan_ltdd/pages/login/forget_password2.dart';
+import 'main_page.dart';
 import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/login/change_password.dart';
-import 'package:doan_ltdd/pages/login/forget_password2.dart';
+
 import 'package:doan_ltdd/pages/login/update_info.dart';
-import 'package:doan_ltdd/utils/drawer.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:provider/provider.dart';
 
 import '../../provider/auth_provider.dart';
@@ -16,7 +20,6 @@ import '../login/login_screen.dart';
 import '../payment/getmore_coins.dart';
 import '../payment/shop.dart';
 import '../payment/vip_user.dart';
-import 'main_page.dart';
 
 class UpdateInfomationScreen extends StatefulWidget {
   const UpdateInfomationScreen({super.key});

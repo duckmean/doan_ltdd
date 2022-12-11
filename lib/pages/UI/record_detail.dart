@@ -1,14 +1,14 @@
 import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
+import '../../utils/next_screen.dart';
+import '../login/login_screen.dart';
+import '../payment/getmore_coins.dart';
+import 'main_page.dart';
 import 'package:doan_ltdd/utils/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Appcolor/appcolor.dart';
 import '../../provider/sign_in_provider.dart';
-import '../../utils/next_screen.dart';
-import '../login/login_screen.dart';
-import '../payment/getmore_coins.dart';
-import 'main_page.dart';
 
 class RecordDetail extends StatefulWidget {
   const RecordDetail({super.key});

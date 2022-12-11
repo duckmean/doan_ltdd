@@ -24,18 +24,6 @@ class _GetMoreCoinsState extends State<GetMoreCoins> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.start,
-            //     children: <Widget>[
-            //       Text(
-            //         '  Nạp Thẻ',
-            //           style: TextStyle(
-            //           color: Color.fromARGB(255, 252, 249, 249),
-            //           fontSize: 40,
-            //           ),
-            //       ),
-            //     ],
-            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
