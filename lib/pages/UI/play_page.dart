@@ -24,6 +24,10 @@ class _PlayPageState extends State<PlayPage> {
   var currentQuestionIndex = 0;
   late Future quizz;
   int points = 0;
+  int i = 1;
+
+  String hearts = "3";
+  int heart = 3;
 
   @override
   void initState() {
@@ -60,24 +64,94 @@ class _PlayPageState extends State<PlayPage> {
     ];
   }
 
-  startTimer() {
+  // startTimer() {
+  //   timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+  //     setState(() {
+  //       if (seconds > 0) {
+  //         seconds--;
+  //       } else {
+  //         timer.cancel();
+  //       }
+  //     });
+  //   });
+  // }
+  bool canceltime = false;
+  startTimer() async {
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
-        if (seconds > 0) {
-          seconds--;
-        } else {
+        if (seconds < 1) {
           timer.cancel();
+          heart--;
+          gotoNextQuestion();
+        } else if (canceltime == true) {
+          timer.cancel();
+          heart--;
+        } else {
+          seconds--;
         }
       });
     });
   }
 
+  // gotoNextQuestion() {
+  //   isLoaded = false;
+  //   currentQuestionIndex++;
+  //   resetColors();
+  //   timer!.cancel();
+  //   seconds = 30;
+  //   startTimer();
+  // }
   gotoNextQuestion() {
     isLoaded = false;
     currentQuestionIndex++;
     resetColors();
     timer!.cancel();
-    seconds = 30;
+    seconds = 5;
+    setState(() {
+      if (heart == 0) {
+        // Navigator.of(context).pushAndRemoveUntil(
+        //     MaterialPageRoute(
+        //       builder: (context) => HomePage(),
+        //     ),
+        //     (route) => false);
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            backgroundColor: AppColor.background,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            title: Text("Thông báo"),
+            content: Text(
+              "Bạn có muốn chơi lại không?",
+              style: TextStyle(
+                color: AppColor.fieldColor,
+              ),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(),
+                      ),
+                    );
+                  },
+                  child: Text("Không")),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => FieldPage(),
+                      ),
+                    );
+                  },
+                  child: Text("OK")),
+            ],
+          ),
+        );
+      }
+    });
     startTimer();
   }
 
@@ -90,6 +164,21 @@ class _PlayPageState extends State<PlayPage> {
       //   backgroundColor: Color(0xFF232431),
       //   toolbarHeight: 40,
       //   elevation: 0,
+      //   title: Text(""),
+      //   actions: [
+      //     Text(
+      //       vies,
+      //       style: TextStyle(
+      //           height: 1.7, fontSize: 20, fontWeight: FontWeight.bold),
+      //     ),
+      //     IconButton(
+      //       icon: const Icon(
+      //         Icons.favorite,
+      //         color: Colors.red,
+      //       ),
+      //       onPressed: () {},
+      //     ),
+      //   ],
       // ),
       body: SafeArea(
         child: Center(
@@ -121,7 +210,7 @@ class _PlayPageState extends State<PlayPage> {
                           height: 40,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
                               alignment: Alignment.center,
@@ -135,7 +224,7 @@ class _PlayPageState extends State<PlayPage> {
                                     width: 1, color: AppColor.fieldColor),
                               ),
                               child: Text(
-                                "Score: ${points}",
+                                "Score: ${points} ",
                                 style: TextStyle(
                                   color: AppColor.fieldColor,
                                   fontSize: 18,
@@ -143,6 +232,9 @@ class _PlayPageState extends State<PlayPage> {
                                 ),
                                 textAlign: TextAlign.center,
                               ),
+                            ),
+                            SizedBox(
+                              width: 50,
                             ),
                             Container(
                               margin: EdgeInsets.only(right: 15),
@@ -164,7 +256,33 @@ class _PlayPageState extends State<PlayPage> {
                                   ),
                                 ],
                               ),
-                            )
+                            ),
+                            SizedBox(
+                              width: 30,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 15),
+                              decoration: BoxDecoration(
+                                color: AppColor.background,
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                    width: 1, color: AppColor.fieldColor),
+                              ),
+                              child: ElevatedButton.icon(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                ),
+                                label: Text(
+                                  '${heart}',
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColor.background,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                         SizedBox(
@@ -238,6 +356,7 @@ class _PlayPageState extends State<PlayPage> {
                                         } else {
                                           optionsColor[index] =
                                               AppColor.redbtn2;
+                                          heart--;
                                         }
                                         if (currentQuestionIndex <
                                             data.length - 1) {
@@ -475,7 +594,6 @@ class _PlayPageState extends State<PlayPage> {
                 } else {
                   return Container(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Center(
                           child: CircularProgressIndicator(

@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                         child: Text(
-                          "QuizzCoin: 5000",
+                          "QuizzCoin: 0",
                           style: TextStyle(
                             fontSize: 17,
                             color: AppColor.fieldColor,
