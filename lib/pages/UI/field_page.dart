@@ -29,6 +29,7 @@ class _FieldPageState extends State<FieldPage> {
             child: Container(
               padding: EdgeInsets.only(top: 60),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     padding: EdgeInsets.only(
@@ -96,7 +97,7 @@ class _FieldPageState extends State<FieldPage> {
                                     );
                                   },
                                   child: const Text(
-                                    'Âm nhạc',
+                                    'Thể Thao',
                                     style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.normal,
@@ -105,68 +106,6 @@ class _FieldPageState extends State<FieldPage> {
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStatePropertyAll(
                                         AppColor.redbtn2),
-                                    minimumSize: MaterialStatePropertyAll(
-                                        Size(100, 100)),
-                                    shape: MaterialStateProperty.all(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(10),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PlayPage(),
-                                      ),
-                                    );
-                                  },
-                                  child: const Text(
-                                    'Thể thao',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.white),
-                                  ),
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStatePropertyAll(
-                                        AppColor.dartgreeen),
-                                    minimumSize: MaterialStatePropertyAll(
-                                        Size(100, 100)),
-                                    shape: MaterialStateProperty.all(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(10),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PlayPage(),
-                                      ),
-                                    );
-                                  },
-                                  child: const Text(
-                                    'Lịch sử',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.white),
-                                  ),
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStatePropertyAll(
-                                        AppColor.lightblackbtn),
                                     minimumSize: MaterialStatePropertyAll(
                                         Size(100, 100)),
                                     shape: MaterialStateProperty.all(
@@ -196,37 +135,6 @@ class _FieldPageState extends State<FieldPage> {
                                     );
                                   },
                                   child: const Text(
-                                    'Xã hội',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.white),
-                                  ),
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStatePropertyAll(
-                                        AppColor.bluelightgreen),
-                                    minimumSize: MaterialStatePropertyAll(
-                                        Size(100, 100)),
-                                    shape: MaterialStateProperty.all(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(10),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PlayPage(),
-                                      ),
-                                    );
-                                  },
-                                  child: const Text(
                                     'Pháp luật',
                                     style: TextStyle(
                                         fontSize: 18,
@@ -235,38 +143,7 @@ class _FieldPageState extends State<FieldPage> {
                                   ),
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStatePropertyAll(
-                                        AppColor.yellow1),
-                                    minimumSize: MaterialStatePropertyAll(
-                                        Size(100, 100)),
-                                    shape: MaterialStateProperty.all(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(10),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PlayPage(),
-                                      ),
-                                    );
-                                  },
-                                  child: const Text(
-                                    'Văn hóa',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.white),
-                                  ),
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStatePropertyAll(
-                                        AppColor.purple),
+                                        AppColor.green),
                                     minimumSize: MaterialStatePropertyAll(
                                         Size(100, 100)),
                                     shape: MaterialStateProperty.all(

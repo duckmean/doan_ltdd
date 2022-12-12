@@ -3,6 +3,7 @@
 import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import 'package:doan_ltdd/pages/UI/field_page.dart';
 import 'package:doan_ltdd/pages/UI/home_page.dart';
+import 'package:doan_ltdd/utils/snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:doan_ltdd/provider/quiz.dart';
 import '../login/login_screen.dart';
@@ -25,9 +26,13 @@ class _PlayPageState extends State<PlayPage> {
   late Future quizz;
   int points = 0;
   int i = 1;
+  int count1 = 1; //50/50
+  int count2 = 1; //doi cau hoi
+  int count3 = 1; //goi dien thoai
 
   String hearts = "3";
   int heart = 3;
+  int questionindex = 0;
 
   @override
   void initState() {
@@ -83,9 +88,6 @@ class _PlayPageState extends State<PlayPage> {
           timer.cancel();
           heart--;
           gotoNextQuestion();
-        } else if (canceltime == true) {
-          timer.cancel();
-          heart--;
         } else {
           seconds--;
         }
@@ -101,12 +103,14 @@ class _PlayPageState extends State<PlayPage> {
   //   seconds = 30;
   //   startTimer();
   // }
+
   gotoNextQuestion() {
     isLoaded = false;
     currentQuestionIndex++;
+    questionindex = currentQuestionIndex;
     resetColors();
     timer!.cancel();
-    seconds = 5;
+    seconds = 30;
     setState(() {
       if (heart == 0) {
         // Navigator.of(context).pushAndRemoveUntil(
@@ -305,7 +309,7 @@ class _PlayPageState extends State<PlayPage> {
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  'Câu hỏi số ${currentQuestionIndex + 1}',
+                                  'Câu hỏi số ${questionindex + 1}',
                                   style: TextStyle(
                                     color: AppColor.fieldColor,
                                     fontSize: 18,
@@ -459,28 +463,59 @@ class _PlayPageState extends State<PlayPage> {
                                     decoration: BoxDecoration(
                                       color: AppColor.background,
                                       borderRadius: BorderRadius.circular(50),
-                                      // border: Border.all(
-                                      //   width: 1,
-                                      //   color: AppColor.fieldColor,
-                                      // ),
+                                    ),
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        setState(() {});
+                                      },
+                                      child: Text("50/50"),
+                                      style: ButtonStyle(
+                                        shape: MaterialStatePropertyAll(
+                                          RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                          ),
+                                        ),
+                                        backgroundColor:
+                                            MaterialStatePropertyAll(
+                                                AppColor.background),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Container(
+                                    width: 70,
+                                    height: 70,
+                                    decoration: BoxDecoration(
+                                      color: AppColor.background,
+                                      borderRadius: BorderRadius.circular(50),
                                     ),
                                     child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.transcribe),
+                                          onPressed: () {
+                                            if (count2 == 1) {
+                                              questionindex--;
+                                              gotoNextQuestion();
+                                              count2 = 0;
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                      'Bạn đã dùng hết lượt'),
+                                                ),
+                                              );
+                                            }
+                                          },
+                                          icon: Icon(Icons.autorenew),
                                           color: AppColor.fieldColor,
                                           iconSize: 26,
-                                          alignment: Alignment.center,
                                         ),
-                                        // Text(
-                                        //   "",
-                                        //   style: TextStyle(
-                                        //     color: AppColor.fieldColor,
-                                        //     fontSize: 15,
-                                        //     fontWeight: FontWeight.w400,
-                                        //   ),
-                                        // ),
                                       ],
                                     ),
                                   ),
@@ -493,27 +528,17 @@ class _PlayPageState extends State<PlayPage> {
                                     decoration: BoxDecoration(
                                       color: AppColor.background,
                                       borderRadius: BorderRadius.circular(50),
-                                      // border: Border.all(
-                                      //   width: 1,
-                                      //   color: AppColor.textColor,
-                                      // ),
                                     ),
                                     child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         IconButton(
                                           onPressed: () {},
-                                          icon: Icon(Icons.transcribe),
+                                          icon: Icon(Icons.phone),
                                           color: AppColor.fieldColor,
                                           iconSize: 26,
                                         ),
-                                        // Text(
-                                        //   "",
-                                        //   style: TextStyle(
-                                        //     color: AppColor.fieldColor,
-                                        //     fontSize: 15,
-                                        //     fontWeight: FontWeight.w400,
-                                        //   ),
-                                        // ),
                                       ],
                                     ),
                                   ),
@@ -526,60 +551,17 @@ class _PlayPageState extends State<PlayPage> {
                                     decoration: BoxDecoration(
                                       color: AppColor.background,
                                       borderRadius: BorderRadius.circular(50),
-                                      // border: Border.all(
-                                      //   width: 1,
-                                      //   color: AppColor.textColor,
-                                      // ),
                                     ),
                                     child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         IconButton(
                                           onPressed: () {},
-                                          icon: Icon(Icons.transcribe),
+                                          icon: Icon(Icons.shopping_cart),
                                           color: AppColor.fieldColor,
                                           iconSize: 26,
                                         ),
-                                        // Text(
-                                        //   "",
-                                        //   style: TextStyle(
-                                        //     color: AppColor.fieldColor,
-                                        //     fontSize: 15,
-                                        //     fontWeight: FontWeight.w400,
-                                        //   ),
-                                        // ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Container(
-                                    width: 70,
-                                    height: 70,
-                                    decoration: BoxDecoration(
-                                      color: AppColor.background,
-                                      borderRadius: BorderRadius.circular(50),
-                                      // border: Border.all(
-                                      //   width: 1,
-                                      //   color: AppColor.textColor,
-                                      // ),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.transcribe),
-                                          color: AppColor.fieldColor,
-                                          iconSize: 26,
-                                        ),
-                                        // Text(
-                                        //   "",
-                                        //   style: TextStyle(
-                                        //     color: AppColor.fieldColor,
-                                        //     fontSize: 15,
-                                        //     fontWeight: FontWeight.w400,
-                                        //   ),
-                                        // ),
                                       ],
                                     ),
                                   ),
@@ -594,6 +576,7 @@ class _PlayPageState extends State<PlayPage> {
                 } else {
                   return Container(
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Center(
                           child: CircularProgressIndicator(
