@@ -3,6 +3,8 @@
 import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import 'package:doan_ltdd/pages/UI/field_page.dart';
 import 'package:doan_ltdd/pages/UI/home_page.dart';
+import 'package:doan_ltdd/pages/UI/result.dart';
+import 'package:doan_ltdd/provider/global_service.dart';
 import 'package:doan_ltdd/utils/snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:doan_ltdd/provider/quiz.dart';
@@ -29,11 +31,19 @@ class _PlayPageState extends State<PlayPage> {
   int count1 = 1; //50/50
   int count2 = 1; //doi cau hoi
   int count3 = 1; //goi dien thoai
+  int count4 = 1; //mua dap an
 
   String hearts = "3";
   int heart = 3;
-  int questionindex = 0;
 
+  int loaidapan = 1;
+  String indexanswer = '';
+  int indexcorrect = 0;
+
+  int coinbuy = 50;
+  int coinuser = 500;
+
+  int questionindex = 0;
   @override
   void initState() {
     super.initState();
@@ -112,48 +122,48 @@ class _PlayPageState extends State<PlayPage> {
     timer!.cancel();
     seconds = 30;
     setState(() {
-      if (heart == 0) {
-        // Navigator.of(context).pushAndRemoveUntil(
-        //     MaterialPageRoute(
-        //       builder: (context) => HomePage(),
+      if (heart == -100) {
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => Result(),
+            ),
+            (route) => false);
+        // showDialog(
+        //   context: context,
+        //   builder: (context) => AlertDialog(
+        //     backgroundColor: AppColor.background,
+        //     shape: RoundedRectangleBorder(
+        //       borderRadius: BorderRadius.circular(20),
         //     ),
-        //     (route) => false);
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            backgroundColor: AppColor.background,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            title: Text("Thông báo"),
-            content: Text(
-              "Bạn có muốn chơi lại không?",
-              style: TextStyle(
-                color: AppColor.fieldColor,
-              ),
-            ),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => HomePage(),
-                      ),
-                    );
-                  },
-                  child: Text("Không")),
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => FieldPage(),
-                      ),
-                    );
-                  },
-                  child: Text("OK")),
-            ],
-          ),
-        );
+        //     title: Text("Thông báo"),
+        //     content: Text(
+        //       "Bạn có muốn chơi lại không?",
+        //       style: TextStyle(
+        //         color: AppColor.fieldColor,
+        //       ),
+        //     ),
+        //     actions: [
+        //       TextButton(
+        //           onPressed: () {
+        //             Navigator.of(context).push(
+        //               MaterialPageRoute(
+        //                 builder: (context) => HomePage(),
+        //               ),
+        //             );
+        //           },
+        //           child: Text("Không")),
+        //       TextButton(
+        //           onPressed: () {
+        //             Navigator.of(context).push(
+        //               MaterialPageRoute(
+        //                 builder: (context) => FieldPage(),
+        //               ),
+        //             );
+        //           },
+        //           child: Text("OK")),
+        //     ],
+        //   ),
+        // );
       }
     });
     startTimer();
@@ -199,6 +209,7 @@ class _PlayPageState extends State<PlayPage> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   var data = snapshot.data["results"];
+                  indexanswer = data[currentQuestionIndex]["correct_answer"];
                   if (isLoaded == false) {
                     optionsList =
                         data[currentQuestionIndex]["incorrect_answers"];
@@ -210,8 +221,33 @@ class _PlayPageState extends State<PlayPage> {
                   return SingleChildScrollView(
                     child: Column(
                       children: [
+                        Row(
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.only(left: 15),
+                              width: 110,
+                              height: 45,
+                              decoration: BoxDecoration(
+                                color: AppColor.background,
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                    width: 1, color: AppColor.fieldColor),
+                              ),
+                              child: Text(
+                                "Coin: $coinuser ",
+                                style: TextStyle(
+                                  color: AppColor.fieldColor,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        ),
                         SizedBox(
-                          height: 40,
+                          height: 10,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -228,7 +264,7 @@ class _PlayPageState extends State<PlayPage> {
                                     width: 1, color: AppColor.fieldColor),
                               ),
                               child: Text(
-                                "Score: ${points} ",
+                                "Điểm: ${points} ",
                                 style: TextStyle(
                                   color: AppColor.fieldColor,
                                   fontSize: 18,
@@ -466,7 +502,29 @@ class _PlayPageState extends State<PlayPage> {
                                     ),
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        setState(() {});
+                                        setState(() {
+                                          if (loaidapan == 1) {
+                                            for (int i = 0;
+                                                i < optionsList.length;
+                                                i++) {
+                                              if (optionsList[i].toString() ==
+                                                  indexanswer.toString()) {
+                                                indexcorrect = i;
+                                                break;
+                                              }
+                                            }
+                                            if (indexcorrect == 0 ||
+                                                indexcorrect == 1) {
+                                              optionsList.removeAt(2);
+                                              optionsList.removeAt(2);
+                                            } else {
+                                              optionsList.removeAt(0);
+                                              optionsList.removeAt(0);
+                                            }
+                                            // loaidapan = 0;
+                                            //errorSnackbar(context, "Ban ")
+                                          }
+                                        });
                                       },
                                       child: Text("50/50"),
                                       style: ButtonStyle(
@@ -557,7 +615,39 @@ class _PlayPageState extends State<PlayPage> {
                                           MainAxisAlignment.center,
                                       children: [
                                         IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            setState(() {
+                                              if (coinuser >= coinbuy) {
+                                                coinuser = coinuser - coinbuy;
+                                                coinbuy += 500;
+                                                for (int i = 0;
+                                                    i < optionsList.length;
+                                                    i++) {
+                                                  if (optionsList[i]
+                                                          .toString() ==
+                                                      indexanswer.toString()) {
+                                                    indexcorrect = i;
+                                                    break;
+                                                  }
+                                                }
+                                                optionsColor[indexcorrect] =
+                                                    AppColor.yellow1;
+                                              } else {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'Quizzcoin của bạn không đủ để mua đáp án',
+                                                      style: TextStyle(
+                                                          color: Colors.red,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                            });
+                                          },
                                           icon: Icon(Icons.shopping_cart),
                                           color: AppColor.fieldColor,
                                           iconSize: 26,
