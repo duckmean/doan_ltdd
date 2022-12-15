@@ -106,7 +106,7 @@ class _ResultState extends State<Result> {
                       border: Border.all(width: 1, color: AppColor.fieldColor),
                     ),
                     child: Text(
-                      "Score: ",
+                      "Điểm: ",
                       style: TextStyle(
                         color: AppColor.fieldColor,
                         fontSize: 18,

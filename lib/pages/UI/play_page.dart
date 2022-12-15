@@ -30,13 +30,12 @@ class _PlayPageState extends State<PlayPage> {
   int i = 1;
   int count1 = 1; //50/50
   int count2 = 1; //doi cau hoi
-  int count3 = 1; //goi dien thoai
-  int count4 = 1; //mua dap an
+  int count3 = 1; //mua dap an
+  int count4 = 1; //goi dien thoai
 
   String hearts = "3";
   int heart = 3;
 
-  int loaidapan = 1;
   String indexanswer = '';
   int indexcorrect = 0;
 
@@ -44,6 +43,7 @@ class _PlayPageState extends State<PlayPage> {
   int coinuser = 500;
 
   int questionindex = 0;
+
   @override
   void initState() {
     super.initState();
@@ -122,7 +122,7 @@ class _PlayPageState extends State<PlayPage> {
     timer!.cancel();
     seconds = 30;
     setState(() {
-      if (heart == -100) {
+      if (heart == 0) {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
               builder: (context) => Result(),
@@ -396,6 +396,8 @@ class _PlayPageState extends State<PlayPage> {
                                         } else {
                                           optionsColor[index] =
                                               AppColor.redbtn2;
+                                          optionsColor[indexcorrect] =
+                                              AppColor.green;
                                           heart--;
                                         }
                                         if (currentQuestionIndex <
@@ -503,7 +505,7 @@ class _PlayPageState extends State<PlayPage> {
                                     child: ElevatedButton(
                                       onPressed: () {
                                         setState(() {
-                                          if (loaidapan == 1) {
+                                          if (count1 == 1) {
                                             for (int i = 0;
                                                 i < optionsList.length;
                                                 i++) {
@@ -521,8 +523,23 @@ class _PlayPageState extends State<PlayPage> {
                                               optionsList.removeAt(0);
                                               optionsList.removeAt(0);
                                             }
-                                            // loaidapan = 0;
+                                            count1 = 0;
                                             //errorSnackbar(context, "Ban ")
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Bạn đã dùng hết lượt',
+                                                  style: TextStyle(
+                                                      color: Colors.red,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                duration:
+                                                    (Duration(seconds: 1)),
+                                              ),
+                                            );
                                           }
                                         });
                                       },
@@ -565,7 +582,14 @@ class _PlayPageState extends State<PlayPage> {
                                                   .showSnackBar(
                                                 SnackBar(
                                                   content: Text(
-                                                      'Bạn đã dùng hết lượt'),
+                                                    'Bạn đã dùng hết lượt',
+                                                    style: TextStyle(
+                                                        color: Colors.red,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                  duration:
+                                                      (Duration(seconds: 1)),
                                                 ),
                                               );
                                             }
@@ -619,7 +643,7 @@ class _PlayPageState extends State<PlayPage> {
                                             setState(() {
                                               if (coinuser >= coinbuy) {
                                                 coinuser = coinuser - coinbuy;
-                                                coinbuy += 500;
+                                                coinbuy += 50;
                                                 for (int i = 0;
                                                     i < optionsList.length;
                                                     i++) {
