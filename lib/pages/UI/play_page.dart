@@ -105,13 +105,24 @@ class _PlayPageState extends State<PlayPage> {
     resetColors();
     timer!.cancel();
     seconds = 30;
-    setState(
-      () {
-        if (heart <= 0) {
-          nextScreenRemoveUntil(context, Result(points: points));
-        }
-      },
-    );
+    setState(() {
+      if (heart <= 0) {
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => Result(
+                points: points,
+              ),
+            ),
+            (route) => false);
+      }
+    });
+    // setState(
+    //   () {
+    //     if (heart <= 0) {
+    //       nextScreenRemoveUntil(context, Result(points: points));
+    //     }
+    //   },
+    // );
     startTimer();
   }
 
@@ -312,6 +323,9 @@ class _PlayPageState extends State<PlayPage> {
                                     onTap: () {
                                       setState(
                                         () {
+                                          // optionsColor[index] =
+                                          //     AppColor.lightblackbtn;
+                                          // Future.delayed(Duration(seconds: 1));
                                           if (answer.toString() ==
                                               optionsList[index].toString()) {
                                             optionsColor[index] =
@@ -320,6 +334,15 @@ class _PlayPageState extends State<PlayPage> {
                                           } else {
                                             optionsColor[index] =
                                                 AppColor.redbtn2;
+                                            for (int i = 0;
+                                                i < optionsList.length;
+                                                i++) {
+                                              if (optionsList[i].toString() ==
+                                                  indexanswer.toString()) {
+                                                indexcorrect = i;
+                                                break;
+                                              }
+                                            }
                                             optionsColor[indexcorrect] =
                                                 AppColor.green;
                                             heart--;
