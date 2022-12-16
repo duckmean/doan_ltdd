@@ -5,6 +5,7 @@ import 'package:doan_ltdd/pages/UI/field_page.dart';
 import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/UI/result.dart';
 import 'package:doan_ltdd/provider/global_service.dart';
+import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:doan_ltdd/utils/snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:doan_ltdd/provider/quiz.dart';
@@ -79,40 +80,23 @@ class _PlayPageState extends State<PlayPage> {
     ];
   }
 
-  // startTimer() {
-  //   timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-  //     setState(() {
-  //       if (seconds > 0) {
-  //         seconds--;
-  //       } else {
-  //         timer.cancel();
-  //       }
-  //     });
-  //   });
-  // }
   bool canceltime = false;
   startTimer() async {
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        if (seconds < 1) {
-          timer.cancel();
-          heart--;
-          gotoNextQuestion();
-        } else {
-          seconds--;
-        }
-      });
-    });
+    timer = Timer.periodic(
+      const Duration(seconds: 1),
+      (timer) {
+        setState(() {
+          if (seconds < 1) {
+            timer.cancel();
+            heart--;
+            gotoNextQuestion();
+          } else {
+            seconds--;
+          }
+        });
+      },
+    );
   }
-
-  // gotoNextQuestion() {
-  //   isLoaded = false;
-  //   currentQuestionIndex++;
-  //   resetColors();
-  //   timer!.cancel();
-  //   seconds = 30;
-  //   startTimer();
-  // }
 
   gotoNextQuestion() {
     isLoaded = false;
@@ -121,51 +105,13 @@ class _PlayPageState extends State<PlayPage> {
     resetColors();
     timer!.cancel();
     seconds = 30;
-    setState(() {
-      if (heart == 0) {
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (context) => Result(),
-            ),
-            (route) => false);
-        // showDialog(
-        //   context: context,
-        //   builder: (context) => AlertDialog(
-        //     backgroundColor: AppColor.background,
-        //     shape: RoundedRectangleBorder(
-        //       borderRadius: BorderRadius.circular(20),
-        //     ),
-        //     title: Text("Thông báo"),
-        //     content: Text(
-        //       "Bạn có muốn chơi lại không?",
-        //       style: TextStyle(
-        //         color: AppColor.fieldColor,
-        //       ),
-        //     ),
-        //     actions: [
-        //       TextButton(
-        //           onPressed: () {
-        //             Navigator.of(context).push(
-        //               MaterialPageRoute(
-        //                 builder: (context) => HomePage(),
-        //               ),
-        //             );
-        //           },
-        //           child: Text("Không")),
-        //       TextButton(
-        //           onPressed: () {
-        //             Navigator.of(context).push(
-        //               MaterialPageRoute(
-        //                 builder: (context) => FieldPage(),
-        //               ),
-        //             );
-        //           },
-        //           child: Text("OK")),
-        //     ],
-        //   ),
-        // );
-      }
-    });
+    setState(
+      () {
+        if (heart <= 0) {
+          nextScreenRemoveUntil(context, Result(points: points));
+        }
+      },
+    );
     startTimer();
   }
 
@@ -173,27 +119,6 @@ class _PlayPageState extends State<PlayPage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      // backgroundColor: Color(0xFF232431),
-      // appBar: AppBar(
-      //   backgroundColor: Color(0xFF232431),
-      //   toolbarHeight: 40,
-      //   elevation: 0,
-      //   title: Text(""),
-      //   actions: [
-      //     Text(
-      //       vies,
-      //       style: TextStyle(
-      //           height: 1.7, fontSize: 20, fontWeight: FontWeight.bold),
-      //     ),
-      //     IconButton(
-      //       icon: const Icon(
-      //         Icons.favorite,
-      //         color: Colors.red,
-      //       ),
-      //       onPressed: () {},
-      //     ),
-      //   ],
-      // ),
       body: SafeArea(
         child: Center(
           child: Container(
@@ -385,73 +310,40 @@ class _PlayPageState extends State<PlayPage> {
                                       ["correct_answer"];
                                   return GestureDetector(
                                     onTap: () {
-                                      setState(() {
-                                        optionsColor[index] =
-                                            AppColor.lightblackbtn;
-                                        Future.delayed(Duration(seconds: 1));
-                                        if (answer.toString() ==
-                                            optionsList[index].toString()) {
-                                          optionsColor[index] = AppColor.green;
-                                          points = points + 10;
-                                        } else {
-                                          optionsColor[index] =
-                                              AppColor.redbtn2;
-                                          optionsColor[indexcorrect] =
-                                              AppColor.green;
-                                          heart--;
-                                        }
-                                        if (currentQuestionIndex <
-                                            data.length - 1) {
-                                          Future.delayed(
-                                              const Duration(seconds: 1), () {
-                                            gotoNextQuestion();
-                                          });
-                                        } else {
-                                          timer!.cancel();
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) => AlertDialog(
-                                              backgroundColor:
-                                                  AppColor.background,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                              ),
-                                              title: Text("Thông báo"),
-                                              content: Text(
-                                                "Bạn có muốn chơi lại không?",
-                                                style: TextStyle(
-                                                  color: AppColor.fieldColor,
-                                                ),
-                                              ),
-                                              actions: [
-                                                TextButton(
-                                                    onPressed: () {
-                                                      Navigator.of(context)
-                                                          .push(
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              HomePage(),
-                                                        ),
-                                                      );
-                                                    },
-                                                    child: Text("Không")),
-                                                TextButton(
-                                                    onPressed: () {
-                                                      Navigator.of(context)
-                                                          .push(
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              FieldPage(),
-                                                        ),
-                                                      );
-                                                    },
-                                                    child: Text("OK")),
-                                              ],
-                                            ),
-                                          );
-                                        }
-                                      });
+                                      setState(
+                                        () {
+                                          if (answer.toString() ==
+                                              optionsList[index].toString()) {
+                                            optionsColor[index] =
+                                                AppColor.green;
+                                            points = points + 10;
+                                          } else {
+                                            optionsColor[index] =
+                                                AppColor.redbtn2;
+                                            optionsColor[indexcorrect] =
+                                                AppColor.green;
+                                            heart--;
+                                          }
+                                          if (currentQuestionIndex <
+                                              data.length - 1) {
+                                            Future.delayed(
+                                                const Duration(seconds: 1), () {
+                                              gotoNextQuestion();
+                                            });
+                                          } else {
+                                            timer!.cancel();
+                                            Navigator.of(context)
+                                                .pushAndRemoveUntil(
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Result(
+                                                        points: points,
+                                                      ),
+                                                    ),
+                                                    (route) => false);
+                                          }
+                                        },
+                                      );
                                     },
                                     child: Column(
                                       children: [
@@ -519,9 +411,13 @@ class _PlayPageState extends State<PlayPage> {
                                                 indexcorrect == 1) {
                                               optionsList.removeAt(2);
                                               optionsList.removeAt(2);
+                                              optionsList.add('');
+                                              optionsList.add('');
                                             } else {
                                               optionsList.removeAt(0);
                                               optionsList.removeAt(0);
+                                              optionsList.add('');
+                                              optionsList.add('');
                                             }
                                             count1 = 0;
                                             //errorSnackbar(context, "Ban ")

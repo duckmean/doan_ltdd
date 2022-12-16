@@ -11,6 +11,7 @@ import 'package:doan_ltdd/pages/UI/welcome_page.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Appcolor/appcolor.dart';
 import '../../provider/auth_service.dart';
 import '../../provider/global_service.dart';
 import '../UI/main_page.dart';
@@ -50,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
         saveDataLoginFromSharedPreferences();
-        nextScreen(context, MainPageScreen());
+        nextScreenRemoveUntil(context, MainPageScreen());
       } else {
         errorSnackbar(context, responseMap.values.first);
       }
@@ -58,23 +59,6 @@ class _LoginScreenState extends State<LoginScreen> {
       errorSnackbar(context, 'Nhập đầy đủ thông tin tài khoản mật khẩu');
     }
   }
-
-  // void login(String username, password) async {
-  //   try {
-  //     Response response = await post(Uri.parse('https://reqres.in/api/login'),
-  //         body: {'username': username, 'password': password});
-
-  //     if (response.statusCode == 200) {
-  //       var data = jsonDecode(response.body.toString());
-  //       print(data['token']);
-  //       print('Login successfully');
-  //     } else {
-  //       print('failed');
-  //     }
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  // }
 
   Future getDataLoginFromSharedPreferences() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -190,10 +174,21 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(
                           onPressed: () {
-                            Map creds = {'emai': _email, 'password': _password};
-                            Provider.of<AuthProvider>(context, listen: false)
-                                .login(creds: creds);
-                            isLoggin();
+                            if (isLoggin() != null) {
+                              Map creds = {
+                                'emai': _email,
+                                'password': _password
+                              };
+                              Provider.of<AuthProvider>(context, listen: false)
+                                  .login(creds: creds);
+
+                              isLoggin();
+                            } else {
+                              CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation(AppColor.fieldColor),
+                              );
+                            }
                           },
                           child: const Text('Đăng Nhập',
                               style: TextStyle(fontSize: 20)),

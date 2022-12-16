@@ -1,3 +1,4 @@
+import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
 import '../../Appcolor/appcolor.dart';
 import 'play_page.dart';
@@ -39,7 +40,7 @@ class _FieldPageState extends State<FieldPage> {
                     child: Text(
                       'Hãy chọn một lĩnh vực',
                       style: TextStyle(
-                        color: Color(0xFFFFFFFF),
+                        color: AppColor.fieldColor,
                         fontSize: 28,
                         fontWeight: FontWeight.w400,
                       ),
@@ -58,12 +59,7 @@ class _FieldPageState extends State<FieldPage> {
                                 padding: EdgeInsets.all(10),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PlayPage(),
-                                      ),
-                                    );
+                                    nextScreenRemoveUntil(context, PlayPage());
                                   },
                                   child: const Text(
                                     'Khoa học',
@@ -89,12 +85,7 @@ class _FieldPageState extends State<FieldPage> {
                                 padding: EdgeInsets.all(10),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PlayPage(),
-                                      ),
-                                    );
+                                    nextScreenRemoveUntil(context, PlayPage());
                                   },
                                   child: const Text(
                                     'Thể Thao',
@@ -127,12 +118,7 @@ class _FieldPageState extends State<FieldPage> {
                                 padding: EdgeInsets.all(10),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PlayPage(),
-                                      ),
-                                    );
+                                    nextScreenRemoveUntil(context, PlayPage());
                                   },
                                   child: const Text(
                                     'Pháp luật',
@@ -158,12 +144,7 @@ class _FieldPageState extends State<FieldPage> {
                                 padding: EdgeInsets.all(10),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PlayPage(),
-                                      ),
-                                    );
+                                    nextScreenRemoveUntil(context, PlayPage());
                                   },
                                   child: const Text(
                                     'Địa lý',
