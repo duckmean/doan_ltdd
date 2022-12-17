@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import '../login/login_screen.dart';
 import 'field_page.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -14,6 +15,14 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  final player = AudioPlayer();
+  @override
+  void initState() {
+    // TODO: implement initState
+    player.play(AssetSource('music.mp3')); //bật nhạc
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +81,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       padding: EdgeInsets.all(10),
                       child: ElevatedButton(
                         onPressed: () {
+                          player.stop(); //stop nhạc
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -104,6 +114,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       padding: EdgeInsets.all(10),
                       child: ElevatedButton(
                         onPressed: () {
+                          player.stop(); //stop nhạc
                           Navigator.push(
                             context,
                             MaterialPageRoute(

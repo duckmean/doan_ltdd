@@ -1,3 +1,4 @@
+import 'package:doan_ltdd/pages/payment/watch_ad.dart';
 import 'package:flutter/material.dart';
 import '../../Appcolor/appcolor.dart';
 import 'card_3tl.dart';
@@ -197,7 +198,13 @@ class _GetMoreCoinsState extends State<GetMoreCoins> {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Watch_Ad(),
+                          ));
+                    },
                     child: const Text('Xem Quảng Cáo',
                         style: TextStyle(fontSize: 20)),
                   ),

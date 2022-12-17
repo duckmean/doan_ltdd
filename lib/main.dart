@@ -35,7 +35,9 @@ class AilatrieuPhu extends StatelessWidget {
         ),
       ],
       child: const MaterialApp(
-        home: FieldPage(),
+        //home: FieldPage(),
+        home: WelcomeScreen(),
+        //home: GetMoreCoins(),
         debugShowCheckedModeBanner: false,
       ),
     );
