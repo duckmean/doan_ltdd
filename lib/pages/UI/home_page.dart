@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import 'package:doan_ltdd/pages/UI/history_page.dart';
 import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
 import 'package:doan_ltdd/pages/payment/vip_user.dart';
 import 'package:doan_ltdd/provider/auth_provider.dart';
@@ -196,6 +197,38 @@ class _HomePageState extends State<HomePage> {
                         style: ButtonStyle(
                           backgroundColor:
                               MaterialStatePropertyAll(AppColor.bluebtn2),
+                          minimumSize:
+                              const MaterialStatePropertyAll(Size(270, 50)),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(60)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HistoryPage(),
+                            ),
+                          );
+                        },
+                        // ignore: sort_child_properties_last
+                        child: const Text(
+                          'Lịch Sử',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(AppColor.dartyellow),
                           minimumSize:
                               const MaterialStatePropertyAll(Size(270, 50)),
                           shape: MaterialStateProperty.all(

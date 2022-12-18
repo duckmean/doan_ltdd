@@ -9,28 +9,16 @@ import '../login/login_screen.dart';
 import '../payment/getmore_coins.dart';
 import 'main_page.dart';
 
-class RecordDetail extends StatefulWidget {
-  const RecordDetail({super.key});
+class HistoryPage extends StatefulWidget {
+  const HistoryPage({super.key});
 
   @override
-  State<RecordDetail> createState() => _RecordDetailState();
+  State<HistoryPage> createState() => _HistoryPageState();
 }
 
-class _RecordDetailState extends State<RecordDetail> {
-  Future getData() async {
-    final sp = context.read<SignInProvider>();
-    sp.getDataFromSharedPreferences();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
+class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
-    final sp = context.watch<SignInProvider>();
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
@@ -71,24 +59,10 @@ class _RecordDetailState extends State<RecordDetail> {
                     ),
                     child: Center(
                       child: Text(
-                        "BẢNG XẾP HẠNG",
+                        "LỊCH SỬ",
                         style: TextStyle(
                           fontSize: 23,
                           fontFamily: 'Raleway',
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(
-                      top: 10,
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Lĩnh vực",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
                         ),
                       ),
                     ),
@@ -358,103 +332,6 @@ class _RecordDetailState extends State<RecordDetail> {
                   ),
                 ],
               ),
-            ),
-          ],
-        ),
-      ),
-      endDrawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text("${sp.name}"),
-              accountEmail: Text("${sp.email}"),
-              // currentAccountPicture: CircleAvatar(
-              //   backgroundColor: AppColor.fieldColor,
-              //   child: Text(
-              //     "P",
-              //     style: TextStyle(
-              //       fontSize: 40.0,
-              //       color: AppColor.textColor,
-              //     ),
-              //   ),
-              // ),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                backgroundImage: NetworkImage("${sp.imageUrl}"),
-                radius: 50,
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text("Home"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomePage(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text("Nạp QuizzCoin"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => GetMoreCoins(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.contacts),
-              title: Text("Cập nhật thông tin"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => UpdateInfomationScreen(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.logout_outlined),
-              title: Text("Log out"),
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: Text('Thông báo'),
-                    content: Text('Bạn có muốn đăng xuất không'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text('Không'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => LoginScreen(),
-                          //   ),
-                          // );
-                          sp.userSignOut();
-                          nextScreen(context, const LoginScreen());
-                        },
-                        child: Text('Có'),
-                      ),
-                    ],
-                  ),
-                );
-              },
             ),
           ],
         ),

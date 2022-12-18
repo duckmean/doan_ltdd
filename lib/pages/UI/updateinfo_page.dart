@@ -3,6 +3,7 @@ import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/login/change_password.dart';
 import 'package:doan_ltdd/pages/login/forget_password2.dart';
 import 'package:doan_ltdd/pages/login/update_info.dart';
+import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -19,7 +20,6 @@ import 'main_page.dart';
 
 class UpdateInfomationScreen extends StatefulWidget {
   const UpdateInfomationScreen({super.key});
-
   @override
   State<UpdateInfomationScreen> createState() => _UpdateInfomationScreenState();
 }
@@ -64,15 +64,10 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                       padding: EdgeInsets.all(10),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Change_password(),
-                            ),
-                          );
+                          nextScreen(context, Change_password());
                         },
                         child: Text(
-                          'Đổi mật khẩu',
+                          'Đổi Mật Khẩu',
                           style: TextStyle(
                             fontSize: 20,
                             color: AppColor.fieldColor,
@@ -96,12 +91,7 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                       padding: EdgeInsets.all(10),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => UpdateInfomation(),
-                            ),
-                          );
+                          nextScreen(context, UpdateInfomation());
                         },
                         child: Text(
                           'Đổi Họ Tên',
@@ -158,7 +148,6 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                 children: <Widget>[
                   UserAccountsDrawerHeader(
                     accountName: Text("${sp.name}"),
-
                     accountEmail: Text("${sp.email}"),
                     // currentAccountPicture: CircleAvatar(
                     //   backgroundColor: AppColor.fieldColor,

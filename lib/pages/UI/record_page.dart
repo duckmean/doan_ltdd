@@ -144,7 +144,7 @@ class _RecordPageState extends State<RecordPage> {
                                 );
                               },
                               child: const Text(
-                                'Âm nhạc',
+                                'Thể thao',
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.normal,
@@ -153,68 +153,6 @@ class _RecordPageState extends State<RecordPage> {
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStatePropertyAll(AppColor.redbtn2),
-                                minimumSize:
-                                    MaterialStatePropertyAll(Size(100, 100)),
-                                shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => RecordDetail(),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                'Thể thao',
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.white),
-                              ),
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStatePropertyAll(
-                                    AppColor.dartgreeen),
-                                minimumSize:
-                                    MaterialStatePropertyAll(Size(100, 100)),
-                                shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => RecordDetail(),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                'Lịch sử',
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.white),
-                              ),
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStatePropertyAll(
-                                    AppColor.lightblackbtn),
                                 minimumSize:
                                     MaterialStatePropertyAll(Size(100, 100)),
                                 shape: MaterialStateProperty.all(
@@ -244,37 +182,6 @@ class _RecordPageState extends State<RecordPage> {
                                 );
                               },
                               child: const Text(
-                                'Xã hội',
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.white),
-                              ),
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStatePropertyAll(
-                                    AppColor.bluelightgreen),
-                                minimumSize:
-                                    MaterialStatePropertyAll(Size(100, 100)),
-                                shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => RecordDetail(),
-                                  ),
-                                );
-                              },
-                              child: const Text(
                                 'Pháp luật',
                                 style: TextStyle(
                                     fontSize: 18,
@@ -283,38 +190,7 @@ class _RecordPageState extends State<RecordPage> {
                               ),
                               style: ButtonStyle(
                                 backgroundColor:
-                                    MaterialStatePropertyAll(AppColor.yellow1),
-                                minimumSize:
-                                    MaterialStatePropertyAll(Size(100, 100)),
-                                shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => RecordDetail(),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                'Văn hóa',
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.white),
-                              ),
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStatePropertyAll(AppColor.purple),
+                                    MaterialStatePropertyAll(AppColor.green),
                                 minimumSize:
                                     MaterialStatePropertyAll(Size(100, 100)),
                                 shape: MaterialStateProperty.all(

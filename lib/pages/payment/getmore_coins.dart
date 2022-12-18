@@ -7,6 +7,7 @@ import 'card_zing.dart';
 
 class GetMoreCoins extends StatefulWidget {
   const GetMoreCoins({super.key});
+
   @override
   State<GetMoreCoins> createState() => _GetMoreCoinsState();
 }

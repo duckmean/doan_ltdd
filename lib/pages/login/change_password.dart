@@ -102,20 +102,16 @@ class _Change_passwordState extends State<Change_password> {
                           ),
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          TextButton(
-                            child: const Text(
-                              'Quay lại',
-                              style: TextStyle(fontSize: 17),
-                            ),
-                            onPressed: () => nextScreen(
-                              context,
-                              HomePage(),
-                            ),
-                          )
-                        ],
+                      Container(
+                        margin: EdgeInsets.only(right: 5),
+                        alignment: Alignment.bottomRight,
+                        child: FloatingActionButton(
+                          onPressed: () {
+                            nextScreen(context, HomePage());
+                          },
+                          backgroundColor: AppColor.bluebtn2,
+                          child: Icon(Icons.reply_outlined),
+                        ),
                       ),
                       Container(
                         padding: const EdgeInsets.all(15),

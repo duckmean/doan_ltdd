@@ -442,7 +442,7 @@ class _PlayPageState extends State<PlayPage> {
                                               optionsList.add('');
                                               optionsList.add('');
                                             }
-                                            count1 = 0;
+                                            //count1 = 0;
                                             //errorSnackbar(context, "Ban ")
                                           } else {
                                             ScaffoldMessenger.of(context)
@@ -477,7 +477,7 @@ class _PlayPageState extends State<PlayPage> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 20,
+                                    width: 45,
                                   ),
                                   Container(
                                     width: 70,
@@ -521,28 +521,28 @@ class _PlayPageState extends State<PlayPage> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 20,
+                                    width: 30,
                                   ),
-                                  Container(
-                                    width: 70,
-                                    height: 70,
-                                    decoration: BoxDecoration(
-                                      color: AppColor.background,
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.phone),
-                                          color: AppColor.fieldColor,
-                                          iconSize: 26,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                  // Container(
+                                  //   width: 70,
+                                  //   height: 70,
+                                  //   decoration: BoxDecoration(
+                                  //     color: AppColor.background,
+                                  //     borderRadius: BorderRadius.circular(50),
+                                  //   ),
+                                  //   child: Column(
+                                  //     mainAxisAlignment:
+                                  //         MainAxisAlignment.center,
+                                  //     children: [
+                                  //       IconButton(
+                                  //         onPressed: () {},
+                                  //         icon: Icon(Icons.phone),
+                                  //         color: AppColor.fieldColor,
+                                  //         iconSize: 26,
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
                                   SizedBox(
                                     width: 20,
                                   ),
@@ -562,7 +562,7 @@ class _PlayPageState extends State<PlayPage> {
                                             setState(() {
                                               if (coinuser >= coinbuy) {
                                                 coinuser = coinuser - coinbuy;
-                                                coinbuy += 50;
+                                                coinbuy *= 2;
                                                 for (int i = 0;
                                                     i < optionsList.length;
                                                     i++) {
