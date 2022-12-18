@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:doan_ltdd/pages/payment/getmore_coins.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -29,6 +32,22 @@ class _Watch_AdState extends State<Watch_Ad> {
       if (mounted) setState(() {});
     });
     controller.play();
+    Timer(Duration(seconds: 50), () {
+      // controller.pause();
+      if (mounted) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => const GetMoreCoins()));
+      }
+    });
+
+    // Future.delayed(const Duration(seconds: 30), () {
+    //   controller.pause();
+    //   Navigator.push(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (context) => GetMoreCoins(),
+    //       ));
+    // });
   }
 
   @override
@@ -48,7 +67,7 @@ class _Watch_AdState extends State<Watch_Ad> {
       body: Container(
           child: Column(children: [
         AspectRatio(
-          aspectRatio: 0.64,
+          aspectRatio: 0.59,
           child: VideoPlayer(controller),
         ),
         Container(
@@ -59,30 +78,30 @@ class _Watch_AdState extends State<Watch_Ad> {
                   playedColor: Colors.green,
                   bufferedColor: Colors.purple,
                 ))),
-        Container(
-          child: Row(
-            children: [
-              IconButton(
-                  onPressed: () {
-                    if (controller.value.isPlaying) {
-                      controller.pause();
-                    } else {
-                      controller.play();
-                    }
-                    setState(() {});
-                  },
-                  icon: Icon(controller.value.isPlaying
-                      ? Icons.pause
-                      : Icons.play_arrow)),
-              IconButton(
-                  onPressed: () {
-                    controller.seekTo(Duration(seconds: 0));
-                    setState(() {});
-                  },
-                  icon: Icon(Icons.stop))
-            ],
-          ),
-        ),
+        // Container(
+        //   child: Row(
+        //     children: [
+        //       IconButton(
+        //           onPressed: () {
+        //             if (controller.value.isPlaying) {
+        //               controller.pause();
+        //             } else {
+        //               controller.play();
+        //             }
+        //             setState(() {});
+        //           },
+        //           icon: Icon(controller.value.isPlaying
+        //               ? Icons.pause
+        //               : Icons.play_arrow)),
+        //       IconButton(
+        //           onPressed: () {
+        //             controller.seekTo(Duration(seconds: 0));
+        //             setState(() {});
+        //           },
+        //           icon: Icon(Icons.stop))
+        //     ],
+        //   ),
+        // ),
         Container(
           child: ElevatedButton(
             onPressed: _launchUrl,

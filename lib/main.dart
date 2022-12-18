@@ -3,6 +3,7 @@ import 'package:doan_ltdd/pages/UI/field_page.dart';
 import 'package:doan_ltdd/pages/UI/main_page.dart';
 import 'package:doan_ltdd/pages/UI/result.dart';
 import 'package:doan_ltdd/pages/login/login_screen.dart';
+import 'package:doan_ltdd/pages/payment/getmore_coins.dart';
 import 'package:doan_ltdd/provider/auth_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -36,8 +37,8 @@ class AilatrieuPhu extends StatelessWidget {
       ],
       child: const MaterialApp(
         //home: FieldPage(),
-        home: WelcomeScreen(),
-        //home: GetMoreCoins(),
+        // home: WelcomeScreen(),
+        home: GetMoreCoins(),
         debugShowCheckedModeBanner: false,
       ),
     );
