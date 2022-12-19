@@ -1,6 +1,8 @@
 // ignore_for_file: unused_import
 
+import 'package:doan_ltdd/pages/UI/friends_page.dart';
 import 'package:doan_ltdd/pages/UI/history_page.dart';
+import 'package:doan_ltdd/pages/UI/main_friends.dart';
 import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
 import 'package:doan_ltdd/pages/payment/vip_user.dart';
 import 'package:doan_ltdd/provider/auth_provider.dart';
@@ -39,7 +41,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final sp = context.watch<SignInProvider>();
-    final lg = context.watch<AuthProvider>();
+    final lg = context.read<AuthProvider>();
     //final sg = context.watch<AuthProvider>();
 
     return Scaffold(
@@ -238,6 +240,38 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainFriends(),
+                            ),
+                          );
+                        },
+                        // ignore: sort_child_properties_last
+                        child: const Text(
+                          'Bạn Bè',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(AppColor.green),
+                          minimumSize:
+                              const MaterialStatePropertyAll(Size(270, 50)),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(60)),
+                          ),
+                        ),
+                      ),
+                    ),
                     // ignore: avoid_unnecessary_containers
                     Container(
                       padding: const EdgeInsets.all(10),
@@ -353,7 +387,7 @@ class _HomePageState extends State<HomePage> {
                       // ),
                       currentAccountPicture: CircleAvatar(
                         backgroundColor: Colors.white,
-                        backgroundImage: NetworkImage("${sp.imageUrl}"),
+                        //backgroundImage: NetworkImage("${sp.imageUrl}"),
                         radius: 50,
                       )),
                   ListTile(

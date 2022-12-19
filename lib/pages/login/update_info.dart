@@ -7,6 +7,7 @@ import '../../Appcolor/appcolor.dart';
 import '../UI/updateinfo_page.dart';
 import '../payment/shop.dart';
 import 'login_screen.dart';
+import 'package:provider/provider.dart';
 
 class UpdateInfomation extends StatefulWidget {
   const UpdateInfomation({super.key});
@@ -18,7 +19,12 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      appBar: AppBar(
+        backgroundColor: AppColor.background,
+        elevation: 0,
+        toolbarHeight: 40,
+      ),
+      body: Container(
         child: Container(
           constraints: BoxConstraints(
             maxHeight: MediaQuery.of(context).size.height,
@@ -82,17 +88,17 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                           ),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(right: 5),
-                        alignment: Alignment.bottomRight,
-                        child: FloatingActionButton(
-                          onPressed: () {
-                            nextScreen(context, HomePage());
-                          },
-                          backgroundColor: AppColor.bluebtn2,
-                          child: Icon(Icons.reply_outlined),
-                        ),
-                      ),
+                      // Container(
+                      //   margin: EdgeInsets.only(right: 5),
+                      //   alignment: Alignment.bottomRight,
+                      //   child: FloatingActionButton(
+                      //     onPressed: () {
+                      //       nextScreen(context, HomePage());
+                      //     },
+                      //     backgroundColor: AppColor.bluebtn2,
+                      //     child: Icon(Icons.reply_outlined),
+                      //   ),
+                      // ),
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(

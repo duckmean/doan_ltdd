@@ -14,7 +14,12 @@ class _Change_passwordState extends State<Change_password> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      appBar: AppBar(
+        backgroundColor: AppColor.background,
+        elevation: 0,
+        toolbarHeight: 40,
+      ),
+      body: Container(
         child: Container(
           constraints: BoxConstraints(
             maxHeight: MediaQuery.of(context).size.height,
@@ -102,17 +107,17 @@ class _Change_passwordState extends State<Change_password> {
                           ),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(right: 5),
-                        alignment: Alignment.bottomRight,
-                        child: FloatingActionButton(
-                          onPressed: () {
-                            nextScreen(context, HomePage());
-                          },
-                          backgroundColor: AppColor.bluebtn2,
-                          child: Icon(Icons.reply_outlined),
-                        ),
-                      ),
+                      // Container(
+                      //   margin: EdgeInsets.only(right: 5),
+                      //   alignment: Alignment.bottomRight,
+                      //   child: FloatingActionButton(
+                      //     onPressed: () {
+                      //       nextScreen(context, HomePage());
+                      //     },
+                      //     backgroundColor: AppColor.bluebtn2,
+                      //     child: Icon(Icons.reply_outlined),
+                      //   ),
+                      // ),
                       Container(
                         padding: const EdgeInsets.all(15),
                         child: ElevatedButton(

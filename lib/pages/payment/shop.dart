@@ -19,19 +19,6 @@ class ShopSreen extends StatefulWidget {
 }
 
 class _ShopSreenState extends State<ShopSreen> {
-  int selectedIndex = 0;
-  void onTapSelected(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
-
-  List<Widget> lsScreen = [
-    HomePage(),
-    ShopSreen(),
-    UpdateInfomationScreen(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     final sp = context.watch<SignInProvider>();

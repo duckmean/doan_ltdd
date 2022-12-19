@@ -37,4 +37,17 @@ class AuthService {
     print(response.body);
     return response;
   }
+
+  // static Future<User?> fetchUser(String email, String password) async {
+  //   http.Response response = await login(email, password);
+  //   User? result;
+  //   if (response.statusCode == 200) {
+  //     final parsed = jsonDecode(response.body);
+  //     final data = parsed["users"];
+  //     print(data);
+  //     result = User.fromJson(data);
+  //   }
+  //   return result;
+  // }
+
 }
