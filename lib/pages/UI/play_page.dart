@@ -16,8 +16,8 @@ import 'dart:async';
 import 'package:doan_ltdd/provider/time_textstyle.dart';
 
 class PlayPage extends StatefulWidget {
-  const PlayPage({super.key});
-
+  PlayPage({Key? key, required this.category}) : super(key: key);
+  int category;
   @override
   State<PlayPage> createState() => _PlayPageState();
 }
@@ -48,7 +48,7 @@ class _PlayPageState extends State<PlayPage> {
   @override
   void initState() {
     super.initState();
-    quizz = getQuiz();
+    quizz = getQuiz(this.widget.category);
     startTimer();
   }
 

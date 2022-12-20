@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:doan_ltdd/pages/UI/field_page.dart';
+import 'package:doan_ltdd/pages/UI/main_friends.dart';
 import 'package:doan_ltdd/pages/UI/main_page.dart';
 import 'package:doan_ltdd/pages/UI/result.dart';
 import 'package:doan_ltdd/pages/login/login_screen.dart';

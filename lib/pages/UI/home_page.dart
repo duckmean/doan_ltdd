@@ -6,6 +6,7 @@ import 'package:doan_ltdd/pages/UI/main_friends.dart';
 import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
 import 'package:doan_ltdd/pages/payment/vip_user.dart';
 import 'package:doan_ltdd/provider/auth_provider.dart';
+import 'package:doan_ltdd/provider/friends.dart';
 
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/foundation.dart';
@@ -38,6 +39,7 @@ class _HomePageState extends State<HomePage> {
     getData();
   }
 
+  Friends friendsService = Friends();
   @override
   Widget build(BuildContext context) {
     final sp = context.watch<SignInProvider>();

@@ -1,4 +1,5 @@
 import 'package:doan_ltdd/pages/UI/friends_page.dart';
+import 'package:doan_ltdd/pages/UI/friends_test.dart';
 import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
 import 'package:doan_ltdd/pages/payment/shop.dart';
@@ -23,7 +24,7 @@ class _MainFriendsState extends State<MainFriends> {
 
   List<Widget> lsScreen = [
     FriendsPage(title: 'Mọi Người'),
-    FriendsPage(title: 'Bạn Bè')
+    FriendsTest(title: 'Bạn Bè')
   ];
 
   @override
