@@ -1,6 +1,7 @@
 import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/UI/main_page.dart';
+import 'package:doan_ltdd/provider/user_object.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class Change_password extends StatefulWidget {
 }
 
 class _Change_passwordState extends State<Change_password> {
+  User? user;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,7 +125,9 @@ class _Change_passwordState extends State<Change_password> {
                         child: ElevatedButton(
                           onPressed: () => nextScreen(
                             context,
-                            HomePage(),
+                            HomePage(
+                              user: user,
+                            ),
                           ), //bo sung 2
                           child: const Text('Xác nhận',
                               style: TextStyle(fontSize: 20)),

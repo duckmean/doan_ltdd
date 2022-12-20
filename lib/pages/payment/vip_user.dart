@@ -1,4 +1,5 @@
 import 'package:doan_ltdd/pages/UI/home_page.dart';
+import 'package:doan_ltdd/provider/user_object.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -20,6 +21,7 @@ class VipUserScreen extends StatefulWidget {
 }
 
 class _VipUserScreenState extends State<VipUserScreen> {
+  User? user;
   @override
   Widget build(BuildContext context) {
     final sp = context.watch<SignInProvider>();
@@ -196,7 +198,9 @@ class _VipUserScreenState extends State<VipUserScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomePage(),
+                          builder: (context) => HomePage(
+                            user: user,
+                          ),
                         ),
                       );
                     },

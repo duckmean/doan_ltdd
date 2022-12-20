@@ -1,5 +1,6 @@
 import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
+import 'package:doan_ltdd/provider/user_object.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,7 @@ class RecordPage extends StatefulWidget {
 }
 
 class _RecordPageState extends State<RecordPage> {
+  User? user;
   Future getData() async {
     final sp = context.read<SignInProvider>();
     sp.getDataFromSharedPreferences();
@@ -273,7 +275,9 @@ class _RecordPageState extends State<RecordPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomePage(),
+                    builder: (context) => HomePage(
+                      user: user,
+                    ),
                   ),
                 );
               },

@@ -1,5 +1,6 @@
 import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/UI/main_page.dart';
+import 'package:doan_ltdd/provider/user_object.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class UpdateInfomation extends StatefulWidget {
 }
 
 class _UpdateInfomationState extends State<UpdateInfomation> {
+  User? user;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,7 +115,9 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                                     TextButton(
                                       onPressed: () => nextScreen(
                                         context,
-                                        HomePage(),
+                                        HomePage(
+                                          user: user,
+                                        ),
                                       ),
                                       child: Text('OK'),
                                     ),

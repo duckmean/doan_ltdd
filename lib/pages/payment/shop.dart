@@ -1,5 +1,6 @@
 import 'package:doan_ltdd/pages/payment/getmore_coins.dart';
 import 'package:doan_ltdd/pages/payment/vip_user.dart';
+import 'package:doan_ltdd/provider/user_object.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,7 @@ class ShopSreen extends StatefulWidget {
 }
 
 class _ShopSreenState extends State<ShopSreen> {
+  User? user;
   @override
   Widget build(BuildContext context) {
     final sp = context.watch<SignInProvider>();
@@ -180,7 +182,9 @@ class _ShopSreenState extends State<ShopSreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomePage(),
+                          builder: (context) => HomePage(
+                            user: user,
+                          ),
                         ),
                       );
                     },

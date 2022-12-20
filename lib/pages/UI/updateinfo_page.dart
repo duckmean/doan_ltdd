@@ -3,6 +3,7 @@ import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/login/change_password.dart';
 import 'package:doan_ltdd/pages/login/forget_password2.dart';
 import 'package:doan_ltdd/pages/login/update_info.dart';
+import 'package:doan_ltdd/provider/user_object.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class UpdateInfomationScreen extends StatefulWidget {
 }
 
 class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
+  User? user;
   @override
   Widget build(BuildContext context) {
     final sp = context.watch<SignInProvider>();
@@ -172,7 +174,9 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomePage(),
+                          builder: (context) => HomePage(
+                            user: user,
+                          ),
                         ),
                       );
                     },

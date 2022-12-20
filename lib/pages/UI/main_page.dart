@@ -1,13 +1,14 @@
 import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
 import 'package:doan_ltdd/pages/payment/shop.dart';
+import 'package:doan_ltdd/provider/user_object.dart';
 import 'package:flutter/material.dart';
 
 import '../../Appcolor/appcolor.dart';
 
 class MainPageScreen extends StatefulWidget {
-  const MainPageScreen({super.key});
-
+  MainPageScreen({Key? key, required this.user}) : super(key: key);
+  User? user;
   @override
   State<MainPageScreen> createState() => _MainPageScreenState();
 }
@@ -20,10 +21,20 @@ class _MainPageScreenState extends State<MainPageScreen> {
     });
   }
 
+  void initState() {
+    lsScreen = [
+      HomePage(
+        user: this.widget.user,
+      ),
+      ShopSreen(),
+      UpdateInfomationScreen(),
+    ];
+  }
+
   List<Widget> lsScreen = [
-    HomePage(),
-    ShopSreen(),
-    UpdateInfomationScreen(),
+    // HomePage(),
+    // ShopSreen(),
+    // UpdateInfomationScreen(),
   ];
 
   @override

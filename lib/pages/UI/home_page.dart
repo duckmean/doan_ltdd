@@ -7,6 +7,7 @@ import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
 import 'package:doan_ltdd/pages/payment/vip_user.dart';
 import 'package:doan_ltdd/provider/auth_provider.dart';
 import 'package:doan_ltdd/provider/friends.dart';
+import 'package:doan_ltdd/provider/user_object.dart';
 
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/foundation.dart';
@@ -22,7 +23,8 @@ import 'package:provider/provider.dart';
 import 'package:doan_ltdd/provider/sign_in_provider.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({Key? key, required this.user}) : super(key: key);
+  User? user;
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -99,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                         child: Text(
-                          "QuizzCoin: 0",
+                          "QuizzCoin: ${this.widget.user!.quizzcoin}",
                           style: TextStyle(
                             fontSize: 17,
                             color: AppColor.fieldColor,
@@ -392,18 +394,6 @@ class _HomePageState extends State<HomePage> {
                         //backgroundImage: NetworkImage("${sp.imageUrl}"),
                         radius: 50,
                       )),
-                  ListTile(
-                    leading: Icon(Icons.home),
-                    title: Text("Home"),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(),
-                        ),
-                      );
-                    },
-                  ),
                   ListTile(
                     leading: Icon(Icons.shopping_cart),
                     title: Text("Nạp QuizzCoin"),

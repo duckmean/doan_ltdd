@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:doan_ltdd/provider/auth_provider.dart';
 import 'package:doan_ltdd/provider/global_service.dart';
+import 'package:doan_ltdd/provider/user_object.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService {
@@ -38,16 +39,15 @@ class AuthService {
     return response;
   }
 
-  // static Future<User?> fetchUser(String email, String password) async {
-  //   http.Response response = await login(email, password);
-  //   User? result;
-  //   if (response.statusCode == 200) {
-  //     final parsed = jsonDecode(response.body);
-  //     final data = parsed["users"];
-  //     print(data);
-  //     result = User.fromJson(data);
-  //   }
-  //   return result;
-  // }
-
+  static Future<User?> fetchUser(String email, String password) async {
+    http.Response response = await login(email, password);
+    User? result;
+    if (response.statusCode == 200) {
+      final parsed = jsonDecode(response.body);
+      final data = parsed["member"];
+      print(data);
+      result = User.fromJson(data);
+    }
+    return result;
+  }
 }

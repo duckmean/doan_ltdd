@@ -103,7 +103,11 @@ class _ResultState extends State<Result> {
                           padding: const EdgeInsets.all(12.0),
                           child: ElevatedButton(
                             onPressed: () {
-                              nextScreenRemoveUntil(context, MainPageScreen());
+                              nextScreenRemoveUntil(
+                                  context,
+                                  MainPageScreen(
+                                    user: null,
+                                  ));
                             },
                             child: Row(
                               children: [

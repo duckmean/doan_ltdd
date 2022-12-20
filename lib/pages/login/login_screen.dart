@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/provider/auth_provider.dart';
+import 'package:doan_ltdd/provider/user_object.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -34,6 +35,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  User? user;
   final GlobalKey _scaffoldKey = GlobalKey<ScaffoldState>();
   final RoundedLoadingButtonController googleController =
       RoundedLoadingButtonController();
@@ -50,8 +52,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
+        User? us = await AuthService.fetchUser(_email, _password);
         saveDataLoginFromSharedPreferences();
-        nextScreenRemoveUntil(context, MainPageScreen());
+        // nextScreenRemoveUntil(context, MainPageScreen());
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => MainPageScreen(
+                user: us,
+              ),
+            ),
+            (route) => false);
       } else {
         errorSnackbar(context, responseMap.values.first);
       }
@@ -382,7 +392,11 @@ class _LoginScreenState extends State<LoginScreen> {
   // handle after signin
   handleAfterSignIn() {
     Future.delayed(const Duration(milliseconds: 1000)).then((value) {
-      nextScreenReplace(context, const HomePage());
+      nextScreenReplace(
+          context,
+          HomePage(
+            user: user,
+          ));
     });
   }
 }
