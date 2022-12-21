@@ -50,15 +50,15 @@ class _MainPageScreenState extends State<MainPageScreen> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Màn Hình Chính',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.manage_accounts_rounded),
-            label: 'Information',
+            label: 'Thông Tin',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
-            label: 'Shop',
+            label: 'Cửa Hàng',
           ),
         ],
       ),

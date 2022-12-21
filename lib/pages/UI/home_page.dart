@@ -367,7 +367,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   ListTile(
                     leading: Icon(Icons.logout_outlined),
-                    title: Text("Sign out"),
+                    title: Text("Đăng xuất"),
                     onTap: () {
                       showDialog(
                         context: context,

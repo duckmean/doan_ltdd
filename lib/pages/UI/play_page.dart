@@ -448,7 +448,7 @@ class _PlayPageState extends State<PlayPage> {
                                               optionsList.add('');
                                               optionsList.add('');
                                             }
-                                            //count1 = 0;
+                                            count1 = 0;
                                             //errorSnackbar(context, "Ban ")
                                           } else {
                                             ScaffoldMessenger.of(context)
