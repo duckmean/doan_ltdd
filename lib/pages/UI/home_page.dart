@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(
-                height: 16,
+                height: 25,
               ),
               Container(
                 width: 250,
@@ -165,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                         },
                         // ignore: sort_child_properties_last
                         child: const Text(
-                          'Bắt đầu',
+                          'Chơi mới',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -192,14 +192,13 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  RecordPage(user: this.widget.user),
+                              builder: (context) => HistoryPage(),
                             ),
                           );
                         },
                         // ignore: sort_child_properties_last
                         child: const Text(
-                          'Kỷ lục',
+                          'Lịch sử chơi',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -218,71 +217,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    // Container(
-                    //   padding: const EdgeInsets.all(10),
-                    //   child: TextButton(
-                    //     onPressed: () {
-                    //       Navigator.push(
-                    //         context,
-                    //         MaterialPageRoute(
-                    //           builder: (context) => HistoryPage(),
-                    //         ),
-                    //       );
-                    //     },
-                    //     // ignore: sort_child_properties_last
-                    //     child: const Text(
-                    //       'Lịch Sử',
-                    //       style: TextStyle(
-                    //         fontSize: 20,
-                    //         color: Colors.white,
-                    //         fontWeight: FontWeight.w300,
-                    //       ),
-                    //     ),
-                    //     style: ButtonStyle(
-                    //       backgroundColor:
-                    //           MaterialStatePropertyAll(AppColor.dartyellow),
-                    //       minimumSize:
-                    //           const MaterialStatePropertyAll(Size(270, 50)),
-                    //       shape: MaterialStateProperty.all(
-                    //         RoundedRectangleBorder(
-                    //             borderRadius: BorderRadius.circular(60)),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   padding: const EdgeInsets.all(10),
-                    //   child: TextButton(
-                    //     onPressed: () {
-                    //       Navigator.push(
-                    //         context,
-                    //         MaterialPageRoute(
-                    //           builder: (context) => MainFriends(),
-                    //         ),
-                    //       );
-                    //     },
-                    //     // ignore: sort_child_properties_last
-                    //     child: const Text(
-                    //       'Bạn Bè',
-                    //       style: TextStyle(
-                    //         fontSize: 20,
-                    //         color: Colors.white,
-                    //         fontWeight: FontWeight.w300,
-                    //       ),
-                    //     ),
-                    //     style: ButtonStyle(
-                    //       backgroundColor:
-                    //           MaterialStatePropertyAll(AppColor.green),
-                    //       minimumSize:
-                    //           const MaterialStatePropertyAll(Size(270, 50)),
-                    //       shape: MaterialStateProperty.all(
-                    //         RoundedRectangleBorder(
-                    //             borderRadius: BorderRadius.circular(60)),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-                    // ignore: avoid_unnecessary_containers
+
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: TextButton(
@@ -304,16 +239,24 @@ class _HomePageState extends State<HomePage> {
                               //titlePadding: EdgeInsets.only(left: 20, top: 10),
                               content: Container(
                                 //color: AppColor.background,
-                                width: 850,
+                                width: 900,
                                 height: 800,
                                 child: Center(
                                   child: SingleChildScrollView(
                                     child: Container(
                                       child: Text(
-                                        'Hướng dẫn',
+                                        'Nhấn chơi mới, chọn lĩnh vực để bắt đầu trò chơi.\n\n'
+                                        'Người chơi có 3 lần chọn sai đáp án, tương ứng với 3 mạng, hết 3 mạng sẽ kết thúc trò chơi.\n\n'
+                                        'Mỗi lần trả lời câu hỏi là 30 giây, khi hết thời gian mà vẫn chưa trả lời sẽ trừ một mạng.\n\n'
+                                        'Mỗi lượt chơi sẽ có 3 sự trợ giúp là 50/50, đổi câu hỏi và mua đáp án, 50/50 và đổi câu hỏi chỉ được sử dụng 1 lần trong mỗi lượt chơi, người chơi có thể mua đáp án thỏa thích (miễn là ví còn dày).\n\n'
+                                        'Với mỗi lần mua đáp án, giá tiền sẽ tăng lên gấp đôi, bắt đầu từ 50 QC.\n\n'
+                                        'Người chơi chỉnh sửa thông tin của mình trong phần Information, người dùng có thể chỉnh sửa thông tin như tên,mật khẩu,...\n\n'
+                                        'Người chơi có thể nạp thẻ và mua VIP trong phần Shop.\n\n'
+                                        'Mức VIP sẽ tăng dần từ 1 đến 5, tương ứng với từng phúc lợi của bậc VIP.\n\n'
+                                        'Ngoài ra còn các chức năng khác ở trong ngăn kéo (☰) phía góc phải màn hình như bạn bè, kỷ lục,..',
                                         style: TextStyle(
                                           color: AppColor.fieldColor,
-                                          fontSize: 15,
+                                          fontSize: 18,
                                         ),
                                       ),
                                     ),
@@ -323,7 +266,12 @@ class _HomePageState extends State<HomePage> {
                               actions: [
                                 TextButton(
                                   onPressed: () => Navigator.pop(context),
-                                  child: Text('OK'),
+                                  child: Text(
+                                    'OK',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -367,12 +315,7 @@ class _HomePageState extends State<HomePage> {
                     leading: Icon(Icons.login),
                     title: Text("Login"),
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
-                        ),
-                      );
+                      nextScreenRemoveUntil(context, LoginScreen());
                     },
                   ),
                 ],
@@ -391,19 +334,22 @@ class _HomePageState extends State<HomePage> {
                       radius: 50,
                     ),
                   ),
-                  ListTile(
-                    leading: Icon(Icons.shopping_cart),
-                    title: Text("Nạp QuizzCoin"),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              GetMoreCoins(user: this.widget.user),
-                        ),
-                      );
-                    },
+                  SizedBox(
+                    height: 30,
                   ),
+                  // ListTile(
+                  //   leading: Icon(Icons.shopping_cart),
+                  //   title: Text("Nạp QuizzCoin"),
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             GetMoreCoins(user: this.widget.user),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
                   ListTile(
                     leading: Icon(Icons.groups),
                     title: Text("Bạn bè"),
@@ -413,9 +359,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                   ListTile(
                     leading: Icon(Icons.bookmark_outlined),
-                    title: Text("Lịch sử"),
+                    title: Text("Kỷ lục"),
                     onTap: () {
-                      nextScreen(context, HistoryPage());
+                      nextScreen(context, RecordPage(user: this.widget.user));
                     },
                   ),
                   ListTile(

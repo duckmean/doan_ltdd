@@ -6,13 +6,14 @@ import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:flutter/material.dart';
 
 class Change_password extends StatefulWidget {
-  const Change_password({super.key});
+  Change_password({Key? key, required this.user}) : super(key: key);
+  User? user;
   @override
   State<Change_password> createState() => _Change_passwordState();
 }
 
 class _Change_passwordState extends State<Change_password> {
-  User? user;
+  TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,8 +100,9 @@ class _Change_passwordState extends State<Change_password> {
                       ),
                       Container(
                         padding: const EdgeInsets.all(15),
-                        child: const TextField(
+                        child: TextField(
                           obscureText: true,
+                          controller: _passwordController,
                           decoration: InputDecoration(
                             hintText: 'Nhập Lại Mật Khẩu Mới',
                             labelText: 'Nhập Lại Mật Khẩu Mới',
@@ -125,8 +127,8 @@ class _Change_passwordState extends State<Change_password> {
                         child: ElevatedButton(
                           onPressed: () => nextScreen(
                             context,
-                            HomePage(
-                              user: user,
+                            MainPageScreen(
+                              user: this.widget.user,
                             ),
                           ), //bo sung 2
                           child: const Text('Xác nhận',

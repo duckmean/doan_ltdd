@@ -42,23 +42,13 @@ class _FieldPageState extends State<FieldPage> {
           child: Stack(
             children: [
               Container(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 50,
                   left: 100,
                 ),
                 child: Container(
                   width: 150,
                   height: 100,
-                  decoration: BoxDecoration(
-                      // borderRadius: BorderRadius.only(
-                      //   topLeft: Radius.circular(50),
-                      //   bottomRight: Radius.circular(50),
-                      // ),
-                      // border: Border.all(
-                      //   width: 1,
-                      //   color: AppColor.fieldColor,
-                      // ),
-                      ),
                   child: Text(
                     'Chọn Lĩnh Vực',
                     style: TextStyle(

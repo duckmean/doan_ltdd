@@ -8,6 +8,9 @@ import 'package:provider/provider.dart';
 import '../../Appcolor/appcolor.dart';
 import '../../provider/auth_provider.dart';
 import '../../provider/sign_in_provider.dart';
+import '../../utils/next_screen.dart';
+import '../UI/history_page.dart';
+import '../UI/main_friends.dart';
 import '../UI/main_page.dart';
 import '../UI/updateinfo_page.dart';
 import '../login/login_screen.dart';
@@ -222,74 +225,42 @@ class _VipUserScreenState extends State<VipUserScreen> {
                 padding: EdgeInsets.zero,
                 children: <Widget>[
                   UserAccountsDrawerHeader(
-                    accountName: Text("${sp.name}"),
-                    accountEmail: Text("${sp.email}"),
-                    // currentAccountPicture: CircleAvatar(
-                    //   backgroundColor: AppColor.fieldColor,
-                    //   child: Text(
-                    //     "P",
-                    //     style: TextStyle(
-                    //       fontSize: 40.0,
-                    //       color: AppColor.textColor,
-                    //     ),
-                    //   ),
-                    // ),
+                    accountName: Text("${this.widget.user!.name}"),
+                    accountEmail: Text("${this.widget.user!.email}"),
                     currentAccountPicture: CircleAvatar(
                       backgroundColor: Colors.white,
-                      backgroundImage: NetworkImage("${sp.imageUrl}"),
+                      //backgroundImage: NetworkImage("${sp.imageUrl}"),
                       radius: 50,
                     ),
                   ),
-                  ListTile(
-                    leading: Icon(Icons.home),
-                    title: Text("Home"),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(
-                            user: user,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.shopping_cart),
-                    title: Text("Nạp QuizzCoin"),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              GetMoreCoins(user: this.widget.user),
-                        ),
-                      );
-                    },
+                  SizedBox(
+                    height: 30,
                   ),
                   // ListTile(
-                  //   leading: Icon(Icons.diamond),
-                  //   title: Text("Mua VIP"),
+                  //   leading: Icon(Icons.shopping_cart),
+                  //   title: Text("Nạp QuizzCoin"),
                   //   onTap: () {
                   //     Navigator.push(
                   //       context,
                   //       MaterialPageRoute(
-                  //         builder: (context) => VipUserScreen(),
+                  //         builder: (context) =>
+                  //             GetMoreCoins(user: this.widget.user),
                   //       ),
                   //     );
                   //   },
                   // ),
                   ListTile(
-                    leading: Icon(Icons.contacts),
-                    title: Text("Cập nhật thông tin"),
+                    leading: Icon(Icons.groups),
+                    title: Text("Bạn bè"),
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              UpdateInfomationScreen(user: this.widget.user),
-                        ),
-                      );
+                      nextScreen(context, MainFriends());
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.bookmark_outlined),
+                    title: Text("Lịch sử"),
+                    onTap: () {
+                      nextScreen(context, HistoryPage());
                     },
                   ),
                   ListTile(
@@ -315,11 +286,7 @@ class _VipUserScreenState extends State<VipUserScreen> {
                                 } else {
                                   // Navigator.pushNamedAndRemoveUntil(
                                   //     context, 'Login', (route) => false);
-                                  Navigator.of(context).pushAndRemoveUntil(
-                                      MaterialPageRoute(
-                                        builder: (context) => LoginScreen(),
-                                      ),
-                                      (route) => false);
+                                  nextScreenRemoveUntil(context, LoginScreen());
                                 }
                               },
                               child: Text('Có'),

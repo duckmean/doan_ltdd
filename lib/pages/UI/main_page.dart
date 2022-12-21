@@ -26,8 +26,8 @@ class _MainPageScreenState extends State<MainPageScreen> {
       HomePage(
         user: this.widget.user,
       ),
-      ShopSreen(user: this.widget.user),
       UpdateInfomationScreen(user: this.widget.user),
+      ShopSreen(user: this.widget.user),
     ];
   }
 
@@ -53,12 +53,12 @@ class _MainPageScreenState extends State<MainPageScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Shop',
+            icon: Icon(Icons.manage_accounts_rounded),
+            label: 'Information',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Information',
+            icon: Icon(Icons.shopping_cart),
+            label: 'Shop',
           ),
         ],
       ),

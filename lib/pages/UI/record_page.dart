@@ -6,10 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Appcolor/appcolor.dart';
+import '../../provider/auth_provider.dart';
 import '../../provider/sign_in_provider.dart';
 import '../../utils/next_screen.dart';
 import '../login/login_screen.dart';
 import '../payment/getmore_coins.dart';
+import 'history_page.dart';
+import 'main_friends.dart';
 import 'main_page.dart';
 import 'play_page.dart';
 import 'record_detail.dart';
@@ -250,103 +253,106 @@ class _RecordPageState extends State<RecordPage> {
         ),
       ),
       endDrawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text("${sp.name}"),
-              accountEmail: Text("${sp.email}"),
-              // currentAccountPicture: CircleAvatar(
-              //   backgroundColor: AppColor.fieldColor,
-              //   child: Text(
-              //     "P",
-              //     style: TextStyle(
-              //       fontSize: 40.0,
-              //       color: AppColor.textColor,
-              //     ),
-              //   ),
-              // ),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                backgroundImage: NetworkImage("${sp.imageUrl}"),
-                radius: 50,
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text("Home"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomePage(
-                      user: user,
+        child: Consumer<AuthProvider>(
+          builder: (context, auth, child) {
+            if (!auth.authenticated) {
+              return ListView(
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.login),
+                    title: Text("Login"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              );
+            } else {
+              return ListView(
+                // Important: Remove any padding from the ListView.
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  UserAccountsDrawerHeader(
+                    accountName: Text("${this.widget.user!.name}"),
+                    accountEmail: Text("${this.widget.user!.email}"),
+                    currentAccountPicture: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      //backgroundImage: NetworkImage("${sp.imageUrl}"),
+                      radius: 50,
                     ),
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text("Nạp QuizzCoin"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => GetMoreCoins(user: this.widget.user),
+                  SizedBox(
+                    height: 30,
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.contacts),
-              title: Text("Cập nhật thông tin"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        UpdateInfomationScreen(user: this.widget.user),
+                  // ListTile(
+                  //   leading: Icon(Icons.shopping_cart),
+                  //   title: Text("Nạp QuizzCoin"),
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             GetMoreCoins(user: this.widget.user),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
+                  ListTile(
+                    leading: Icon(Icons.groups),
+                    title: Text("Bạn bè"),
+                    onTap: () {
+                      nextScreen(context, MainFriends());
+                    },
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.logout_outlined),
-              title: Text("Log out"),
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: Text('Thông báo'),
-                    content: Text('Bạn có muốn đăng xuất không'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text('Không'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => LoginScreen(),
-                          //   ),
-                          // );
-                          sp.userSignOut();
-                          nextScreen(context, const LoginScreen());
-                        },
-                        child: Text('Có'),
-                      ),
-                    ],
+                  ListTile(
+                    leading: Icon(Icons.bookmark_outlined),
+                    title: Text("Lịch sử"),
+                    onTap: () {
+                      nextScreen(context, HistoryPage());
+                    },
                   ),
-                );
-              },
-            ),
-          ],
+                  ListTile(
+                    leading: Icon(Icons.logout_outlined),
+                    title: Text("Sign out"),
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text('Thông báo'),
+                          content: Text('Bạn có muốn đăng xuất không'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text('Không'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                if (sp.checkUserExists() == true) {
+                                  sp.userSignOut();
+                                } else {
+                                  // Navigator.pushNamedAndRemoveUntil(
+                                  //     context, 'Login', (route) => false);
+                                  nextScreenRemoveUntil(context, LoginScreen());
+                                }
+                              },
+                              child: Text('Có'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              );
+            }
+          },
         ),
       ),
     );
