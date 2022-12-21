@@ -2,10 +2,10 @@ class User {
   final int id;
   final String name;
   final String email;
-  final int quizzcoin;
-  final int vip;
+  late int quizzcoin;
+  late int vip;
 
-  const User({
+  User({
     required this.id,
     required this.name,
     required this.email,

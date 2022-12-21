@@ -20,7 +20,8 @@ import '../payment/vip_user.dart';
 import 'main_page.dart';
 
 class UpdateInfomationScreen extends StatefulWidget {
-  const UpdateInfomationScreen({super.key});
+  UpdateInfomationScreen({Key? key, required this.user}) : super(key: key);
+  User? user;
   @override
   State<UpdateInfomationScreen> createState() => _UpdateInfomationScreenState();
 }
@@ -46,6 +47,51 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  margin: EdgeInsets.only(
+                    left: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColor.background,
+                    border: Border.all(
+                      width: 0.1,
+                      color: AppColor.fieldColor,
+                    ),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              GetMoreCoins(user: this.widget.user),
+                        ),
+                      );
+                    },
+                    style: ButtonStyle(
+                      minimumSize: MaterialStateProperty.all(Size(170, 40)),
+                      // backgroundColor:
+                      //     MaterialStatePropertyAll(AppColor.background),
+                      // shape: MaterialStateProperty.all(
+                      //   RoundedRectangleBorder(
+                      //       borderRadius: BorderRadius.circular(30)),
+                      // ),
+                    ),
+                    child: Text(
+                      this.widget.user!.quizzcoin != null
+                          ? "QuizzCoin: ${this.widget.user!.quizzcoin}"
+                          : "QuizzCoin: 0",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: AppColor.fieldColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               Container(
                 width: 250,
                 height: 250,
@@ -188,7 +234,8 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => GetMoreCoins(),
+                          builder: (context) =>
+                              GetMoreCoins(user: this.widget.user),
                         ),
                       );
                     },
@@ -200,7 +247,8 @@ class _UpdateInfomationScreenState extends State<UpdateInfomationScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => VipUserScreen(),
+                          builder: (context) =>
+                              VipUserScreen(user: this.widget.user),
                         ),
                       );
                     },

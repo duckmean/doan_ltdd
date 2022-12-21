@@ -15,7 +15,8 @@ import 'play_page.dart';
 import 'record_detail.dart';
 
 class RecordPage extends StatefulWidget {
-  const RecordPage({super.key});
+  RecordPage({Key? key, required this.user}) : super(key: key);
+  User? user;
 
   @override
   State<RecordPage> createState() => _RecordPageState();
@@ -110,7 +111,8 @@ class _RecordPageState extends State<RecordPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => RecordDetail(),
+                                    builder: (context) =>
+                                        RecordDetail(user: this.widget.user),
                                   ),
                                 );
                               },
@@ -141,7 +143,8 @@ class _RecordPageState extends State<RecordPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => RecordDetail(),
+                                    builder: (context) =>
+                                        RecordDetail(user: this.widget.user),
                                   ),
                                 );
                               },
@@ -179,7 +182,8 @@ class _RecordPageState extends State<RecordPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => RecordDetail(),
+                                    builder: (context) =>
+                                        RecordDetail(user: this.widget.user),
                                   ),
                                 );
                               },
@@ -210,7 +214,8 @@ class _RecordPageState extends State<RecordPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => RecordDetail(),
+                                    builder: (context) =>
+                                        RecordDetail(user: this.widget.user),
                                   ),
                                 );
                               },
@@ -289,7 +294,7 @@ class _RecordPageState extends State<RecordPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => GetMoreCoins(),
+                    builder: (context) => GetMoreCoins(user: this.widget.user),
                   ),
                 );
               },
@@ -301,7 +306,8 @@ class _RecordPageState extends State<RecordPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => UpdateInfomationScreen(),
+                    builder: (context) =>
+                        UpdateInfomationScreen(user: this.widget.user),
                   ),
                 );
               },

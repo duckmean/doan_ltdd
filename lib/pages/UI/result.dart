@@ -1,6 +1,7 @@
 import 'package:doan_ltdd/pages/UI/field_page.dart';
 import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/UI/main_page.dart';
+import 'package:doan_ltdd/provider/user_object.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -14,7 +15,9 @@ import '../UI/play_page.dart';
 
 class Result extends StatefulWidget {
   int points;
-  Result({Key? key, required this.points}) : super(key: key);
+  User? user;
+  Result({Key? key, required this.points, required this.user})
+      : super(key: key);
   @override
   State<Result> createState() => _ResultState();
 }
@@ -104,10 +107,11 @@ class _ResultState extends State<Result> {
                           child: ElevatedButton(
                             onPressed: () {
                               nextScreenRemoveUntil(
-                                  context,
-                                  MainPageScreen(
-                                    user: null,
-                                  ));
+                                context,
+                                MainPageScreen(
+                                  user: this.widget.user,
+                                ),
+                              );
                             },
                             child: Row(
                               children: [
@@ -140,7 +144,8 @@ class _ResultState extends State<Result> {
                           padding: const EdgeInsets.all(12.0),
                           child: ElevatedButton(
                             onPressed: () {
-                              nextScreenRemoveUntil(context, FieldPage());
+                              nextScreenRemoveUntil(
+                                  context, FieldPage(user: this.widget.user));
                             },
                             child: Row(
                               children: [

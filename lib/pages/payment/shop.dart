@@ -13,7 +13,8 @@ import '../UI/updateinfo_page.dart';
 import '../login/login_screen.dart';
 
 class ShopSreen extends StatefulWidget {
-  const ShopSreen({super.key});
+  ShopSreen({Key? key, required this.user}) : super(key: key);
+  User? user;
 
   @override
   State<ShopSreen> createState() => _ShopSreenState();
@@ -48,7 +49,55 @@ class _ShopSreenState extends State<ShopSreen> {
           child: Column(
             children: [
               SizedBox(
-                height: 50,
+                height: 20,
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  margin: EdgeInsets.only(
+                    left: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColor.background,
+                    border: Border.all(
+                      width: 0.1,
+                      color: AppColor.fieldColor,
+                    ),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              GetMoreCoins(user: this.widget.user),
+                        ),
+                      );
+                    },
+                    style: ButtonStyle(
+                      minimumSize: MaterialStateProperty.all(Size(120, 40)),
+                      // backgroundColor:
+                      //     MaterialStatePropertyAll(AppColor.background),
+                      // shape: MaterialStateProperty.all(
+                      //   RoundedRectangleBorder(
+                      //       borderRadius: BorderRadius.circular(30)),
+                      // ),
+                    ),
+                    child: Text(
+                      this.widget.user!.quizzcoin != null
+                          ? "QuizzCoin: ${this.widget.user!.quizzcoin}"
+                          : "QuizzCoin: 0",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: AppColor.fieldColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 30,
               ),
               Container(
                 margin: EdgeInsets.only(
@@ -77,7 +126,12 @@ class _ShopSreenState extends State<ShopSreen> {
                   Container(
                     child: ElevatedButton(
                       onPressed: () {
-                        nextScreen(context, VipUserScreen());
+                        nextScreen(
+                          context,
+                          VipUserScreen(
+                            user: this.widget.user,
+                          ),
+                        );
                       },
                       child: Text(
                         'Mua VIP',
@@ -104,7 +158,12 @@ class _ShopSreenState extends State<ShopSreen> {
                   Container(
                     child: ElevatedButton(
                       onPressed: () {
-                        nextScreen(context, GetMoreCoins());
+                        nextScreen(
+                          context,
+                          GetMoreCoins(
+                            user: this.widget.user,
+                          ),
+                        );
                       },
                       child: Text(
                         'Nạp QuizzCoin',
@@ -196,7 +255,9 @@ class _ShopSreenState extends State<ShopSreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => GetMoreCoins(),
+                          builder: (context) => GetMoreCoins(
+                            user: this.widget.user,
+                          ),
                         ),
                       );
                     },
@@ -208,7 +269,8 @@ class _ShopSreenState extends State<ShopSreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => VipUserScreen(),
+                          builder: (context) =>
+                              VipUserScreen(user: this.widget.user),
                         ),
                       );
                     },
@@ -220,7 +282,8 @@ class _ShopSreenState extends State<ShopSreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => UpdateInfomationScreen(),
+                          builder: (context) =>
+                              UpdateInfomationScreen(user: this.widget.user),
                         ),
                       );
                     },

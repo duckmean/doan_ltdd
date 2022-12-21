@@ -4,6 +4,7 @@ import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import 'package:doan_ltdd/pages/UI/main_page.dart';
 
 import 'package:doan_ltdd/utils/next_screen.dart';
+import 'package:doan_ltdd/utils/snack_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../../provider/auth_service.dart';
@@ -31,10 +32,8 @@ class _RegisterState extends State<Register> {
           await AuthService.register(_name, _email, _pasword);
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        nextScreen(
-          context,
-          LoginScreen(),
-        );
+        openSnackbar(context, 'Đăng ký thành công', AppColor.redbtn2);
+        nextScreenRemoveUntil(context, LoginScreen());
       } else {
         errorSnackbar(context, responseMap.values.first[0]);
       }
@@ -147,18 +146,7 @@ class _RegisterState extends State<Register> {
                       Container(
                         padding: const EdgeInsets.all(10),
                         child: TextField(
-                          onTap: () {
-                            if (checkPassWord() == false) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  backgroundColor: AppColor.redbtn2,
-                                  content: Text(
-                                      "Xác thực lại mật khẩu không chính xác"),
-                                  duration: Duration(seconds: 2),
-                                ),
-                              );
-                            }
-                          },
+                          onTap: () {},
                           controller: _checkPassController,
                           obscureText: true,
                           decoration: InputDecoration(
@@ -216,7 +204,19 @@ class _RegisterState extends State<Register> {
                             //     );
                             //   },
                             // );
-                            createAccount();
+                            if (checkPassWord() == false) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  backgroundColor: AppColor.redbtn2,
+                                  content: Text(
+                                      "Xác thực lại mật khẩu không chính xác"),
+                                  duration: Duration(seconds: 2),
+                                ),
+                              );
+                            } else {
+                              Future.delayed(Duration(seconds: 1));
+                              createAccount();
+                            }
                           }, //bo sung 2
                           child: const Text('Đăng Ký',
                               style: TextStyle(fontSize: 20)),

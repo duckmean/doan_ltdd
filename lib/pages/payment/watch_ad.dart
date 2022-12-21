@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../provider/user_object.dart';
+
 final Uri _url = Uri.parse(
     'https://shop.highlandscoffee.com.vn/products/combo-2-goi-ca-phe-rang-xay-truyen-thong-highlands-coffee-200g-goi');
 
 class Watch_Ad extends StatefulWidget {
-  const Watch_Ad({super.key});
+  Watch_Ad({Key? key, required this.user}) : super(key: key);
+  User? user;
   @override
   _Watch_AdState createState() => _Watch_AdState();
 }
@@ -36,7 +39,9 @@ class _Watch_AdState extends State<Watch_Ad> {
       // controller.pause();
       if (mounted) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (_) => const GetMoreCoins()));
+            context,
+            MaterialPageRoute(
+                builder: (_) => GetMoreCoins(user: this.widget.user)));
       }
     });
 

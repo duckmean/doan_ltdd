@@ -26,8 +26,8 @@ class _MainPageScreenState extends State<MainPageScreen> {
       HomePage(
         user: this.widget.user,
       ),
-      ShopSreen(),
-      UpdateInfomationScreen(),
+      ShopSreen(user: this.widget.user),
+      UpdateInfomationScreen(user: this.widget.user),
     ];
   }
 

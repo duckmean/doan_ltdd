@@ -11,7 +11,8 @@ import '../payment/getmore_coins.dart';
 import 'main_page.dart';
 
 class RecordDetail extends StatefulWidget {
-  const RecordDetail({super.key});
+  RecordDetail({Key? key, required this.user}) : super(key: key);
+  User? user;
 
   @override
   State<RecordDetail> createState() => _RecordDetailState();
@@ -409,7 +410,7 @@ class _RecordDetailState extends State<RecordDetail> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => GetMoreCoins(),
+                    builder: (context) => GetMoreCoins(user: this.widget.user),
                   ),
                 );
               },
@@ -421,7 +422,8 @@ class _RecordDetailState extends State<RecordDetail> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => UpdateInfomationScreen(),
+                    builder: (context) =>
+                        UpdateInfomationScreen(user: this.widget.user),
                   ),
                 );
               },

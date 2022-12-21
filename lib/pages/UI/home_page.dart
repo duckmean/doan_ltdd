@@ -44,6 +44,7 @@ class _HomePageState extends State<HomePage> {
   Friends friendsService = Friends();
   @override
   Widget build(BuildContext context) {
+    //var quizzcoin = this.widget.user!.quizzcoin;
     final sp = context.watch<SignInProvider>();
     final lg = context.read<AuthProvider>();
     //final sg = context.watch<AuthProvider>();
@@ -96,25 +97,28 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => GetMoreCoins(),
+                              builder: (context) =>
+                                  GetMoreCoins(user: this.widget.user),
                             ),
                           );
                         },
-                        child: Text(
-                          "QuizzCoin: ${this.widget.user!.quizzcoin}",
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: AppColor.fieldColor,
-                          ),
-                        ),
                         style: ButtonStyle(
-                          minimumSize: MaterialStateProperty.all(Size(120, 40)),
+                          minimumSize: MaterialStateProperty.all(Size(170, 40)),
                           // backgroundColor:
                           //     MaterialStatePropertyAll(AppColor.background),
                           // shape: MaterialStateProperty.all(
                           //   RoundedRectangleBorder(
                           //       borderRadius: BorderRadius.circular(30)),
                           // ),
+                        ),
+                        child: Text(
+                          this.widget.user!.quizzcoin != null
+                              ? "QuizzCoin: ${this.widget.user!.quizzcoin}"
+                              : "QuizzCoin: 0",
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: AppColor.fieldColor,
+                          ),
                         ),
                       ),
                     ),
@@ -154,7 +158,8 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FieldPage(),
+                              builder: (context) =>
+                                  FieldPage(user: this.widget.user),
                             ),
                           );
                         },
@@ -187,7 +192,8 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => RecordPage(),
+                              builder: (context) =>
+                                  RecordPage(user: this.widget.user),
                             ),
                           );
                         },
@@ -212,70 +218,70 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HistoryPage(),
-                            ),
-                          );
-                        },
-                        // ignore: sort_child_properties_last
-                        child: const Text(
-                          'Lịch Sử',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(AppColor.dartyellow),
-                          minimumSize:
-                              const MaterialStatePropertyAll(Size(270, 50)),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(60)),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => MainFriends(),
-                            ),
-                          );
-                        },
-                        // ignore: sort_child_properties_last
-                        child: const Text(
-                          'Bạn Bè',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(AppColor.green),
-                          minimumSize:
-                              const MaterialStatePropertyAll(Size(270, 50)),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(60)),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Container(
+                    //   padding: const EdgeInsets.all(10),
+                    //   child: TextButton(
+                    //     onPressed: () {
+                    //       Navigator.push(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //           builder: (context) => HistoryPage(),
+                    //         ),
+                    //       );
+                    //     },
+                    //     // ignore: sort_child_properties_last
+                    //     child: const Text(
+                    //       'Lịch Sử',
+                    //       style: TextStyle(
+                    //         fontSize: 20,
+                    //         color: Colors.white,
+                    //         fontWeight: FontWeight.w300,
+                    //       ),
+                    //     ),
+                    //     style: ButtonStyle(
+                    //       backgroundColor:
+                    //           MaterialStatePropertyAll(AppColor.dartyellow),
+                    //       minimumSize:
+                    //           const MaterialStatePropertyAll(Size(270, 50)),
+                    //       shape: MaterialStateProperty.all(
+                    //         RoundedRectangleBorder(
+                    //             borderRadius: BorderRadius.circular(60)),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    // Container(
+                    //   padding: const EdgeInsets.all(10),
+                    //   child: TextButton(
+                    //     onPressed: () {
+                    //       Navigator.push(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //           builder: (context) => MainFriends(),
+                    //         ),
+                    //       );
+                    //     },
+                    //     // ignore: sort_child_properties_last
+                    //     child: const Text(
+                    //       'Bạn Bè',
+                    //       style: TextStyle(
+                    //         fontSize: 20,
+                    //         color: Colors.white,
+                    //         fontWeight: FontWeight.w300,
+                    //       ),
+                    //     ),
+                    //     style: ButtonStyle(
+                    //       backgroundColor:
+                    //           MaterialStatePropertyAll(AppColor.green),
+                    //       minimumSize:
+                    //           const MaterialStatePropertyAll(Size(270, 50)),
+                    //       shape: MaterialStateProperty.all(
+                    //         RoundedRectangleBorder(
+                    //             borderRadius: BorderRadius.circular(60)),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     // ignore: avoid_unnecessary_containers
                     Container(
                       padding: const EdgeInsets.all(10),
@@ -377,23 +383,14 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.zero,
                 children: <Widget>[
                   UserAccountsDrawerHeader(
-                      accountName: Text("${lg.name}"),
-                      accountEmail: Text("${lg.email}"),
-                      // currentAccountPicture: CircleAvatar(
-                      //   backgroundColor: AppColor.fieldColor,
-                      //   child: Text(
-                      //     "P",
-                      //     style: TextStyle(
-                      //       fontSize: 40.0,
-                      //       color: AppColor.textColor,
-                      //     ),
-                      //   ),
-                      // ),
-                      currentAccountPicture: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        //backgroundImage: NetworkImage("${sp.imageUrl}"),
-                        radius: 50,
-                      )),
+                    accountName: Text("${this.widget.user!.name}"),
+                    accountEmail: Text("${this.widget.user!.email}"),
+                    currentAccountPicture: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      //backgroundImage: NetworkImage("${sp.imageUrl}"),
+                      radius: 50,
+                    ),
+                  ),
                   ListTile(
                     leading: Icon(Icons.shopping_cart),
                     title: Text("Nạp QuizzCoin"),
@@ -401,33 +398,24 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => GetMoreCoins(),
+                          builder: (context) =>
+                              GetMoreCoins(user: this.widget.user),
                         ),
                       );
                     },
                   ),
                   ListTile(
-                    leading: Icon(Icons.diamond),
-                    title: Text("Mua VIP"),
+                    leading: Icon(Icons.groups),
+                    title: Text("Bạn bè"),
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => VipUserScreen(),
-                        ),
-                      );
+                      nextScreen(context, MainFriends());
                     },
                   ),
                   ListTile(
-                    leading: Icon(Icons.contacts),
-                    title: Text("Cập nhật thông tin"),
+                    leading: Icon(Icons.bookmark_outlined),
+                    title: Text("Lịch sử"),
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => UpdateInfomationScreen(),
-                        ),
-                      );
+                      nextScreen(context, HistoryPage());
                     },
                   ),
                   ListTile(
@@ -453,11 +441,7 @@ class _HomePageState extends State<HomePage> {
                                 } else {
                                   // Navigator.pushNamedAndRemoveUntil(
                                   //     context, 'Login', (route) => false);
-                                  Navigator.of(context).pushAndRemoveUntil(
-                                      MaterialPageRoute(
-                                        builder: (context) => LoginScreen(),
-                                      ),
-                                      (route) => false);
+                                  nextScreenRemoveUntil(context, LoginScreen());
                                 }
                               },
                               child: Text('Có'),

@@ -18,7 +18,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   final player = AudioPlayer();
   @override
   void initState() {
-    // TODO: implement initState
     player.play(AssetSource('music.mp3')); //bật nhạc
     super.initState();
   }
@@ -85,7 +84,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FieldPage(),
+                              builder: (context) => FieldPage(
+                                user: null,
+                              ),
                             ),
                           );
                         },

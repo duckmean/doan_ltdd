@@ -5,6 +5,7 @@ import 'package:doan_ltdd/pages/UI/field_page.dart';
 import 'package:doan_ltdd/pages/UI/home_page.dart';
 import 'package:doan_ltdd/pages/UI/result.dart';
 import 'package:doan_ltdd/provider/global_service.dart';
+import 'package:doan_ltdd/provider/user_object.dart';
 import 'package:doan_ltdd/utils/next_screen.dart';
 import 'package:doan_ltdd/utils/snack_bar.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +17,10 @@ import 'dart:async';
 import 'package:doan_ltdd/provider/time_textstyle.dart';
 
 class PlayPage extends StatefulWidget {
-  PlayPage({Key? key, required this.category}) : super(key: key);
+  PlayPage({Key? key, required this.category, required this.user})
+      : super(key: key);
   int category;
+  User? user;
   @override
   State<PlayPage> createState() => _PlayPageState();
 }
@@ -36,12 +39,10 @@ class _PlayPageState extends State<PlayPage> {
 
   String hearts = "3";
   int heart = 3;
-
   String indexanswer = '';
   int indexcorrect = 0;
-
+  int coinuser = 0;
   int coinbuy = 50;
-  int coinuser = 500;
 
   int questionindex = 0;
 
@@ -49,6 +50,9 @@ class _PlayPageState extends State<PlayPage> {
   void initState() {
     super.initState();
     quizz = getQuiz(this.widget.category);
+    this.widget.user != null
+        ? coinuser = this.widget.user!.quizzcoin
+        : coinuser = 500;
     startTimer();
   }
 
@@ -111,6 +115,7 @@ class _PlayPageState extends State<PlayPage> {
             MaterialPageRoute(
               builder: (context) => Result(
                 points: points,
+                user: this.widget.user,
               ),
             ),
             (route) => false);
@@ -162,7 +167,7 @@ class _PlayPageState extends State<PlayPage> {
                             Container(
                               alignment: Alignment.center,
                               margin: EdgeInsets.only(left: 15),
-                              width: 110,
+                              width: 170,
                               height: 45,
                               decoration: BoxDecoration(
                                 color: AppColor.background,
@@ -171,7 +176,7 @@ class _PlayPageState extends State<PlayPage> {
                                     width: 1, color: AppColor.fieldColor),
                               ),
                               child: Text(
-                                "Coin: $coinuser ",
+                                "Coin: ${coinuser} ",
                                 style: TextStyle(
                                   color: AppColor.fieldColor,
                                   fontSize: 18,
@@ -361,6 +366,7 @@ class _PlayPageState extends State<PlayPage> {
                                                       builder: (context) =>
                                                           Result(
                                                         points: points,
+                                                        user: this.widget.user,
                                                       ),
                                                     ),
                                                     (route) => false);
@@ -563,6 +569,8 @@ class _PlayPageState extends State<PlayPage> {
                                               if (coinuser >= coinbuy) {
                                                 coinuser = coinuser - coinbuy;
                                                 coinbuy *= 2;
+                                                this.widget.user!.quizzcoin =
+                                                    coinuser;
                                                 for (int i = 0;
                                                     i < optionsList.length;
                                                     i++) {

@@ -1,13 +1,14 @@
 import 'package:doan_ltdd/pages/payment/watch_ad.dart';
 import 'package:flutter/material.dart';
 import '../../Appcolor/appcolor.dart';
+import '../../provider/user_object.dart';
 import 'card_3tl.dart';
 import 'card_garena.dart';
 import 'card_zing.dart';
 
 class GetMoreCoins extends StatefulWidget {
-  const GetMoreCoins({super.key});
-
+  GetMoreCoins({Key? key, required this.user}) : super(key: key);
+  User? user;
   @override
   State<GetMoreCoins> createState() => _GetMoreCoinsState();
 }
@@ -49,7 +50,7 @@ class _GetMoreCoinsState extends State<GetMoreCoins> {
                   child: TextButton(
                     onPressed: () {},
                     child: Text(
-                      "QuizzCoin: 5000",
+                      "QuizzCoin: ${this.widget.user!.quizzcoin}",
                       style: TextStyle(
                         fontSize: 17,
                         color: AppColor.textColor,
@@ -203,7 +204,9 @@ class _GetMoreCoinsState extends State<GetMoreCoins> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Watch_Ad(),
+                            builder: (context) => Watch_Ad(
+                              user: this.widget.user,
+                            ),
                           ));
                     },
                     child: const Text('Xem Quảng Cáo',

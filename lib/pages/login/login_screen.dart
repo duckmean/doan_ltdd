@@ -55,13 +55,16 @@ class _LoginScreenState extends State<LoginScreen> {
         User? us = await AuthService.fetchUser(_email, _password);
         saveDataLoginFromSharedPreferences();
         // nextScreenRemoveUntil(context, MainPageScreen());
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (context) => MainPageScreen(
-                user: us,
-              ),
+
+        if (mounted) {
+          nextScreenRemoveUntil(
+            context,
+            MainPageScreen(
+              user: us,
             ),
-            (route) => false);
+          );
+        }
+        ;
       } else {
         errorSnackbar(context, responseMap.values.first);
       }
@@ -194,10 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                               isLoggin();
                             } else {
-                              CircularProgressIndicator(
-                                valueColor:
-                                    AlwaysStoppedAnimation(AppColor.fieldColor),
-                              );
+                              CircularProgressIndicator();
                             }
                           },
                           child: const Text('Đăng Nhập',
