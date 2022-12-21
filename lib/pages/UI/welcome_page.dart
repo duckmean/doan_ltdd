@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:doan_ltdd/Appcolor/appcolor.dart';
+import 'package:doan_ltdd/pages/UI/PlayNow_Field.dart';
 import 'package:flutter/material.dart';
 import 'package:doan_ltdd/Appcolor/appcolor.dart';
 import '../login/login_screen.dart';
@@ -84,7 +85,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FieldPage(
+                              builder: (context) => FieldPlayNow(
                                 user: null,
                               ),
                             ),

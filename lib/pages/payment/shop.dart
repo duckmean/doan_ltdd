@@ -222,7 +222,7 @@ class _ShopSreenState extends State<ShopSreen> {
                     accountEmail: Text("${this.widget.user!.email}"),
                     currentAccountPicture: CircleAvatar(
                       backgroundColor: Colors.white,
-                      //backgroundImage: NetworkImage("${sp.imageUrl}"),
+                      backgroundImage: AssetImage("images/avt.png"),
                       radius: 50,
                     ),
                   ),

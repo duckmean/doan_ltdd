@@ -22,10 +22,37 @@ class _FriendsTestState extends State<FriendsTest> {
             builder: (context, snapshot) {
               print(snapshot.data);
               if (snapshot.hasData) {
-                return Container(
-                  child: Text(
-                    snapshot.data![4]['name'],
-                  ),
+                return Column(
+                  children: [
+                    Container(
+                      child: Card(
+                        child: ListTile(
+                          title: Text(
+                            snapshot.data![3]['name'],
+                            style: TextStyle(fontSize: 30.0),
+                          ),
+                          subtitle: Text(
+                            snapshot.data![3]['email'].toString(),
+                            style: TextStyle(fontSize: 20.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Card(
+                        child: ListTile(
+                          title: Text(
+                            snapshot.data![4]['name'],
+                            style: TextStyle(fontSize: 30.0),
+                          ),
+                          subtitle: Text(
+                            snapshot.data![4]['email'].toString(),
+                            style: TextStyle(fontSize: 20.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 );
               } else {
                 return const Center(

@@ -3,6 +3,7 @@
 import 'package:doan_ltdd/pages/UI/friends_page.dart';
 import 'package:doan_ltdd/pages/UI/history_page.dart';
 import 'package:doan_ltdd/pages/UI/main_friends.dart';
+import 'package:doan_ltdd/pages/UI/record_detail.dart';
 import 'package:doan_ltdd/pages/UI/updateinfo_page.dart';
 import 'package:doan_ltdd/pages/payment/vip_user.dart';
 import 'package:doan_ltdd/provider/auth_provider.dart';
@@ -330,7 +331,7 @@ class _HomePageState extends State<HomePage> {
                     accountEmail: Text("${this.widget.user!.email}"),
                     currentAccountPicture: CircleAvatar(
                       backgroundColor: Colors.white,
-                      //backgroundImage: NetworkImage("${sp.imageUrl}"),
+                      backgroundImage: AssetImage("images/avt.png"),
                       radius: 50,
                     ),
                   ),
@@ -361,7 +362,7 @@ class _HomePageState extends State<HomePage> {
                     leading: Icon(Icons.bookmark_outlined),
                     title: Text("Kỷ lục"),
                     onTap: () {
-                      nextScreen(context, RecordPage(user: this.widget.user));
+                      nextScreen(context, RecordDetail(user: this.widget.user));
                     },
                   ),
                   ListTile(
