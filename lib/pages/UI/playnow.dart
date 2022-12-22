@@ -449,7 +449,7 @@ class _PlayNowState extends State<PlayNow> {
                                               optionsList.add('');
                                               optionsList.add('');
                                             }
-                                            //count1 = 0;
+                                            count1 = 0;
                                             //errorSnackbar(context, "Ban ")
                                           } else {
                                             ScaffoldMessenger.of(context)
@@ -570,8 +570,8 @@ class _PlayNowState extends State<PlayNow> {
                                               if (coinuser >= coinbuy) {
                                                 coinuser = coinuser - coinbuy;
                                                 coinbuy *= 2;
-                                                this.widget.user!.quizzcoin =
-                                                    coinuser;
+                                                // this.widget.user!.quizzcoin =
+                                                //     coinuser;
                                                 for (int i = 0;
                                                     i < optionsList.length;
                                                     i++) {
