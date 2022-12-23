@@ -441,13 +441,13 @@ class _PlayNowState extends State<PlayNow> {
                                                 indexcorrect == 1) {
                                               optionsList.removeAt(2);
                                               optionsList.removeAt(2);
-                                              optionsList.add('');
-                                              optionsList.add('');
+                                              // optionsList.add('');
+                                              // optionsList.add('');
                                             } else {
                                               optionsList.removeAt(0);
                                               optionsList.removeAt(0);
-                                              optionsList.add('');
-                                              optionsList.add('');
+                                              // optionsList.add('');
+                                              // optionsList.add('');
                                             }
                                             count1 = 0;
                                             //errorSnackbar(context, "Ban ")

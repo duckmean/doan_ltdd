@@ -32,7 +32,8 @@ class _FriendsPageState extends State<FriendsPage> {
                         style: TextStyle(fontSize: 30.0),
                       ),
                       subtitle: Text(
-                        snapshot.data![i]['quizzcoin'].toString(),
+                        'QuizzCoin: ' +
+                            snapshot.data![i]['quizzcoin'].toString(),
                         style: TextStyle(fontSize: 20.0),
                       ),
                       trailing: Container(

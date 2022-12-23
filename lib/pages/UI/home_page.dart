@@ -328,7 +328,8 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   UserAccountsDrawerHeader(
                     accountName: Text("${this.widget.user!.name}"),
-                    accountEmail: Text("${this.widget.user!.email}"),
+                    accountEmail: Text(
+                        "${this.widget.user!.email} \nVIP: ${this.widget.user!.vip}"),
                     currentAccountPicture: CircleAvatar(
                       backgroundColor: Colors.white,
                       backgroundImage: AssetImage("images/avt.png"),
