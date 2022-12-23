@@ -176,7 +176,7 @@ class _PlayPageState extends State<PlayPage> {
                                     width: 1, color: AppColor.fieldColor),
                               ),
                               child: Text(
-                                "Coin: ${coinuser} ",
+                                "QuizzCoin: ${coinuser} ",
                                 style: TextStyle(
                                   color: AppColor.fieldColor,
                                   fontSize: 18,

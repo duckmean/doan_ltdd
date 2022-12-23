@@ -104,8 +104,8 @@ class _RegisterState extends State<Register> {
                             _name = value;
                           },
                           decoration: InputDecoration(
-                            hintText: 'Nhập tên ingame',
-                            labelText: 'Tên ingame',
+                            hintText: 'Nhập tên hiển thị',
+                            labelText: 'Tên hiển thị',
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15)),
                             prefixIcon: Icon(Icons.person),

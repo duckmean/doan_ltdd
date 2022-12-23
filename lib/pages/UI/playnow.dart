@@ -177,7 +177,7 @@ class _PlayNowState extends State<PlayNow> {
                                     width: 1, color: AppColor.fieldColor),
                               ),
                               child: Text(
-                                "Coin: ${coinuser} ",
+                                "QuizzCoin: ${coinuser} ",
                                 style: TextStyle(
                                   color: AppColor.fieldColor,
                                   fontSize: 18,
