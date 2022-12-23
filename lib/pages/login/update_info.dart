@@ -54,7 +54,7 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Đổi Họ Và Tên",
+                          "Đổi Tên Hiển Thị",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 40.0,
@@ -85,8 +85,8 @@ class _UpdateInfomationState extends State<UpdateInfomation> {
                           child: TextField(
                             controller: _nameController,
                             decoration: InputDecoration(
-                              hintText: 'Họ Và Tên',
-                              labelText: 'Nhập Họ Và Tên',
+                              hintText: 'Tên Hiển Thị',
+                              labelText: 'Nhập Tên Hiển Thị',
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15)),
                               prefixIcon: Icon(Icons.edit),
